@@ -6,7 +6,7 @@ public class OpenClose : MonoBehaviour
 {
     public Animator animator;
     private bool isOpen = false;
-    public MouseController mousecontroller; // Reference to another OpenClose script
+    public MouseController mousecontroller;
 
     public void ToggleOpenClose()
     {
@@ -15,13 +15,13 @@ public class OpenClose : MonoBehaviour
         {
             animator.SetFloat("Open", 1f);
             if(mousecontroller != null)
-                mousecontroller.enabled = false; // Disable the other OpenClose script
+                mousecontroller.enabled = false; 
         }
         else
         {
             animator.SetFloat("Open", 0f);
             if(mousecontroller != null)
-                mousecontroller.enabled = true; // Enable the other OpenClose script
+                mousecontroller.enabled = true;
         }
     }
 }
