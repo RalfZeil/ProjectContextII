@@ -7,14 +7,14 @@ public class CameraController : MonoBehaviour
     private PlayerInputActions _actions;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _actions = new PlayerInputActions();
         _actions.Enable();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }

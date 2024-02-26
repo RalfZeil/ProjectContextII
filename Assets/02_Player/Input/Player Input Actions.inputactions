@@ -13,11 +13,20 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Zoom",
+                    "type": "Value",
+                    "id": "78479547-2280-4357-ad3a-7d9815eee0a6",
+                    "expectedControlType": "Double",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "AD",
+                    "name": "Keyboad",
                     "id": "db6784fb-ee7d-4ef3-98bc-1719ecd04e11",
                     "path": "2DVector",
                     "interactions": "",
@@ -30,7 +39,7 @@
                 {
                     "name": "up",
                     "id": "036ebae7-89d4-41a7-8711-7d00191f1338",
-                    "path": "",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -41,7 +50,7 @@
                 {
                     "name": "down",
                     "id": "2ccd52c1-9841-4785-bc0a-5e56758a213b",
-                    "path": "",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -85,7 +94,7 @@
                 {
                     "name": "up",
                     "id": "63ebde5a-0eb8-4758-91ec-2f93cf0dd2d1",
-                    "path": "",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -96,7 +105,7 @@
                 {
                     "name": "down",
                     "id": "7a5ee0bc-18da-4e6d-b3eb-7194f8565784",
-                    "path": "",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -125,6 +134,17 @@
                     "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "6fcad01d-3fc1-4e6e-b3b3-48d39a56c6d9",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
