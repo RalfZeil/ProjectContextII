@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    [SerializeField] private GameObject structurePrefab;
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private float moveSpeed;
+
     private bool isSelected = false;
     private Vector3 relativeMousePosition;
+
+    private Coroutine returnToHand;
+    private bool isReturning = false;
+
+    public static Card heldCard = null;
 
     private void OnMouseOver()
     {
@@ -13,30 +22,47 @@ public class Card : MonoBehaviour
         {
             isSelected = true;
             relativeMousePosition = transform.position - MouseWorldPosition();
-            Debug.Log("Card Selected");
+            heldCard = this;
+
+            if (returnToHand != null) StopCoroutine(returnToHand);
+            isReturning = false;
         }
     }
 
     private void Start()
     {
-        
+
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (isSelected && Input.GetMouseButtonUp(0)) TryPlay();
+
+        if (isSelected)
         {
-            if(isSelected)
-            {
-                Transform tile = TargetedTile();
-                if (tile) Debug.Log("Tile targeted");
-                else Debug.Log("No Target");
-            }
+            transform.position = MouseWorldPosition() + relativeMousePosition;
 
-            isSelected = false;
+            if (TileGrid.IsTileTargeted()) meshRenderer.enabled = false;
+            else meshRenderer.enabled = true;
         }
+        else if (!isReturning) returnToHand = StartCoroutine(MoveToHandPosition());
+    }
 
-        if(isSelected) transform.position = MouseWorldPosition() + relativeMousePosition;
+    private void TryPlay()
+    {
+        heldCard = null;
+
+        if (TileGrid.IsTileTargeted() && TileGrid.IsValidPlacement()) Play();
+
+        isSelected = false;
+        meshRenderer.enabled = true;
+    }
+
+    private void Play()
+    {
+        TileGrid.Build(structurePrefab);
+        TimeManager.IncrementTurnCount();
+        Destroy(gameObject);
     }
 
     private static Vector3 MouseWorldPosition()
@@ -44,11 +70,23 @@ public class Card : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    private Transform TargetedTile()
+    private IEnumerator MoveToHandPosition()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Tiles"))) return hit.transform;
-        return null;
+        isReturning = true;
+
+        Vector3 targetPosition = new Vector3(1.2f * transform.GetSiblingIndex(), 0, 0.1f * transform.GetSiblingIndex());
+        while (transform.localPosition != targetPosition)
+        {
+            targetPosition = new Vector3(1.2f * transform.GetSiblingIndex(), 0, 0.1f * transform.GetSiblingIndex());
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        isReturning = false;
+    }
+
+    public List<Vector2Int> TargetedTiles()
+    {
+        return structurePrefab.GetComponent<Structure>().coveredTiles;
     }
 }
