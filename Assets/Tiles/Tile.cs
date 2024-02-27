@@ -30,11 +30,6 @@ public class Tile : MonoBehaviour
         meshRenderer.material = baseMaterial;
     }
 
-    public bool IsFree()
-    {
-        return structure == null;
-    }
-
     public void AddAttribute (Attribute attribute)
     {
         attributes.Add(attribute);

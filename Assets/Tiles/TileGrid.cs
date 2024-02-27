@@ -5,20 +5,25 @@ using System.Linq;
 
 public class TileGrid : MonoBehaviour
 {
-    [SerializeField] private GameObject tilePrefab;
+    [SerializeField] private GameObject tilePrefab, headquartersPrefab;
     [SerializeField] private int gridWidth, gridHeight;
 
     private Tile[,] tiles;
     public Transform targetedTile = null;
     public static TileGrid instance;
+    private static int targetRotation = 0;
 
     private void Start()
     {
         instance = this;
+        GenerateStartCity();
+    }
 
+    private void GenerateStartCity() //TODO: Actually procedurally generate a city, or have a premade one
+    {
         tiles = new Tile[gridWidth, gridHeight];
 
-        for(int i = 0; i < gridWidth; i++)
+        for (int i = 0; i < gridWidth; i++)
         {
             for (int j = 0; j < gridHeight; j++)
             {
@@ -30,11 +35,18 @@ public class TileGrid : MonoBehaviour
                 tiles[i, j].y = j;
             }
         }
+
+        Structure structure = Instantiate(headquartersPrefab).GetComponent<Structure>();
+        structure.transform.parent = instance.transform;
+        structure.transform.position = (new Vector3(0, .3f, 0)) + PositionOfTile(gridWidth / 2, gridHeight / 2);
+        tiles[gridWidth / 2, gridHeight / 2].structure = structure;
     }
 
     private void Update()
     {
         UpdateTarget();
+
+        if (Input.GetKeyDown(KeyCode.R)) targetRotation = (targetRotation + 90) % 360;
     }
 
     private void UpdateTarget()
@@ -67,17 +79,28 @@ public class TileGrid : MonoBehaviour
     public static List<Tile> GetTargetedTiles()
     {
         List<Tile> targetTiles = new();
+        if (!IsTileTargeted()) return targetTiles;
+
         Tile originTile = instance.targetedTile.GetComponent<Tile>();
         targetTiles.Add(originTile);
 
         if(Card.heldCard) foreach(Vector2Int coordinates in Card.heldCard.TargetedTiles())
         {
-            int i = originTile.x + coordinates.x;
-            int j = originTile.y + coordinates.y;
+            Vector2Int rotatedCoordinates = RotateCoordinates(coordinates);
+            int i = originTile.x + rotatedCoordinates.x;
+            int j = originTile.y + rotatedCoordinates.y;
             targetTiles.Add(instance.GetTileAt(i, j));
         }
 
         return targetTiles;
+    }
+
+    private static Vector2Int RotateCoordinates(Vector2Int coordinates)
+    {
+        if (targetRotation == 0) return coordinates;
+        if (targetRotation == 90) return new Vector2Int(coordinates.y, -1 * coordinates.x);
+        if (targetRotation == 180) return -1 * coordinates;
+        return new Vector2Int(-1 * coordinates.y, coordinates.x);
     }
 
     private Tile GetTileAt(int x, int y)
@@ -93,6 +116,7 @@ public class TileGrid : MonoBehaviour
         Structure structure = Instantiate(structurePrefab).GetComponent<Structure>();
         structure.transform.parent = instance.transform;
         structure.transform.position = (new Vector3(0, .3f, 0)) + instance.targetedTile.position;
+        structure.transform.localRotation *= Quaternion.Euler(0, targetRotation, 0);
         foreach (Tile tile in GetTargetedTiles()) if (tile != null) tile.structure = structure;
 
         instance.PlaceAttributes(structure);
@@ -103,8 +127,9 @@ public class TileGrid : MonoBehaviour
         Tile originTile = instance.targetedTile.GetComponent<Tile>();
         for (int i = 0; i < structure.attributeTiles.Count; i++)
         {
-            int x = originTile.x + structure.attributeTiles[i].x;
-            int y = originTile.y + structure.attributeTiles[i].y;
+            Vector2Int rotatedCoordinates = RotateCoordinates(structure.attributeTiles[i]);
+            int x = originTile.x + rotatedCoordinates.x;
+            int y = originTile.y + rotatedCoordinates.y;
 
             Tile tile = GetTileAt(x, y);
             if (tile) tile.AddAttribute(structure.attributes[i]);
@@ -122,7 +147,7 @@ public class TileGrid : MonoBehaviour
         foreach(Tile tile in GetTargetedTiles())
         {
             if (tile == null) return false;
-            //if (!tile.IsFree()) return false;      // Changed to bounce stuff back to hand
+            if (tile.structure && tile.structure.isPermanent) return false;
         }
 
         return true;

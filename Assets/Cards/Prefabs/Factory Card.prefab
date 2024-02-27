@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 555345861066244121}
   - component: {fileID: 1441576283816835504}
   - component: {fileID: 2986977896953752365}
-  - component: {fileID: 5461000311407060009}
+  - component: {fileID: -6525083536916554814}
   m_Layer: 0
   m_Name: Factory Card
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &5461000311407060009
+--- !u!114 &-6525083536916554814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,10 +116,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5425401955463860704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2c20369345fb164699c90f23d7fb24e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5425759415517a24695d579a217e2ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  structurePrefab: {fileID: 7125914351763239744, guid: 01332c8b185ece544a891ff73285d512,
-    type: 3}
   meshRenderer: {fileID: 1441576283816835504}
   moveSpeed: 20
+  isQuick: 0
+  isForced: 1
+  structurePrefab: {fileID: 7125914351763239744, guid: 01332c8b185ece544a891ff73285d512,
+    type: 3}

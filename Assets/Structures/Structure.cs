@@ -6,12 +6,12 @@ using TMPro;
 public class Structure : MonoBehaviour
 {
     [SerializeField] private GameObject associatedCardPrefab, createdCardPrefab;
-    [SerializeField] private bool hasFunction;
     [SerializeField] private int baseCooldown;
     [SerializeField] private TextMeshPro timerDisplay;
+    public bool hasFunction, isPermanent;
     public List<Vector2Int> coveredTiles, attributeTiles;
 
-    public List<Attribute> attributes = new();
+    [HideInInspector] public List<Attribute> attributes = new();
 
     private int functionTimer;
     private Transform createdCard;
@@ -48,12 +48,32 @@ public class Structure : MonoBehaviour
     {
         if (!hasFunction) return;
 
-        if (functionTimer > 0) functionTimer--;
+        functionTimer--;
+        if (functionTimer < 0) functionTimer = 0;
+        if (functionTimer == 0 && (createdCard == null || createdCard.GetComponent<Card>().wasPlayed))
+        {
+            createdCard = Instantiate(createdCardPrefab).transform;
+            createdCard.position = transform.position;
+            functionTimer = baseCooldown;
+        }
+    }
+
+    public void BoostTurn(int amount)
+    {
+        if (!hasFunction) return;
+
+        functionTimer -= amount;
+        if (functionTimer < 0) functionTimer = 0;
         if (functionTimer == 0 && createdCard == null)
         {
             createdCard = Instantiate(createdCardPrefab).transform;
             createdCard.position = transform.position;
             functionTimer = baseCooldown;
         }
+    }
+
+    public bool CanBeBoosted()
+    {
+        return hasFunction && functionTimer > 0;
     }
 }

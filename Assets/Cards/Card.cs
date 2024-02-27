@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] private GameObject structurePrefab;
-    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] protected MeshRenderer meshRenderer;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private bool isQuick, isForced;
 
-    private bool isSelected = false;
+    protected bool isSelected = false;
     private Vector3 relativeMousePosition;
 
     private Coroutine returnToHand;
     private bool isReturning = false;
 
-    public static Card heldCard = null;
+    [HideInInspector] public bool wasPlayed = false;
+    [HideInInspector] public static Card heldCard = null;
 
     private void OnMouseOver()
     {
@@ -50,22 +52,6 @@ public class Card : MonoBehaviour
         else if (!isReturning) returnToHand = StartCoroutine(MoveToHandPosition());
     }
 
-    private void TryPlay()
-    {
-        if (TileGrid.IsTileTargeted() && TileGrid.IsValidPlacement()) Play();
-
-        heldCard = null;
-        isSelected = false;
-        meshRenderer.enabled = true;
-    }
-
-    private void Play()
-    {
-        TileGrid.Build(structurePrefab);
-        TimeManager.IncrementTurnCount();
-        Destroy(gameObject);
-    }
-
     private static Vector3 MouseWorldPosition()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -85,9 +71,39 @@ public class Card : MonoBehaviour
 
         isReturning = false;
     }
-
-    public List<Vector2Int> TargetedTiles()
+    private void TryPlay()
     {
-        return structurePrefab.GetComponent<Structure>().coveredTiles;
+        if (CanPlay()) Play();
+
+        heldCard = null;
+        isSelected = false;
+        meshRenderer.enabled = true;
+    }
+
+    public static bool ForcedCardExists()
+    {
+        foreach (Card card in GetAllCards()) if (card.isForced) return true;
+        return false;
+    }
+
+    public static List<Card> GetAllCards()
+    {
+        return CameraControl.GetCardParent().GetComponentsInChildren<Card>().ToList<Card>();
+    }
+
+    public virtual List<Vector2Int> TargetedTiles()
+    {
+        return new List<Vector2Int>();
+    }
+
+    protected virtual bool CanPlay()
+    {
+        return isForced || (!ForcedCardExists());
+    }
+    protected virtual void Play()
+    {
+        wasPlayed = true;
+        if (!isQuick) TimeManager.IncrementTurnCount();
+        Destroy(gameObject);
     }
 }
