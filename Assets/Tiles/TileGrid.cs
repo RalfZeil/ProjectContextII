@@ -46,10 +46,7 @@ public class TileGrid : MonoBehaviour
         targetedTile = newTarget;
         if (targetedTile)
         {
-            foreach(Tile tile in GetTargetedTiles())
-            {
-                tile.Select();
-            }
+            foreach(Tile tile in GetTargetedTiles()) if (tile) tile.Select(); 
         }
 
     }
@@ -91,11 +88,12 @@ public class TileGrid : MonoBehaviour
 
     public static void Build (GameObject structurePrefab)
     {
+        foreach (Tile tile in GetTargetedTiles()) tile.Replace();
+
         Structure structure = Instantiate(structurePrefab).GetComponent<Structure>();
         structure.transform.parent = instance.transform;
         structure.transform.position = (new Vector3(0, .3f, 0)) + instance.targetedTile.position;
-
-        foreach (Tile tile in GetTargetedTiles()) if (tile) tile.structure = structure;
+        foreach (Tile tile in GetTargetedTiles()) if (tile != null) tile.structure = structure;
 
         instance.PlaceAttributes(structure);
     }
@@ -109,7 +107,7 @@ public class TileGrid : MonoBehaviour
             int y = originTile.y + structure.attributeTiles[i].y;
 
             Tile tile = GetTileAt(x, y);
-            if (tile != null) tile.AddAttribute(structure.attributes[i]);
+            if (tile) tile.AddAttribute(structure.attributes[i]);
             structure.attributes[i].transform.position = new Vector3(0, .5f, 0) + PositionOfTile(x, y) + transform.position;
         }
     }
@@ -124,7 +122,7 @@ public class TileGrid : MonoBehaviour
         foreach(Tile tile in GetTargetedTiles())
         {
             if (tile == null) return false;
-            if (!tile.IsFree()) return false;
+            //if (!tile.IsFree()) return false;      // Changed to bounce stuff back to hand
         }
 
         return true;
@@ -133,7 +131,7 @@ public class TileGrid : MonoBehaviour
     public List<Structure> GetStructures()
     {
         HashSet<Structure> structures = new();
-        foreach (Tile tile in tiles) structures.Add(tile.structure);
+        foreach (Tile tile in tiles) if(tile.structure) structures.Add(tile.structure);
         return structures.ToList<Structure>();
     }
 }

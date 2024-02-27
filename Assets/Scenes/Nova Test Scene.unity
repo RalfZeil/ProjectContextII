@@ -732,8 +732,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 7964945426028315310, guid: d3f601debcb41bc439185f16aa5f3825,
     type: 3}
-  gridWidth: 8
-  gridHeight: 8
+  gridWidth: 10
+  gridHeight: 10
   targetedTile: {fileID: 0}
 --- !u!1 &1384408279
 GameObject:
@@ -1174,6 +1174,7 @@ MonoBehaviour:
   moveSpeed: 5
   rotationSpeed: 180
   focusPoint: {fileID: 980984682}
+  cardParent: {fileID: 513396352}
 --- !u!1 &1737795021
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,9 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
-
+        transform.parent = CameraControl.GetCardParent();
+        transform.localRotation = Quaternion.identity;
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
     }
 
     private void Update()
@@ -50,10 +52,9 @@ public class Card : MonoBehaviour
 
     private void TryPlay()
     {
-        heldCard = null;
-
         if (TileGrid.IsTileTargeted() && TileGrid.IsValidPlacement()) Play();
 
+        heldCard = null;
         isSelected = false;
         meshRenderer.enabled = true;
     }

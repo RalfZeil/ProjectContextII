@@ -212,4 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c17867caf8522c4786a9973beab1842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  associatedCardPrefab: {fileID: 5425401955463860704, guid: 70fa1635656ef444f886eb8cb2f3a2f1,
+    type: 3}
   coveredTiles: []
+  attributeTiles: []
+  attributes: []

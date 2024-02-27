@@ -41,6 +41,14 @@ public class Tile : MonoBehaviour
         attribute.transform.parent = transform;
     }
 
+    public void Replace()
+    {
+        if (structure == null) return;
+
+        structure.ReturnToHand();
+        structure = null;
+    }
+
     private void Start()
     {
         

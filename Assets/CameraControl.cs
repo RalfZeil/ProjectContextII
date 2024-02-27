@@ -5,13 +5,15 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     [SerializeField] private float moveSpeed, rotationSpeed;
-    [SerializeField] private Transform focusPoint;
+    [SerializeField] private Transform focusPoint, cardParent;
 
     private float targetRotation = 0;
 
-    private void Start()
+    public static CameraControl instance;
+
+    private void Awake()
     {
-        
+        instance = this;
     }
 
     private void Update()
@@ -43,5 +45,10 @@ public class CameraControl : MonoBehaviour
         transform.RotateAround(focusPoint.position, Vector3.up, angle);
         targetRotation -= angle;
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, targetRotation, 0), rotationSpeed * Time.deltaTime);
+    }
+
+    public static Transform GetCardParent()
+    {
+        return instance.cardParent;
     }
 }
