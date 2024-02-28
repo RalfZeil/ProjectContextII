@@ -122,4 +122,6 @@ MonoBehaviour:
   meshRenderer: {fileID: 1441576283816835504}
   moveSpeed: 20
   isQuick: 0
+  isForced: 0
+  wasPlayed: 0
   boostAmount: 2

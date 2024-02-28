@@ -8,8 +8,8 @@ public class TileGrid : MonoBehaviour
     [SerializeField] private GameObject tilePrefab, headquartersPrefab;
     [SerializeField] private int gridWidth, gridHeight;
 
-    private Tile[,] tiles;
-    public Transform targetedTile = null;
+    [HideInInspector] private Tile[,] tiles;
+    [HideInInspector] public Tile targetedTile;
     public static TileGrid instance;
     private static int targetRotation = 0;
 
@@ -51,7 +51,7 @@ public class TileGrid : MonoBehaviour
 
     private void UpdateTarget()
     {
-        Transform newTarget = HoveredTile();
+        Tile newTarget = HoveredTile();
 
         foreach (Tile tile in tiles) tile.Deselect();
 
@@ -63,11 +63,11 @@ public class TileGrid : MonoBehaviour
 
     }
 
-    private Transform HoveredTile()
+    private Tile HoveredTile()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Tiles"))) return hit.transform;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Tiles"))) return hit.transform.GetComponentInParent<Tile>();
         return null;
     }
 
@@ -81,7 +81,7 @@ public class TileGrid : MonoBehaviour
         List<Tile> targetTiles = new();
         if (!IsTileTargeted()) return targetTiles;
 
-        Tile originTile = instance.targetedTile.GetComponent<Tile>();
+        Tile originTile = instance.targetedTile;
         targetTiles.Add(originTile);
 
         if(Card.heldCard) foreach(Vector2Int coordinates in Card.heldCard.TargetedTiles())
@@ -115,16 +115,20 @@ public class TileGrid : MonoBehaviour
 
         Structure structure = Instantiate(structurePrefab).GetComponent<Structure>();
         structure.transform.parent = instance.transform;
-        structure.transform.position = (new Vector3(0, .3f, 0)) + instance.targetedTile.position;
+        structure.transform.position = (new Vector3(0, .3f, 0)) + instance.targetedTile.transform.position;
         structure.transform.localRotation *= Quaternion.Euler(0, targetRotation, 0);
-        foreach (Tile tile in GetTargetedTiles()) if (tile != null) tile.structure = structure;
+        foreach (Tile tile in GetTargetedTiles()) if (tile != null)
+            {
+                tile.structure = structure;
+                structure.tiles.Add(tile);
+            }
 
         instance.PlaceAttributes(structure);
     }
 
     private void PlaceAttributes(Structure structure)
     {
-        Tile originTile = instance.targetedTile.GetComponent<Tile>();
+        Tile originTile = instance.targetedTile;
         for (int i = 0; i < structure.attributeTiles.Count; i++)
         {
             Vector2Int rotatedCoordinates = RotateCoordinates(structure.attributeTiles[i]);
@@ -133,7 +137,7 @@ public class TileGrid : MonoBehaviour
 
             Tile tile = GetTileAt(x, y);
             if (tile) tile.AddAttribute(structure.attributes[i]);
-            structure.attributes[i].transform.position = new Vector3(0, .5f, 0) + PositionOfTile(x, y) + transform.position;
+            else structure.attributes[i].Deactivate();
         }
     }
 

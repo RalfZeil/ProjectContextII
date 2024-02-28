@@ -12,27 +12,34 @@ public class Structure : MonoBehaviour
     public List<Vector2Int> coveredTiles, attributeTiles;
 
     [HideInInspector] public List<Attribute> attributes = new();
+    [HideInInspector] public List<Tile> tiles = new();
 
-    private int functionTimer;
+    public int functionTimer = 0, attributeBonus = 0;
     private Transform createdCard;
+
+    public enum StructureType {Civilisation, Nature};
+    public StructureType type;
 
     private void Awake()
     {
         foreach (Attribute attribute in GetComponentsInChildren<Attribute>()) attributes.Add(attribute);
+        timerDisplay.enabled = hasFunction;
+    }
 
-        functionTimer = baseCooldown;
+    private void Start()
+    {
+        UpdateAttributeBonus();
     }
 
     private void Update()
     {
-        UpdateTimerDisplay();
+        if (hasFunction) UpdateTimerDisplay();
     }
 
     private void UpdateTimerDisplay()
     {
         timerDisplay.transform.rotation = Camera.main.transform.rotation;
-        timerDisplay.text = functionTimer.ToString();
-        timerDisplay.enabled = hasFunction;
+        timerDisplay.text = (FunctionCooldown() - functionTimer).ToString();
     }
 
     public void ReturnToHand()
@@ -40,7 +47,7 @@ public class Structure : MonoBehaviour
         Transform card = Instantiate(associatedCardPrefab).transform;
         card.position = transform.position;
 
-        foreach (Attribute attribute in attributes) Destroy(attribute.gameObject);
+        foreach (Attribute attribute in attributes) attribute.DeleteAttribute();
         Destroy(gameObject);
     }
 
@@ -48,32 +55,53 @@ public class Structure : MonoBehaviour
     {
         if (!hasFunction) return;
 
-        functionTimer--;
-        if (functionTimer < 0) functionTimer = 0;
-        if (functionTimer == 0 && (createdCard == null || createdCard.GetComponent<Card>().wasPlayed))
+        int functionCooldown = FunctionCooldown();
+        functionTimer++;
+        if (functionTimer > functionCooldown) functionTimer = functionCooldown;
+        if (functionTimer == functionCooldown && (createdCard == null || createdCard.GetComponent<Card>().wasPlayed))
         {
             createdCard = Instantiate(createdCardPrefab).transform;
             createdCard.position = transform.position;
-            functionTimer = baseCooldown;
+            functionTimer = 0;
         }
+    }
+
+    private int FunctionCooldown()
+    {
+        return baseCooldown - attributeBonus;
     }
 
     public void BoostTurn(int amount)
     {
         if (!hasFunction) return;
 
-        functionTimer -= amount;
-        if (functionTimer < 0) functionTimer = 0;
-        if (functionTimer == 0 && createdCard == null)
+        int functionCooldown = FunctionCooldown();
+        functionTimer += amount;
+        if (functionTimer > functionCooldown) functionTimer = functionCooldown;
+        if (functionTimer == functionCooldown && (createdCard == null || createdCard.GetComponent<Card>().wasPlayed))
         {
             createdCard = Instantiate(createdCardPrefab).transform;
             createdCard.position = transform.position;
-            functionTimer = baseCooldown;
+            functionTimer = 0;
         }
     }
 
     public bool CanBeBoosted()
     {
-        return hasFunction && functionTimer > 0;
+        return hasFunction && functionTimer < FunctionCooldown();
+    }
+
+    public void UpdateAttributeBonus()
+    {
+        attributeBonus = 0;
+
+        foreach (Tile tile in tiles) foreach (Attribute attribute in tile.attributes) if(attribute.isActive)
+        {
+            if (attribute.type == Attribute.AttributeType.Negative) attributeBonus--;
+            else if (type == StructureType.Civilisation && attribute.type == Attribute.AttributeType.PositiveCivilisation) attributeBonus++;
+            else if (type == StructureType.Nature && attribute.type == Attribute.AttributeType.PositiveNature) attributeBonus++;
+        }
+
+        foreach (Attribute attribute in attributes) attribute.UpdateStatus(attributeBonus);
     }
 }

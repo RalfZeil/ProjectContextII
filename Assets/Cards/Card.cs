@@ -61,10 +61,10 @@ public class Card : MonoBehaviour
     {
         isReturning = true;
 
-        Vector3 targetPosition = new Vector3(1.2f * transform.GetSiblingIndex(), 0, 0.1f * transform.GetSiblingIndex());
+        Vector3 targetPosition = new Vector3(1.2f * transform.GetSiblingIndex(), 0, 0.001f * transform.GetSiblingIndex());
         while (transform.localPosition != targetPosition)
         {
-            targetPosition = new Vector3(1.2f * transform.GetSiblingIndex(), 0, 0.1f * transform.GetSiblingIndex());
+            targetPosition = new Vector3(1.2f * transform.GetSiblingIndex(), 0, 0.001f * transform.GetSiblingIndex());
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }

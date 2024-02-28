@@ -123,5 +123,6 @@ MonoBehaviour:
   moveSpeed: 20
   isQuick: 0
   isForced: 1
+  wasPlayed: 0
   structurePrefab: {fileID: 7125914351763239744, guid: 01332c8b185ece544a891ff73285d512,
     type: 3}
