@@ -42,20 +42,6 @@ public class GameGrid : MonoBehaviour
         return grid[pos.x, pos.y];
     }
 
-    /// <summary>
-    /// Returns the first cell with the PlayerStart bool thats true
-    /// </summary>
-    /// <returns></returns>
-    public Cell GetPlayerStartCell()
-    {
-        foreach (Cell cell in allCellObjects)
-        {
-            if (cell.playerStart == true) return cell;
-        }
-
-        Debug.LogWarning("There is no Player Start defined, check atleast one cell to Player Start");
-        return null;
-    }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

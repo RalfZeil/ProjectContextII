@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Events;
 
 /*
  *   Original Scrip from Valentijn Muijrers
@@ -13,12 +12,8 @@ public class Cell : MonoBehaviour
     public Vector2Int gridPosition;
     public Wall walls; //bit Encoded
 
-    public bool playerStart;
     public GameObject WallPrefab;
 
-    [Header("Events")]
-    public UnityEvent OnEnterCell;
-    public UnityEvent OnPlayerInteraction;
 
     public void RemoveWall(int wallToRemoveDirectionIndex)
     {
