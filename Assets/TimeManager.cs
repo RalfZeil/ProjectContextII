@@ -46,6 +46,6 @@ public class TimeManager : MonoBehaviour
         turnCount++;
         instance.UpdateTurnDisplay();
 
-        foreach (Structure structure in TileGrid.instance.GetStructures()) structure.TakeTurn();
+        foreach (Structure structure in TileGrid.GetStructures()) structure.TakeTurn();
     }
 }

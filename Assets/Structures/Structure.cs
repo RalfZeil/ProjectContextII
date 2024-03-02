@@ -9,15 +9,16 @@ public class Structure : MonoBehaviour
     [SerializeField] private int baseCooldown;
     [SerializeField] private TextMeshPro timerDisplay;
     public bool hasFunction, isPermanent;
-    public List<Vector2Int> coveredTiles, attributeTiles;
+    public List<Vector2Int> coveredTiles;
 
     [HideInInspector] public List<Attribute> attributes = new();
     [HideInInspector] public List<Tile> tiles = new();
+    [HideInInspector] public List<Modification> modifications = new();
 
     public int functionTimer = 0, attributeBonus = 0;
     private Transform createdCard;
 
-    public enum StructureType {Civilisation, Nature};
+    public enum StructureType {Civilisation, Nature, Industry};
     public StructureType type;
 
     private void Awake()
@@ -48,6 +49,7 @@ public class Structure : MonoBehaviour
         card.position = transform.position;
 
         foreach (Attribute attribute in attributes) attribute.DeleteAttribute();
+        foreach (Modification modification in modifications) modification.Delete();
         Destroy(gameObject);
     }
 
@@ -103,5 +105,35 @@ public class Structure : MonoBehaviour
         }
 
         foreach (Attribute attribute in attributes) attribute.UpdateStatus(attributeBonus);
+    }
+
+    public void UpdateAttributeLayering()
+    {
+        UnsuppressAttributes();
+
+        List<Attribute> accumulativeAttributes = new List<Attribute>(attributes);
+        foreach (Modification modification in modifications)
+        {
+            if (modification.isReplacing) foreach (Attribute modAttribute in modification.attributes)
+            {
+                foreach (Attribute attribute in accumulativeAttributes) if (attribute.tile == modAttribute.tile) attribute.isSuppressed = true;
+            }
+            accumulativeAttributes.AddRange(modification.attributes);
+        }
+
+        foreach (Attribute attribute in accumulativeAttributes) attribute.UpdateStatus(attributeBonus);
+    }
+
+    private void UnsuppressAttributes()
+    {
+        foreach (Attribute attribute in attributes) attribute.isSuppressed = false;
+        foreach (Modification modification in modifications) foreach (Attribute attribute in modification.attributes) attribute.isSuppressed = false;
+    }
+
+    public List<Attribute> GetAllAttributes()
+    {
+        List<Attribute> accumulativeAttributes = new List<Attribute>(attributes);
+        foreach (Modification modification in modifications) accumulativeAttributes.AddRange(modification.attributes);
+        return accumulativeAttributes;
     }
 }

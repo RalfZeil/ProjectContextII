@@ -476,5 +476,9 @@ MonoBehaviour:
   hasFunction: 1
   isPermanent: 1
   coveredTiles: []
-  attributeTiles: []
   attributes: []
+  tiles: []
+  modifications: []
+  functionTimer: 0
+  attributeBonus: 0
+  type: 0

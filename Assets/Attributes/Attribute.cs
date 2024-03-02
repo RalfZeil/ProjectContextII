@@ -6,8 +6,9 @@ public class Attribute : MonoBehaviour
 {
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private int activationThreshold;
+    public Vector2Int relativeCoordinates;
 
-    [HideInInspector] public bool isActive = true;
+    [HideInInspector] public bool isActive = false, isSuppressed = false;
 
     public Tile tile;
     public AttributeType type;
@@ -21,22 +22,27 @@ public class Attribute : MonoBehaviour
 
     public void Activate()
     {
-        Debug.Log("activate");
-        if (isActive) return;
+        bool hasChanged = !isActive;
 
-        meshRenderer.enabled = true;
         isActive = true;
-        if (tile) tile.UpdateAttributes();
+        UpdateDisplay();
+
+        if (hasChanged && tile) tile.UpdateAttributes();
     }
 
     public void Deactivate()
     {
-        Debug.Log("deactivate");
-        if (!isActive) return;
+        bool hasChanged = isActive;
 
-        meshRenderer.enabled = false;
         isActive = false;
-        if (tile) tile.UpdateAttributes();
+        UpdateDisplay();
+
+        if (hasChanged && tile) tile.UpdateAttributes();
+    }
+
+    public void UpdateDisplay()
+    {
+        meshRenderer.enabled = isActive && TileGrid.isShowingAttributes;
     }
 
     private void Start()
@@ -51,8 +57,8 @@ public class Attribute : MonoBehaviour
 
     public void UpdateStatus(int attributeBonus)
     {
-        Debug.Log("update status: " + attributeBonus);
-        if (type != AttributeType.Negative && attributeBonus > activationThreshold) Activate();
+        if (isSuppressed) Deactivate();
+        else if (type != AttributeType.Negative && attributeBonus > activationThreshold) Activate();
         else if (type == AttributeType.Negative && attributeBonus < activationThreshold) Activate();
         else Deactivate();
     }

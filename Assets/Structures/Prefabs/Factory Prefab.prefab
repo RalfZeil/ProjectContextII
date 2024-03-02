@@ -567,13 +567,12 @@ MonoBehaviour:
   coveredTiles:
   - {x: 0, y: 1}
   - {x: 1, y: 0}
-  attributeTiles:
-  - {x: 2, y: 0}
-  - {x: 2, y: 0}
-  - {x: 2, y: 0}
   attributes: []
   tiles: []
-  type: 0
+  modifications: []
+  functionTimer: 0
+  attributeBonus: 0
+  type: 2
 --- !u!1 &7490082311507843117
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +724,11 @@ PrefabInstance:
       propertyPath: activationThreshold
       value: 99
       objectReference: {fileID: 0}
+    - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
+        type: 3}
+      propertyPath: relativeCoordinates.x
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -804,6 +808,16 @@ PrefabInstance:
       propertyPath: activationThreshold
       value: 99
       objectReference: {fileID: 0}
+    - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
+        type: 3}
+      propertyPath: relativeCoordinates.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
+        type: 3}
+      propertyPath: relativeCoordinates.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -882,6 +896,16 @@ PrefabInstance:
         type: 3}
       propertyPath: activationThreshold
       value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
+        type: 3}
+      propertyPath: relativeCoordinates.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
+        type: 3}
+      propertyPath: relativeCoordinates.y
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

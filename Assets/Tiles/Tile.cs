@@ -10,6 +10,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private float attributeDisplaySpread;
 
     [HideInInspector] public Structure structure;
+    [HideInInspector] public Modification modification;
     [HideInInspector] public List<Attribute> attributes = new();
 
     [HideInInspector] public int x, y;

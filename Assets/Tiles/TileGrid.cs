@@ -8,8 +8,9 @@ public class TileGrid : MonoBehaviour
     [SerializeField] private GameObject tilePrefab, headquartersPrefab;
     [SerializeField] private int gridWidth, gridHeight;
 
-    [HideInInspector] private Tile[,] tiles;
+    [HideInInspector] public Tile[,] tiles;
     [HideInInspector] public Tile targetedTile;
+    public static bool isShowingAttributes;
     public static TileGrid instance;
     private static int targetRotation = 0;
 
@@ -47,6 +48,14 @@ public class TileGrid : MonoBehaviour
         UpdateTarget();
 
         if (Input.GetKeyDown(KeyCode.R)) targetRotation = (targetRotation + 90) % 360;
+
+        if (Input.GetKeyDown(KeyCode.Tab)) ToggleAttributeDisplay();
+    }
+
+    public static void ToggleAttributeDisplay()
+    {
+        isShowingAttributes = !isShowingAttributes;
+        foreach (Attribute attribute in GetAllAttributes()) attribute.UpdateDisplay();
     }
 
     private void UpdateTarget()
@@ -116,29 +125,48 @@ public class TileGrid : MonoBehaviour
         Structure structure = Instantiate(structurePrefab).GetComponent<Structure>();
         structure.transform.parent = instance.transform;
         structure.transform.position = (new Vector3(0, .3f, 0)) + instance.targetedTile.transform.position;
-        structure.transform.localRotation *= Quaternion.Euler(0, targetRotation, 0);
+        structure.transform.localRotation = Quaternion.Euler(0, targetRotation, 0);
         foreach (Tile tile in GetTargetedTiles()) if (tile != null)
             {
                 tile.structure = structure;
                 structure.tiles.Add(tile);
             }
 
-        instance.PlaceAttributes(structure);
+        PlaceAttributes(structure.attributes);
     }
 
-    private void PlaceAttributes(Structure structure)
+    private static void PlaceAttributes(List<Attribute> attributes)
     {
         Tile originTile = instance.targetedTile;
-        for (int i = 0; i < structure.attributeTiles.Count; i++)
+        foreach (Attribute attribute in attributes)
         {
-            Vector2Int rotatedCoordinates = RotateCoordinates(structure.attributeTiles[i]);
+            Vector2Int rotatedCoordinates = RotateCoordinates(attribute.relativeCoordinates);
             int x = originTile.x + rotatedCoordinates.x;
             int y = originTile.y + rotatedCoordinates.y;
 
-            Tile tile = GetTileAt(x, y);
-            if (tile) tile.AddAttribute(structure.attributes[i]);
-            else structure.attributes[i].Deactivate();
+            Tile tile = instance.GetTileAt(x, y);
+            if (tile) tile.AddAttribute(attribute);
+            else attribute.Deactivate();
         }
+    }
+
+    public static void Modify(GameObject modificationPrefab)
+    {
+        if (instance.targetedTile.modification) instance.targetedTile.modification.Remove();
+
+        Modification modification = Instantiate(modificationPrefab).GetComponent<Modification>();
+        modification.transform.parent = instance.targetedTile.structure.transform;
+        modification.transform.position = (new Vector3(0, .3f, 0)) + instance.targetedTile.transform.position;
+        modification.transform.localRotation = Quaternion.Euler(0, targetRotation, 0);
+
+        modification.structure = instance.targetedTile.structure;
+        modification.structure.modifications.Add(modification);
+        modification.tile = instance.targetedTile;
+        instance.targetedTile.modification = modification;
+
+        PlaceAttributes(modification.attributes);
+
+        modification.structure.UpdateAttributeLayering();
     }
 
     private Vector3 PositionOfTile(int x, int y)
@@ -157,10 +185,17 @@ public class TileGrid : MonoBehaviour
         return true;
     }
 
-    public List<Structure> GetStructures()
+    public static List<Structure> GetStructures()
     {
         HashSet<Structure> structures = new();
-        foreach (Tile tile in tiles) if(tile.structure) structures.Add(tile.structure);
+        foreach (Tile tile in instance.tiles) if(tile.structure) structures.Add(tile.structure);
         return structures.ToList<Structure>();
+    }
+
+    public static List<Attribute> GetAllAttributes()
+    {
+        List<Attribute> attributes = new();
+        foreach (Structure structure in GetStructures()) attributes.AddRange(structure.GetAllAttributes());
+        return attributes;
     }
 }
