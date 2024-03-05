@@ -23,22 +23,18 @@ public class Attribute : MonoBehaviour
 
     public void Activate()
     {
-        bool hasChanged = !isActive;
+        if (!isActive) TileGrid.attributeHasChangedSinceUpdate = true;
 
         isActive = true;
         UpdateDisplay();
-
-        if (hasChanged && tile) tile.UpdateAttributes(type == AttributeType.PositiveNature);
     }
 
     public void Deactivate()
     {
-        bool hasChanged = isActive;
+        if (isActive) TileGrid.attributeHasChangedSinceUpdate = true;
 
         isActive = false;
         UpdateDisplay();
-
-        if (hasChanged && tile) tile.UpdateAttributes(type == AttributeType.PositiveNature);
     }
 
     public void UpdateDisplay()

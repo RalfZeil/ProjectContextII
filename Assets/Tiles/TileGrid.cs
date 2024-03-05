@@ -6,11 +6,11 @@ using System.Linq;
 public class TileGrid : MonoBehaviour
 {
     [SerializeField] private GameObject tilePrefab, headquartersPrefab;
-    [SerializeField] private int gridWidth, gridHeight;
+    [SerializeField] private int gridWidth, gridHeight, maxUpdateCycles;
 
     [HideInInspector] public Tile[,] tiles;
     [HideInInspector] public Tile targetedTile;
-    public static bool isShowingAttributes;
+    public static bool isShowingAttributes = false, attributeHasChangedSinceUpdate = false;
     public static TileGrid instance;
     private static int targetRotation = 0;
 
@@ -133,6 +133,8 @@ public class TileGrid : MonoBehaviour
             }
 
         PlaceAttributes(structure.attributes);
+
+        UpdateAttributeEffects();
     }
 
     private static void PlaceAttributes(List<Attribute> attributes)
@@ -146,6 +148,7 @@ public class TileGrid : MonoBehaviour
 
             Tile tile = instance.GetTileAt(x, y);
             if (tile) tile.AddAttribute(attribute);
+            else attribute.UpdateDisplay();
         }
     }
 
@@ -165,6 +168,25 @@ public class TileGrid : MonoBehaviour
         PlaceAttributes(modification.attributes);
 
         modification.structure.UpdateAttributeLayering();
+
+        UpdateAttributeEffects();
+    }
+
+    public static void UpdateAttributeEffects()
+    {
+        int cycleCount = 0;
+
+        do
+        {
+            attributeHasChangedSinceUpdate = false;
+            cycleCount++;
+            foreach (Structure structure in GetStructures()) structure.UpdateAttributeBonus();
+        }
+        while (attributeHasChangedSinceUpdate && cycleCount < instance.maxUpdateCycles);
+
+        foreach (Tile tile in instance.tiles) tile.PositionAttributes();
+        
+        Debug.Log("Updated Attributes in " + cycleCount + " cycles");
     }
 
     private Vector3 PositionOfTile(int x, int y)

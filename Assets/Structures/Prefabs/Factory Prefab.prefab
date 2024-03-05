@@ -811,12 +811,12 @@ PrefabInstance:
     - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
         type: 3}
       propertyPath: relativeCoordinates.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
         type: 3}
       propertyPath: relativeCoordinates.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -900,12 +900,12 @@ PrefabInstance:
     - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
         type: 3}
       propertyPath: relativeCoordinates.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
         type: 3}
       propertyPath: relativeCoordinates.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

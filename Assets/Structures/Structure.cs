@@ -33,7 +33,7 @@ public class Structure : MonoBehaviour
 
     private void Start()
     {
-        UpdateAttributeBonus();
+
     }
 
     private void Update()
@@ -109,7 +109,7 @@ public class Structure : MonoBehaviour
 
         if (type == StructureType.Nature) attributeBonus += NatureAttributeBonus();
 
-        foreach (Attribute attribute in attributes) attribute.UpdateStatus();
+        foreach (Attribute attribute in GetAllAttributes()) attribute.UpdateStatus();
     }
 
     private int NatureAttributeBonus()
