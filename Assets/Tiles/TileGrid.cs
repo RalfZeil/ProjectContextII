@@ -185,8 +185,8 @@ public class TileGrid : MonoBehaviour
         while (attributeHasChangedSinceUpdate && cycleCount < instance.maxUpdateCycles);
 
         foreach (Tile tile in instance.tiles) tile.PositionAttributes();
-
-        if (cycleCount == instance.maxUpdateCycles) Debug.Log("Warning: Infinite attribute effect loop");
+        
+        Debug.Log("Updated Attributes in " + cycleCount + " cycles");
     }
 
     private Vector3 PositionOfTile(int x, int y)
