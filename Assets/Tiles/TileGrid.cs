@@ -146,7 +146,6 @@ public class TileGrid : MonoBehaviour
 
             Tile tile = instance.GetTileAt(x, y);
             if (tile) tile.AddAttribute(attribute);
-            else attribute.Deactivate();
         }
     }
 
@@ -159,7 +158,6 @@ public class TileGrid : MonoBehaviour
         modification.transform.position = (new Vector3(0, .3f, 0)) + instance.targetedTile.transform.position;
         modification.transform.localRotation = Quaternion.Euler(0, targetRotation, 0);
 
-        modification.structure = instance.targetedTile.structure;
         modification.structure.modifications.Add(modification);
         modification.tile = instance.targetedTile;
         instance.targetedTile.modification = modification;
@@ -197,5 +195,38 @@ public class TileGrid : MonoBehaviour
         List<Attribute> attributes = new();
         foreach (Structure structure in GetStructures()) attributes.AddRange(structure.GetAllAttributes());
         return attributes;
+    }
+
+    public static int[,] GetNatureGrid()
+    {
+        int[,] natureGrid = new int[instance.gridWidth, instance.gridHeight];
+
+        for(int x = 0; x < instance.gridWidth; x++)
+        {
+            for (int y = 0; y < instance.gridHeight; y++)
+            {
+                foreach (Attribute attribute in instance.tiles[x, y].attributes)
+                {
+                    if (attribute.type == Attribute.AttributeType.PositiveNature) natureGrid[x, y]++;
+                }
+            }
+        }
+
+        return natureGrid;
+    }
+
+    public static int countArea(int x, int y, int[,] grid, bool[,] visited)
+    {
+        if (x < 0 || x >= grid.GetLength(0) || y < 0 || y >= grid.GetLength(1) || visited[x, y]) return 0;
+        visited[x, y] = true;
+
+        if (grid[x, y] == 0) return 0;
+
+        int area = grid[x, y];
+        area += countArea(x + 1, y, grid, visited);
+        area += countArea(x, y + 1, grid, visited);
+        area += countArea(x - 1, y, grid, visited);
+        area += countArea(x, y - 1, grid, visited);
+        return area;
     }
 }

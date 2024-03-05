@@ -9,8 +9,9 @@ public class Attribute : MonoBehaviour
     public Vector2Int relativeCoordinates;
 
     [HideInInspector] public bool isActive = false, isSuppressed = false;
+    [HideInInspector] public Structure structure;
+    [HideInInspector] public Tile tile;
 
-    public Tile tile;
     public AttributeType type;
     public enum AttributeType {Negative, PositiveCivilisation, PositiveNature};
 
@@ -27,7 +28,7 @@ public class Attribute : MonoBehaviour
         isActive = true;
         UpdateDisplay();
 
-        if (hasChanged && tile) tile.UpdateAttributes();
+        if (hasChanged && tile) tile.UpdateAttributes(type == AttributeType.PositiveNature);
     }
 
     public void Deactivate()
@@ -37,7 +38,7 @@ public class Attribute : MonoBehaviour
         isActive = false;
         UpdateDisplay();
 
-        if (hasChanged && tile) tile.UpdateAttributes();
+        if (hasChanged && tile) tile.UpdateAttributes(type == AttributeType.PositiveNature);
     }
 
     public void UpdateDisplay()
@@ -55,11 +56,11 @@ public class Attribute : MonoBehaviour
 
     }
 
-    public void UpdateStatus(int attributeBonus)
+    public void UpdateStatus()
     {
         if (isSuppressed) Deactivate();
-        else if (type != AttributeType.Negative && attributeBonus > activationThreshold) Activate();
-        else if (type == AttributeType.Negative && attributeBonus < activationThreshold) Activate();
+        else if (type != AttributeType.Negative && structure.attributeBonus > activationThreshold) Activate();
+        else if (type == AttributeType.Negative && structure.attributeBonus < activationThreshold) Activate();
         else Deactivate();
     }
 }

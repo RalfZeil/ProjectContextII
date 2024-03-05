@@ -23,7 +23,11 @@ public class Structure : MonoBehaviour
 
     private void Awake()
     {
-        foreach (Attribute attribute in GetComponentsInChildren<Attribute>()) attributes.Add(attribute);
+        foreach (Attribute attribute in GetComponentsInChildren<Attribute>())
+        {
+            attributes.Add(attribute);
+            attribute.structure = this;
+        }
         timerDisplay.enabled = hasFunction;
     }
 
@@ -101,10 +105,24 @@ public class Structure : MonoBehaviour
         {
             if (attribute.type == Attribute.AttributeType.Negative) attributeBonus--;
             else if (type == StructureType.Civilisation && attribute.type == Attribute.AttributeType.PositiveCivilisation) attributeBonus++;
-            else if (type == StructureType.Nature && attribute.type == Attribute.AttributeType.PositiveNature) attributeBonus++;
         }
 
-        foreach (Attribute attribute in attributes) attribute.UpdateStatus(attributeBonus);
+        if (type == StructureType.Nature) attributeBonus += NatureAttributeBonus();
+
+        foreach (Attribute attribute in attributes) attribute.UpdateStatus();
+    }
+
+    private int NatureAttributeBonus()
+    {
+        int[,] natureGrid = TileGrid.GetNatureGrid();
+        bool[,] visitedGrid = new bool[natureGrid.GetLength(0), natureGrid.GetLength(1)];
+
+        return TileGrid.countArea(OriginTile().x, OriginTile().y, natureGrid, visitedGrid);
+    }
+
+    public Tile OriginTile()
+    {
+        return tiles[0];
     }
 
     public void UpdateAttributeLayering()
@@ -121,7 +139,7 @@ public class Structure : MonoBehaviour
             accumulativeAttributes.AddRange(modification.attributes);
         }
 
-        foreach (Attribute attribute in accumulativeAttributes) attribute.UpdateStatus(attributeBonus);
+        foreach (Attribute attribute in accumulativeAttributes) attribute.UpdateStatus();
     }
 
     private void UnsuppressAttributes()

@@ -12,7 +12,13 @@ public class Modification : MonoBehaviour
 
     private void Awake()
     {
-        foreach (Attribute attribute in GetComponentsInChildren<Attribute>()) attributes.Add(attribute);
+        structure = TileGrid.instance.targetedTile.structure;
+
+        foreach (Attribute attribute in GetComponentsInChildren<Attribute>())
+        {
+            attributes.Add(attribute);
+            attribute.structure = structure;
+        }
     }
 
     private void Start()

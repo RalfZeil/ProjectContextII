@@ -39,14 +39,37 @@ public class Tile : MonoBehaviour
         attribute.tile = this;
         attribute.transform.parent = attributeDisplay;
         attribute.transform.localRotation = Quaternion.identity;
-        UpdateAttributes();
+        attribute.transform.localPosition = Vector3.zero;
+
+        attribute.UpdateStatus();
     }
 
-    public void UpdateAttributes()
+    public void UpdateAttributes(bool updateNature)
     {
         PositionAttributes();
 
-        if (structure) structure.UpdateAttributeBonus();
+        if (updateNature) // Update all connected nature structures
+        {
+            int[,] natureGrid = TileGrid.GetNatureGrid();
+            bool[,] visitedGrid = new bool[natureGrid.GetLength(0), natureGrid.GetLength(1)];
+
+            TileGrid.countArea(x, y, natureGrid, visitedGrid);
+
+            int testCount = 0;
+            for (int x = 0; x < visitedGrid.GetLength(0); x++)
+            {
+                for (int y = 0; y < visitedGrid.GetLength(1); y++)
+                {
+                    if (visitedGrid[x, y])
+                    {
+                        testCount++;
+                        Structure structureToUpdate = TileGrid.instance.tiles[x, y].structure;
+                        if (structureToUpdate) structureToUpdate.UpdateAttributeBonus(); 
+                    }
+                }
+            }
+            Debug.Log("updated tile count: " + testCount);
+        } else if (structure) structure.UpdateAttributeBonus();
     }
 
     private void PositionAttributes()
@@ -73,7 +96,7 @@ public class Tile : MonoBehaviour
     public void RemoveAttribute(Attribute attribute)
     {
         attributes.Remove(attribute);
-        UpdateAttributes();
+        UpdateAttributes(attribute.type == Attribute.AttributeType.PositiveNature);
     }
 
     public void Replace()
