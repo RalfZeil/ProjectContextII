@@ -342,8 +342,8 @@ RectTransform:
   m_GameObject: {fileID: 3480291715096554613}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6666665, y: 1.6666665, z: 1.6666665}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6691192565799497297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -694,7 +694,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6691192565799497297}
-  - component: {fileID: 6039414148052625234}
+  - component: {fileID: 3072427515094190114}
   m_Layer: 0
   m_Name: Bird Habitat Prefab
   m_TagString: Untagged
@@ -723,7 +723,7 @@ Transform:
   - {fileID: 1201973212198611731}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6039414148052625234
+--- !u!114 &3072427515094190114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -732,14 +732,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7125914351763239744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c17867caf8522c4786a9973beab1842, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b0af1444dff45741a58cf3275b17f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedCardPrefab: {fileID: 0}
-  createdCardPrefab: {fileID: 0}
-  baseCooldown: 0
+  baseCooldown: 12
   timerDisplay: {fileID: 7290090098442096724}
-  hasFunction: 0
+  hasFunction: 1
   isPermanent: 1
   coveredTiles:
   - {x: 1, y: 0}
@@ -749,6 +748,8 @@ MonoBehaviour:
   functionTimer: 0
   attributeBonus: 0
   type: 1
+  createdMissionPrefabs:
+  - {fileID: 2603551786522456167, guid: 9d695f7050cb53440a385d37784ac757, type: 3}
 --- !u!1 &8076882874757705372
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,6 +898,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3287729750830840098, guid: b6063cf455b0d6a48a26956a2dafac34,
         type: 3}
+      propertyPath: isAlwaysActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287729750830840098, guid: b6063cf455b0d6a48a26956a2dafac34,
+        type: 3}
+      propertyPath: activationThreshold
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287729750830840098, guid: b6063cf455b0d6a48a26956a2dafac34,
+        type: 3}
       propertyPath: relativeCoordinates.x
       value: 1
       objectReference: {fileID: 0}
@@ -972,6 +983,16 @@ PrefabInstance:
     - target: {fileID: 1334048584192846535, guid: b6063cf455b0d6a48a26956a2dafac34,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287729750830840098, guid: b6063cf455b0d6a48a26956a2dafac34,
+        type: 3}
+      propertyPath: isAlwaysActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287729750830840098, guid: b6063cf455b0d6a48a26956a2dafac34,
+        type: 3}
+      propertyPath: activationThreshold
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

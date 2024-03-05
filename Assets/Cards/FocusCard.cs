@@ -22,7 +22,7 @@ public class FocusCard : Card
     {
         foreach (Tile tile in TileGrid.GetTargetedTiles())
         {
-            if (tile.structure) tile.structure.BoostTurn(boostAmount);
+            if (tile.structure) tile.structure.TakeTurn(boostAmount);
         }
 
         base.Play();

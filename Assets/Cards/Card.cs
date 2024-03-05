@@ -104,6 +104,7 @@ public class Card : MonoBehaviour
     {
         wasPlayed = true;
         if (!isQuick) TimeManager.IncrementTurnCount();
+        MissionManager.CheckMissions();
         Destroy(gameObject);
     }
 }

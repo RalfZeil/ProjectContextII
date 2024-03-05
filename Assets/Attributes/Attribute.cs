@@ -6,6 +6,7 @@ public class Attribute : MonoBehaviour
 {
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private int activationThreshold;
+    [SerializeField] private bool isAlwaysActive;
     public Vector2Int relativeCoordinates;
 
     [HideInInspector] public bool isActive = false, isSuppressed = false;
@@ -55,6 +56,7 @@ public class Attribute : MonoBehaviour
     public void UpdateStatus()
     {
         if (isSuppressed) Deactivate();
+        else if (isAlwaysActive) Activate();
         else if (type != AttributeType.Negative && structure.attributeBonus > activationThreshold) Activate();
         else if (type == AttributeType.Negative && structure.attributeBonus < activationThreshold) Activate();
         else Deactivate();

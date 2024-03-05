@@ -5,7 +5,7 @@ using TMPro;
 
 public class Structure : MonoBehaviour
 {
-    [SerializeField] private GameObject associatedCardPrefab, createdCardPrefab;
+    [SerializeField] private GameObject associatedCardPrefab;
     [SerializeField] private int baseCooldown;
     [SerializeField] private TextMeshPro timerDisplay;
     public bool hasFunction, isPermanent;
@@ -14,9 +14,7 @@ public class Structure : MonoBehaviour
     [HideInInspector] public List<Attribute> attributes = new();
     [HideInInspector] public List<Tile> tiles = new();
     [HideInInspector] public List<Modification> modifications = new();
-
-    public int functionTimer = 0, attributeBonus = 0;
-    private Transform createdCard;
+    [HideInInspector] public int functionTimer = 0, attributeBonus = 0;
 
     public enum StructureType {Civilisation, Nature, Industry};
     public StructureType type;
@@ -57,19 +55,14 @@ public class Structure : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void TakeTurn()
+    protected virtual bool CanActivate()
     {
-        if (!hasFunction) return;
+        return false;
+    }
 
-        int functionCooldown = FunctionCooldown();
-        functionTimer++;
-        if (functionTimer > functionCooldown) functionTimer = functionCooldown;
-        if (functionTimer == functionCooldown && (createdCard == null || createdCard.GetComponent<Card>().wasPlayed))
-        {
-            createdCard = Instantiate(createdCardPrefab).transform;
-            createdCard.position = transform.position;
-            functionTimer = 0;
-        }
+    protected virtual void Activate()
+    {
+
     }
 
     private int FunctionCooldown()
@@ -77,17 +70,16 @@ public class Structure : MonoBehaviour
         return baseCooldown - attributeBonus;
     }
 
-    public void BoostTurn(int amount)
+    public void TakeTurn(int amount = 1)
     {
         if (!hasFunction) return;
 
         int functionCooldown = FunctionCooldown();
         functionTimer += amount;
         if (functionTimer > functionCooldown) functionTimer = functionCooldown;
-        if (functionTimer == functionCooldown && (createdCard == null || createdCard.GetComponent<Card>().wasPlayed))
+        if (functionTimer == functionCooldown && CanActivate())
         {
-            createdCard = Instantiate(createdCardPrefab).transform;
-            createdCard.position = transform.position;
+            Activate();
             functionTimer = 0;
         }
     }

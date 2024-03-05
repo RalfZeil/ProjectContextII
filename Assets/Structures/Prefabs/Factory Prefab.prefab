@@ -512,7 +512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6691192565799497297}
-  - component: {fileID: 6039414148052625234}
+  - component: {fileID: 1897344150813632281}
   m_Layer: 0
   m_Name: Factory Prefab
   m_TagString: Untagged
@@ -544,7 +544,7 @@ Transform:
   - {fileID: 2981425861580977477}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6039414148052625234
+--- !u!114 &1897344150813632281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -553,12 +553,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7125914351763239744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c17867caf8522c4786a9973beab1842, type: 3}
+  m_Script: {fileID: 11500000, guid: 647a0d9ce0d32f84ba2e60ecff63ac02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedCardPrefab: {fileID: 5425401955463860704, guid: 6772b106fff96894886e2e09192cc39b,
-    type: 3}
-  createdCardPrefab: {fileID: 5425401955463860704, guid: 70fa1635656ef444f886eb8cb2f3a2f1,
     type: 3}
   baseCooldown: 6
   timerDisplay: {fileID: 5615856028026990100}
@@ -573,6 +571,8 @@ MonoBehaviour:
   functionTimer: 0
   attributeBonus: 0
   type: 2
+  createdCardPrefab: {fileID: 5425401955463860704, guid: 70fa1635656ef444f886eb8cb2f3a2f1,
+    type: 3}
 --- !u!1 &7490082311507843117
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,8 +721,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
         type: 3}
+      propertyPath: isAlwaysActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
+        type: 3}
       propertyPath: activationThreshold
-      value: 99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
         type: 3}
@@ -805,8 +810,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
         type: 3}
+      propertyPath: isAlwaysActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
+        type: 3}
       propertyPath: activationThreshold
-      value: 99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
         type: 3}
@@ -894,8 +904,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
         type: 3}
+      propertyPath: isAlwaysActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
+        type: 3}
       propertyPath: activationThreshold
-      value: 99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7809446576280988131, guid: c47199af0adefd64cbb0e84b58e527cb,
         type: 3}

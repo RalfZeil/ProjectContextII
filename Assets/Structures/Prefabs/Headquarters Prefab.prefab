@@ -429,7 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6691192565799497297}
-  - component: {fileID: 6039414148052625234}
+  - component: {fileID: 4196547939338035633}
   m_Layer: 0
   m_Name: Headquarters Prefab
   m_TagString: Untagged
@@ -456,7 +456,7 @@ Transform:
   - {fileID: 2188310560078540302}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6039414148052625234
+--- !u!114 &4196547939338035633
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,12 +465,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7125914351763239744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c17867caf8522c4786a9973beab1842, type: 3}
+  m_Script: {fileID: 11500000, guid: 647a0d9ce0d32f84ba2e60ecff63ac02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   associatedCardPrefab: {fileID: 0}
-  createdCardPrefab: {fileID: 5425401955463860704, guid: fa15a4a3eba8a8040a88bb7dbdf89f8d,
-    type: 3}
   baseCooldown: 0
   timerDisplay: {fileID: 3814237038595799853}
   hasFunction: 1
@@ -482,3 +480,5 @@ MonoBehaviour:
   functionTimer: 0
   attributeBonus: 0
   type: 0
+  createdCardPrefab: {fileID: 5425401955463860704, guid: fa15a4a3eba8a8040a88bb7dbdf89f8d,
+    type: 3}
