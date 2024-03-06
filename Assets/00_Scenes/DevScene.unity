@@ -212,7 +212,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &4200311
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +301,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &7916211
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +390,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &25138185
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +510,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &37704693
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +765,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &45007396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1020,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &45911624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,7 +1275,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &71433725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,7 +1447,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &79956653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,7 +1619,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &85255105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,7 +1708,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &85889786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,7 +1880,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &95939165
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,7 +2135,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &108982121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,7 +2224,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &110401062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,7 +2396,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &114228998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,7 +2485,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &120562589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,7 +2574,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &126249377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,7 +2746,108 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
+--- !u!1 &142909415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 142909419}
+  - component: {fileID: 142909418}
+  - component: {fileID: 142909417}
+  - component: {fileID: 142909416}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &142909416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142909415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &142909417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142909415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &142909418
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142909415}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &142909419
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142909415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1622193275}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &145224483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,7 +3020,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &148326907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3019,6 +3103,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148326907}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!224 &155471287 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 5749762311839180733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &155471288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3259644037433682659, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 5749762311839180733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c15fa41eaf5c274ebc8a11e12268a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &160651090
 GameObject:
   m_ObjectHideFlags: 0
@@ -3108,7 +3210,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &162300552
 GameObject:
   m_ObjectHideFlags: 0
@@ -3198,7 +3299,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &163101127
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,7 +3388,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &169756759
 GameObject:
   m_ObjectHideFlags: 0
@@ -3427,7 +3526,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &175552261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3600,7 +3698,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &181540776
 GameObject:
   m_ObjectHideFlags: 0
@@ -3690,7 +3787,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &184007173
 GameObject:
   m_ObjectHideFlags: 0
@@ -3863,7 +3959,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &185678967
 GameObject:
   m_ObjectHideFlags: 0
@@ -3953,7 +4048,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &186628454
 GameObject:
   m_ObjectHideFlags: 0
@@ -4209,7 +4303,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &207017168
 GameObject:
   m_ObjectHideFlags: 0
@@ -4797,7 +4890,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &222105829
 GameObject:
   m_ObjectHideFlags: 0
@@ -4970,7 +5062,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &225937509
 GameObject:
   m_ObjectHideFlags: 0
@@ -5143,7 +5234,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &236302522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5482,7 +5572,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &283601912
 GameObject:
   m_ObjectHideFlags: 0
@@ -5572,7 +5661,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &283682525
 GameObject:
   m_ObjectHideFlags: 0
@@ -5662,7 +5750,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &285384727
 GameObject:
   m_ObjectHideFlags: 0
@@ -5752,7 +5839,74 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
+--- !u!1 &312124765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 312124768}
+  - component: {fileID: 312124767}
+  - component: {fileID: 312124766}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &312124766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312124765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &312124767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312124765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &312124768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312124765}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &318863798
 GameObject:
   m_ObjectHideFlags: 0
@@ -5842,7 +5996,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &319077772
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,7 +6130,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &328082670
 GameObject:
   m_ObjectHideFlags: 0
@@ -6233,7 +6385,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &346448141
 GameObject:
   m_ObjectHideFlags: 0
@@ -6323,7 +6474,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &349228668
 GameObject:
   m_ObjectHideFlags: 0
@@ -6579,7 +6729,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &362488386
 GameObject:
   m_ObjectHideFlags: 0
@@ -6918,7 +7067,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &377750581
 GameObject:
   m_ObjectHideFlags: 0
@@ -7008,7 +7156,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &379228110
 GameObject:
   m_ObjectHideFlags: 0
@@ -7098,7 +7245,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &383568188
 GameObject:
   m_ObjectHideFlags: 3
@@ -7315,7 +7461,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &387441669
 GameObject:
   m_ObjectHideFlags: 3
@@ -7532,7 +7677,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &400566217
 GameObject:
   m_ObjectHideFlags: 0
@@ -7788,7 +7932,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &413484688
 GameObject:
   m_ObjectHideFlags: 0
@@ -7878,7 +8021,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &416112492
 GameObject:
   m_ObjectHideFlags: 0
@@ -7968,7 +8110,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &421971824
 GameObject:
   m_ObjectHideFlags: 0
@@ -8058,7 +8199,37 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
+--- !u!1 &429173894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429173895}
+  m_Layer: 0
+  m_Name: -----------Misc--------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &429173895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429173894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1098.5673, y: 347.1188, z: 7.078873}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &431097697
 GameObject:
   m_ObjectHideFlags: 0
@@ -8148,7 +8319,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &432163088
 GameObject:
   m_ObjectHideFlags: 0
@@ -8321,7 +8491,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &438077349
 GameObject:
   m_ObjectHideFlags: 0
@@ -8494,7 +8663,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &443944467
 GameObject:
   m_ObjectHideFlags: 0
@@ -8584,7 +8752,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &452031729
 GameObject:
   m_ObjectHideFlags: 0
@@ -8674,7 +8841,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &458880732
 GameObject:
   m_ObjectHideFlags: 0
@@ -8764,7 +8930,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &464334274
 GameObject:
   m_ObjectHideFlags: 0
@@ -9020,7 +9185,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &485187772
 GameObject:
   m_ObjectHideFlags: 0
@@ -9193,7 +9357,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &503309059
 GameObject:
   m_ObjectHideFlags: 0
@@ -9449,7 +9612,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &524546494
 GameObject:
   m_ObjectHideFlags: 0
@@ -9539,7 +9701,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &526645283
 GameObject:
   m_ObjectHideFlags: 0
@@ -9629,7 +9790,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &535866851
 GameObject:
   m_ObjectHideFlags: 0
@@ -9885,7 +10045,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &541809767
 GameObject:
   m_ObjectHideFlags: 0
@@ -9975,7 +10134,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &545670775
 GameObject:
   m_ObjectHideFlags: 0
@@ -10065,7 +10223,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &547171155
 GameObject:
   m_ObjectHideFlags: 0
@@ -10155,7 +10312,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &548239927
 GameObject:
   m_ObjectHideFlags: 0
@@ -10245,7 +10401,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &548866205
 GameObject:
   m_ObjectHideFlags: 0
@@ -10335,7 +10490,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &552112082
 GameObject:
   m_ObjectHideFlags: 0
@@ -10425,7 +10579,37 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
+--- !u!1 &557172944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 557172945}
+  m_Layer: 0
+  m_Name: -----------User Interface------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &557172945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557172944}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5973866, y: 3.430345, z: -0.5665798}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &561926651
 GameObject:
   m_ObjectHideFlags: 0
@@ -10843,7 +11027,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &578172106
 GameObject:
   m_ObjectHideFlags: 0
@@ -11431,7 +11614,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &596628575
 GameObject:
   m_ObjectHideFlags: 0
@@ -11604,7 +11786,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &598986719
 GameObject:
   m_ObjectHideFlags: 0
@@ -11943,7 +12124,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &605982356
 GameObject:
   m_ObjectHideFlags: 0
@@ -12033,7 +12213,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &610840165
 GameObject:
   m_ObjectHideFlags: 0
@@ -12123,7 +12302,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &618825525
 GameObject:
   m_ObjectHideFlags: 0
@@ -12213,7 +12391,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &619301417
 GameObject:
   m_ObjectHideFlags: 0
@@ -12386,7 +12563,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &625665729
 GameObject:
   m_ObjectHideFlags: 0
@@ -12476,7 +12652,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &650570463
 GameObject:
   m_ObjectHideFlags: 0
@@ -12566,7 +12741,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &652036609
 GameObject:
   m_ObjectHideFlags: 0
@@ -12656,7 +12830,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &663278071
 GameObject:
   m_ObjectHideFlags: 0
@@ -12912,7 +13085,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &689842235
 GameObject:
   m_ObjectHideFlags: 0
@@ -13002,7 +13174,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &693638070
 GameObject:
   m_ObjectHideFlags: 0
@@ -13092,7 +13263,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &700843143
 GameObject:
   m_ObjectHideFlags: 0
@@ -13265,7 +13435,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &704527292
 GameObject:
   m_ObjectHideFlags: 0
@@ -13355,7 +13524,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &706132806
 GameObject:
   m_ObjectHideFlags: 0
@@ -13445,7 +13613,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &706620410
 GameObject:
   m_ObjectHideFlags: 0
@@ -13535,7 +13702,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &707538703
 GameObject:
   m_ObjectHideFlags: 0
@@ -13625,7 +13791,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &717491414
 GameObject:
   m_ObjectHideFlags: 0
@@ -13715,7 +13880,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &727536559
 GameObject:
   m_ObjectHideFlags: 0
@@ -14054,7 +14218,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &737080198
 GameObject:
   m_ObjectHideFlags: 0
@@ -14227,7 +14390,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &745807568
 GameObject:
   m_ObjectHideFlags: 0
@@ -14317,7 +14479,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &751589285
 GameObject:
   m_ObjectHideFlags: 0
@@ -14822,7 +14983,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &800374522
 GameObject:
   m_ObjectHideFlags: 0
@@ -15161,7 +15321,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &847268910
 GameObject:
   m_ObjectHideFlags: 0
@@ -15334,7 +15493,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &857263924
 GameObject:
   m_ObjectHideFlags: 0
@@ -15507,7 +15665,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &860368476
 GameObject:
   m_ObjectHideFlags: 0
@@ -15597,7 +15754,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &868016491
 GameObject:
   m_ObjectHideFlags: 0
@@ -15770,7 +15926,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &872673868
 GameObject:
   m_ObjectHideFlags: 0
@@ -15860,7 +16015,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &874421428
 GameObject:
   m_ObjectHideFlags: 0
@@ -16448,7 +16602,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &926412632
 GameObject:
   m_ObjectHideFlags: 0
@@ -16704,7 +16857,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &946123734
 GameObject:
   m_ObjectHideFlags: 0
@@ -16715,6 +16867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946123736}
   - component: {fileID: 946123735}
+  - component: {fileID: 946123737}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -16750,6 +16903,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &946123737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946123734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaeac0df92be06428c9cce29c8a1492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heldCards: []
+  selectedCard: {fileID: 0}
 --- !u!1 &950581763
 GameObject:
   m_ObjectHideFlags: 0
@@ -17171,7 +17338,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &962523535
 GameObject:
   m_ObjectHideFlags: 0
@@ -17261,7 +17427,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &972902063
 GameObject:
   m_ObjectHideFlags: 0
@@ -17517,7 +17682,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &984776248
 GameObject:
   m_ObjectHideFlags: 0
@@ -17939,7 +18103,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1006258354
 GameObject:
   m_ObjectHideFlags: 0
@@ -18195,7 +18358,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1020621788
 GameObject:
   m_ObjectHideFlags: 0
@@ -18451,7 +18613,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1025210193
 GameObject:
   m_ObjectHideFlags: 0
@@ -18541,7 +18702,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1032827823
 GameObject:
   m_ObjectHideFlags: 0
@@ -18714,7 +18874,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1037816044
 GameObject:
   m_ObjectHideFlags: 0
@@ -18970,7 +19129,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1043154370
 GameObject:
   m_ObjectHideFlags: 0
@@ -19060,7 +19218,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1046830969
 GameObject:
   m_ObjectHideFlags: 0
@@ -19233,7 +19390,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1051499178
 GameObject:
   m_ObjectHideFlags: 0
@@ -19323,7 +19479,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1054199733
 GameObject:
   m_ObjectHideFlags: 0
@@ -19496,7 +19651,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1061530268
 GameObject:
   m_ObjectHideFlags: 0
@@ -19700,7 +19854,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1076179778
 GameObject:
   m_ObjectHideFlags: 0
@@ -19790,7 +19943,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1091545171
 GameObject:
   m_ObjectHideFlags: 0
@@ -19880,7 +20032,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1094510054
 GameObject:
   m_ObjectHideFlags: 0
@@ -20053,7 +20204,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1102138241
 GameObject:
   m_ObjectHideFlags: 0
@@ -20641,7 +20791,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1118755529
 GameObject:
   m_ObjectHideFlags: 0
@@ -20731,7 +20880,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1122686742
 GameObject:
   m_ObjectHideFlags: 0
@@ -20987,7 +21135,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1158258085
 GameObject:
   m_ObjectHideFlags: 0
@@ -21077,7 +21224,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1163391424
 GameObject:
   m_ObjectHideFlags: 0
@@ -21167,7 +21313,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1165828081
 GameObject:
   m_ObjectHideFlags: 0
@@ -21340,7 +21485,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1177767645
 GameObject:
   m_ObjectHideFlags: 0
@@ -21430,7 +21574,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1183302175
 GameObject:
   m_ObjectHideFlags: 0
@@ -21603,7 +21746,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1184862673
 GameObject:
   m_ObjectHideFlags: 0
@@ -21693,7 +21835,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1185537849
 GameObject:
   m_ObjectHideFlags: 0
@@ -21866,7 +22007,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1189399572
 GameObject:
   m_ObjectHideFlags: 0
@@ -21956,7 +22096,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1190051095
 GameObject:
   m_ObjectHideFlags: 0
@@ -22295,7 +22434,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1197244883
 GameObject:
   m_ObjectHideFlags: 0
@@ -22385,7 +22523,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1200994452
 GameObject:
   m_ObjectHideFlags: 0
@@ -22558,7 +22695,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1228331809
 GameObject:
   m_ObjectHideFlags: 0
@@ -22980,7 +23116,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1257187612
 GameObject:
   m_ObjectHideFlags: 3
@@ -23149,7 +23284,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1264059821
 GameObject:
   m_ObjectHideFlags: 0
@@ -23513,7 +23647,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1269498597
 GameObject:
   m_ObjectHideFlags: 0
@@ -23603,7 +23736,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1269601117
 GameObject:
   m_ObjectHideFlags: 0
@@ -23942,7 +24074,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1295763996
 GameObject:
   m_ObjectHideFlags: 0
@@ -24115,7 +24246,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1297910955
 GameObject:
   m_ObjectHideFlags: 0
@@ -24205,7 +24335,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1298778452
 GameObject:
   m_ObjectHideFlags: 0
@@ -24544,7 +24673,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1317435737
 GameObject:
   m_ObjectHideFlags: 0
@@ -24634,7 +24762,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1321055441
 GameObject:
   m_ObjectHideFlags: 0
@@ -24807,7 +24934,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1325501976
 GameObject:
   m_ObjectHideFlags: 3
@@ -25059,7 +25185,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1337979953
 GameObject:
   m_ObjectHideFlags: 0
@@ -25149,7 +25274,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1338087443
 GameObject:
   m_ObjectHideFlags: 0
@@ -25322,7 +25446,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1350834750
 GameObject:
   m_ObjectHideFlags: 0
@@ -25578,7 +25701,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1366268284
 GameObject:
   m_ObjectHideFlags: 0
@@ -25751,7 +25873,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1368256496
 GameObject:
   m_ObjectHideFlags: 0
@@ -25841,7 +25962,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1369315845
 GameObject:
   m_ObjectHideFlags: 0
@@ -26097,7 +26217,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1379669522
 GameObject:
   m_ObjectHideFlags: 0
@@ -26187,7 +26306,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1383346784
 GameObject:
   m_ObjectHideFlags: 0
@@ -26277,7 +26395,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1384399191
 GameObject:
   m_ObjectHideFlags: 0
@@ -26367,7 +26484,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1387904648
 GameObject:
   m_ObjectHideFlags: 0
@@ -26457,7 +26573,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1405322825
 GameObject:
   m_ObjectHideFlags: 0
@@ -26547,7 +26662,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1411542068
 GameObject:
   m_ObjectHideFlags: 0
@@ -26637,7 +26751,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1417812513
 GameObject:
   m_ObjectHideFlags: 0
@@ -26727,7 +26840,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1424603910
 GameObject:
   m_ObjectHideFlags: 0
@@ -26900,7 +27012,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1429733404
 GameObject:
   m_ObjectHideFlags: 0
@@ -27328,7 +27439,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1440671658
 GameObject:
   m_ObjectHideFlags: 0
@@ -27418,7 +27528,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1445043655
 GameObject:
   m_ObjectHideFlags: 0
@@ -27757,7 +27866,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1474965040
 GameObject:
   m_ObjectHideFlags: 0
@@ -28013,7 +28121,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1497485381
 GameObject:
   m_ObjectHideFlags: 0
@@ -28269,7 +28376,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1507466893
 GameObject:
   m_ObjectHideFlags: 0
@@ -28691,7 +28797,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1538212973
 GameObject:
   m_ObjectHideFlags: 0
@@ -28781,7 +28886,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1541819585
 GameObject:
   m_ObjectHideFlags: 0
@@ -29120,7 +29224,6 @@ MonoBehaviour:
   gridPosition: {x: 3, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1557372934
 GameObject:
   m_ObjectHideFlags: 0
@@ -29376,7 +29479,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1571093689
 GameObject:
   m_ObjectHideFlags: 0
@@ -29466,7 +29568,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1581096415
 GameObject:
   m_ObjectHideFlags: 0
@@ -29722,7 +29823,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1587292825
 GameObject:
   m_ObjectHideFlags: 0
@@ -29895,7 +29995,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1598673054
 GameObject:
   m_ObjectHideFlags: 0
@@ -30234,7 +30333,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1616576316
 GameObject:
   m_ObjectHideFlags: 0
@@ -30407,7 +30505,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1618978630
 GameObject:
   m_ObjectHideFlags: 0
@@ -30580,7 +30677,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1622013053
 GameObject:
   m_ObjectHideFlags: 0
@@ -30664,6 +30760,100 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622013053}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1622193274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1622193275}
+  - component: {fileID: 1622193278}
+  - component: {fileID: 1622193277}
+  - component: {fileID: 1622193276}
+  m_Layer: 5
+  m_Name: Inventory manager/panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1622193275
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622193274}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 155471287}
+  m_Father: {fileID: 142909419}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -4.0944, y: 65.62041}
+  m_SizeDelta: {x: 600, y: 130}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1622193276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622193274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1622193277
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622193274}
+  m_CullTransparentMesh: 1
+--- !u!114 &1622193278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622193274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1822c961d0af5484e9ff2ed43395822e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 155471288}
+  SelectedCard: {fileID: 0}
+  UICardPrefab: {fileID: 5972692510752411195, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+    type: 3}
 --- !u!1 &1624323580
 GameObject:
   m_ObjectHideFlags: 0
@@ -30836,7 +31026,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1633729564
 GameObject:
   m_ObjectHideFlags: 0
@@ -30926,7 +31115,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1636372295
 GameObject:
   m_ObjectHideFlags: 0
@@ -31099,7 +31287,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1642277935
 GameObject:
   m_ObjectHideFlags: 0
@@ -31814,7 +32001,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1684922866
 GameObject:
   m_ObjectHideFlags: 0
@@ -32236,7 +32422,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1707636820
 GameObject:
   m_ObjectHideFlags: 0
@@ -32409,7 +32594,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1726008520
 GameObject:
   m_ObjectHideFlags: 0
@@ -32617,7 +32801,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1745561686
 GameObject:
   m_ObjectHideFlags: 0
@@ -32707,7 +32890,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1749506374
 GameObject:
   m_ObjectHideFlags: 0
@@ -32797,7 +32979,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1750554829
 GameObject:
   m_ObjectHideFlags: 0
@@ -33053,7 +33234,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1757406195
 GameObject:
   m_ObjectHideFlags: 0
@@ -33143,7 +33323,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1762958848
 GameObject:
   m_ObjectHideFlags: 0
@@ -33233,7 +33412,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1765354933
 GameObject:
   m_ObjectHideFlags: 0
@@ -33323,7 +33501,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1766608248
 GameObject:
   m_ObjectHideFlags: 0
@@ -33496,7 +33673,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1775280606
 GameObject:
   m_ObjectHideFlags: 0
@@ -33586,7 +33762,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1778586090
 GameObject:
   m_ObjectHideFlags: 0
@@ -34257,7 +34432,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1801456270
 GameObject:
   m_ObjectHideFlags: 0
@@ -34347,7 +34521,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1801615539
 GameObject:
   m_ObjectHideFlags: 0
@@ -34437,7 +34610,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1819735256
 GameObject:
   m_ObjectHideFlags: 0
@@ -34527,7 +34699,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1820842529
 GameObject:
   m_ObjectHideFlags: 0
@@ -34700,7 +34871,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1825405138
 GameObject:
   m_ObjectHideFlags: 0
@@ -34790,7 +34960,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1826018732
 GameObject:
   m_ObjectHideFlags: 0
@@ -35046,7 +35215,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1829569108
 GameObject:
   m_ObjectHideFlags: 0
@@ -35136,7 +35304,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1838217158
 GameObject:
   m_ObjectHideFlags: 0
@@ -35392,7 +35559,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1843438610
 GameObject:
   m_ObjectHideFlags: 0
@@ -35648,7 +35814,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1868817506
 GameObject:
   m_ObjectHideFlags: 0
@@ -35738,7 +35903,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1870953048
 GameObject:
   m_ObjectHideFlags: 0
@@ -35828,7 +35992,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1875164192
 GameObject:
   m_ObjectHideFlags: 0
@@ -35918,7 +36081,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1879738083
 GameObject:
   m_ObjectHideFlags: 0
@@ -36091,7 +36253,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1905924116
 GameObject:
   m_ObjectHideFlags: 0
@@ -36181,7 +36342,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1906626253
 GameObject:
   m_ObjectHideFlags: 0
@@ -36271,7 +36431,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 12}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1907181647
 GameObject:
   m_ObjectHideFlags: 0
@@ -36361,7 +36520,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1908072882
 GameObject:
   m_ObjectHideFlags: 0
@@ -36617,7 +36775,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1924003560
 GameObject:
   m_ObjectHideFlags: 0
@@ -36790,7 +36947,6 @@ MonoBehaviour:
   gridPosition: {x: 5, y: 3}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1935246155
 GameObject:
   m_ObjectHideFlags: 0
@@ -36880,7 +37036,6 @@ MonoBehaviour:
   gridPosition: {x: 4, y: 4}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1940715394
 GameObject:
   m_ObjectHideFlags: 0
@@ -37053,7 +37208,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1942906205
 GameObject:
   m_ObjectHideFlags: 0
@@ -37309,7 +37463,6 @@ MonoBehaviour:
   gridPosition: {x: 1, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1955113158
 GameObject:
   m_ObjectHideFlags: 0
@@ -37565,7 +37718,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1962137769
 GameObject:
   m_ObjectHideFlags: 0
@@ -37655,7 +37807,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 6}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1968291804
 GameObject:
   m_ObjectHideFlags: 0
@@ -37745,7 +37896,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1984585815
 GameObject:
   m_ObjectHideFlags: 0
@@ -37835,7 +37985,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 5}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1994201654
 GameObject:
   m_ObjectHideFlags: 0
@@ -38091,7 +38240,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &1998254980
 GameObject:
   m_ObjectHideFlags: 0
@@ -38181,7 +38329,6 @@ MonoBehaviour:
   gridPosition: {x: 11, y: 8}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2000584273
 GameObject:
   m_ObjectHideFlags: 0
@@ -38271,7 +38418,6 @@ MonoBehaviour:
   gridPosition: {x: 13, y: 9}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2000846894
 GameObject:
   m_ObjectHideFlags: 0
@@ -38693,7 +38839,6 @@ MonoBehaviour:
   gridPosition: {x: 14, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2022760641
 GameObject:
   m_ObjectHideFlags: 0
@@ -38783,7 +38928,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 7}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2024918887
 GameObject:
   m_ObjectHideFlags: 0
@@ -38873,7 +39017,6 @@ MonoBehaviour:
   gridPosition: {x: 2, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2030349670
 GameObject:
   m_ObjectHideFlags: 0
@@ -39121,7 +39264,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 0}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2037931186
 GameObject:
   m_ObjectHideFlags: 0
@@ -39294,7 +39436,6 @@ MonoBehaviour:
   gridPosition: {x: 9, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2047302906
 GameObject:
   m_ObjectHideFlags: 0
@@ -39461,6 +39602,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051252342}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2051990029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2051990031}
+  - component: {fileID: 2051990030}
+  m_Layer: 0
+  m_Name: Cheat Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2051990030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051990029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfde336f21604a4cba4f10f47389672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TestSpawnedCard: {fileID: 11400000, guid: cdfcbcdcb6c38c04ca26ccc33f61a454, type: 2}
+--- !u!4 &2051990031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051990029}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1098.5673, y: 347.1188, z: 7.078873}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2052558675
 GameObject:
   m_ObjectHideFlags: 0
@@ -39550,7 +39736,6 @@ MonoBehaviour:
   gridPosition: {x: 7, y: 13}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2095159164
 GameObject:
   m_ObjectHideFlags: 0
@@ -39640,7 +39825,6 @@ MonoBehaviour:
   gridPosition: {x: 0, y: 14}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2100372101
 GameObject:
   m_ObjectHideFlags: 0
@@ -39979,7 +40163,6 @@ MonoBehaviour:
   gridPosition: {x: 6, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2110792243
 GameObject:
   m_ObjectHideFlags: 0
@@ -40266,7 +40449,6 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 10}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2120607965
 GameObject:
   m_ObjectHideFlags: 0
@@ -40470,7 +40652,6 @@ MonoBehaviour:
   gridPosition: {x: 8, y: 1}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2141571998
 GameObject:
   m_ObjectHideFlags: 0
@@ -40560,7 +40741,6 @@ MonoBehaviour:
   gridPosition: {x: 10, y: 2}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
 --- !u!1 &2141802554
 GameObject:
   m_ObjectHideFlags: 0
@@ -40650,7 +40830,129 @@ MonoBehaviour:
   gridPosition: {x: 12, y: 11}
   walls: 0
   WallPrefab: {fileID: 0}
-  currentBuilding: {fileID: 0}
+--- !u!1001 &5749762311839180733
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1622193275}
+    m_Modifications:
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 88.7933
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 121.4483
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0000019073
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838432454660355937, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3878656817636396919, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972692510752411195, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf,
+        type: 3}
+      propertyPath: m_Name
+      value: Card
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ef4dc5dad0876cf4d96f27c7bbb5c1bf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -40659,9 +40961,14 @@ SceneRoots:
   - {fileID: 946123736}
   - {fileID: 2030349672}
   - {fileID: 2127596456}
-  - {fileID: 169756761}
   - {fileID: 1071818283}
   - {fileID: 1264059823}
   - {fileID: 319077774}
   - {fileID: 25138186}
   - {fileID: 1726008522}
+  - {fileID: 169756761}
+  - {fileID: 557172945}
+  - {fileID: 142909419}
+  - {fileID: 312124768}
+  - {fileID: 429173895}
+  - {fileID: 2051990031}
