@@ -2,7 +2,28 @@ using UnityEngine;
 
 public class BuildingCell : Cell, IInteractable
 {
-    public Building currentBuilding;
+    private Building currentBuilding;
+
+    public Building CurrentBuilding 
+    {
+        set 
+        {
+            currentBuilding = value;
+
+            // Remove currend child
+            Destroy(transform.GetChild(0).gameObject);
+
+            // Instantiate new child for visual
+            if (currentBuilding != null)
+            {
+                Instantiate(currentBuilding.prefab, this.transform);
+            }
+        }
+        get 
+        {
+            return currentBuilding;
+        }
+    }
 
     private Outline outline;
 
@@ -20,7 +41,8 @@ public class BuildingCell : Cell, IInteractable
 
     public bool Interact()
     {
-        throw new System.NotImplementedException();
+        //BuildStructure();
+        return true;
     }
 
     private void Start()
@@ -31,5 +53,11 @@ public class BuildingCell : Cell, IInteractable
     private void Update()
     {
         UnHighlight();
+    }
+
+    public bool InteractWithCard(Card card)
+    {
+        card.Interact(this);
+        return true;
     }
 }
