@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 555345861066244121}
   - component: {fileID: 1441576283816835504}
   - component: {fileID: 2986977896953752365}
-  - component: {fileID: -4989314281301059167}
-  m_Layer: 0
-  m_Name: Modification Card
+  - component: {fileID: -3543550366707140926}
+  m_Layer: 5
+  m_Name: Test Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c43f46aeaaea21c4ea71e6dac46e3087, type: 2}
+  - {fileID: 2100000, guid: 15dbe490e1886e24899f844958f37e2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,7 +107,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &-4989314281301059167
+--- !u!114 &-3543550366707140926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,14 +116,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5425401955463860704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9828dcaa75acc584ab07071e5fc37583, type: 3}
+  m_Script: {fileID: 11500000, guid: 5425759415517a24695d579a217e2ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 1441576283816835504}
+  renderers: []
   moveSpeed: 20
+  handSpacing: 1.2
+  zSpacing: 2
   isQuick: 0
   isForced: 0
   wasPlayed: 0
-  modificationPrefab: {fileID: 7125914351763239744, guid: e4749b7875c91c544a6ae5a2274e7d47,
+  structurePrefab: {fileID: 7125914351763239744, guid: 4aa18b16187b667478ba16c017b2d94f,
     type: 3}
-  targetedType: 2

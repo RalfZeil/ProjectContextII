@@ -5,8 +5,8 @@ using System.Linq;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] protected MeshRenderer meshRenderer;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] protected List<Renderer> renderers;
+    [SerializeField] private float moveSpeed, handSpacing, zSpacing;
     [SerializeField] private bool isQuick, isForced;
 
     protected bool isSelected = false;
@@ -23,7 +23,7 @@ public class Card : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             isSelected = true;
-            relativeMousePosition = transform.position - MouseWorldPosition();
+            relativeMousePosition = transform.localPosition - MouseLocalPosition();
             heldCard = this;
 
             if (returnToHand != null) StopCoroutine(returnToHand);
@@ -44,27 +44,33 @@ public class Card : MonoBehaviour
 
         if (isSelected)
         {
-            transform.position = MouseWorldPosition() + relativeMousePosition;
+            transform.localPosition = MouseLocalPosition() + relativeMousePosition;
 
-            if (TileGrid.IsTileTargeted()) meshRenderer.enabled = false;
-            else meshRenderer.enabled = true;
+            SetVisibility(!TileGrid.IsTileTargeted());
         }
         else if (!isReturning) returnToHand = StartCoroutine(MoveToHandPosition());
     }
 
-    private static Vector3 MouseWorldPosition()
+    private void SetVisibility(bool visibility)
     {
-        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        foreach (Renderer renderer in renderers) renderer.enabled = visibility;
+    }
+
+    private Vector3 MouseLocalPosition()
+    {
+        return transform.parent.InverseTransformPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     private IEnumerator MoveToHandPosition()
     {
         isReturning = true;
 
-        Vector3 targetPosition = new Vector3(1.2f * transform.GetSiblingIndex(), 0, 0.001f * transform.GetSiblingIndex());
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, zSpacing * transform.GetSiblingIndex());
+
+        Vector3 targetPosition = new Vector3(handSpacing * transform.GetSiblingIndex(), 0, zSpacing * transform.GetSiblingIndex());
         while (transform.localPosition != targetPosition)
         {
-            targetPosition = new Vector3(1.2f * transform.GetSiblingIndex(), 0, 0.001f * transform.GetSiblingIndex());
+            targetPosition = new Vector3(handSpacing * transform.GetSiblingIndex(), 0, zSpacing * transform.GetSiblingIndex());
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
@@ -77,7 +83,7 @@ public class Card : MonoBehaviour
 
         heldCard = null;
         isSelected = false;
-        meshRenderer.enabled = true;
+        SetVisibility(true);
     }
 
     public static bool ForcedCardExists()
@@ -103,6 +109,7 @@ public class Card : MonoBehaviour
     protected virtual void Play()
     {
         wasPlayed = true;
+        MissionManager.CheckMissions();
         if (!isQuick) TimeManager.IncrementTurnCount();
         MissionManager.CheckMissions();
         Destroy(gameObject);

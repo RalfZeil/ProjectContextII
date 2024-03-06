@@ -37,6 +37,7 @@ public class MissionManager : MonoBehaviour
             if (mission.IsCompleted())
             {
                 mission.GetReward();
+                mission.isJustCompleted = true;
                 RemoveMission(mission);
             }
         }

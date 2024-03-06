@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1441576283816835504}
   - component: {fileID: 2986977896953752365}
   - component: {fileID: -3543550366707140926}
-  m_Layer: 0
-  m_Name: Test Card
+  m_Layer: 5
+  m_Name: Pond Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15dbe490e1886e24899f844958f37e2e, type: 2}
+  - {fileID: 2100000, guid: c43f46aeaaea21c4ea71e6dac46e3087, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,10 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5425759415517a24695d579a217e2ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 1441576283816835504}
+  renderers: []
   moveSpeed: 20
+  handSpacing: 1.2
+  zSpacing: 2
   isQuick: 0
   isForced: 0
   wasPlayed: 0
-  structurePrefab: {fileID: 7125914351763239744, guid: 4aa18b16187b667478ba16c017b2d94f,
+  structurePrefab: {fileID: 7125914351763239744, guid: f6a4565448d3f8243b33ce4b9aa3afcf,
     type: 3}
