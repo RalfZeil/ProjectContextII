@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1441576283816835504}
   - component: {fileID: 2986977896953752365}
   - component: {fileID: -4989314281301059167}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Modification Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,10 +119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9828dcaa75acc584ab07071e5fc37583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 1441576283816835504}
+  renderers: []
   moveSpeed: 20
   isQuick: 0
   isForced: 0
+  cardSettings: {fileID: 11400000, guid: 1e82b4b157331db4c881d59258a0d3ee, type: 2}
   wasPlayed: 0
   modificationPrefab: {fileID: 7125914351763239744, guid: e4749b7875c91c544a6ae5a2274e7d47,
     type: 3}

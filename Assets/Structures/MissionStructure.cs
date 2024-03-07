@@ -9,7 +9,7 @@ public class MissionStructure : Structure
     private Mission createdMission;
     protected override bool CanActivate()
     {
-        return (createdMission == null && MissionManager.CanFitMoreMissions());
+        return (createdMission == null || createdMission.isJustCompleted) && MissionManager.CanFitMoreMissions();
     }
 
     protected override void Activate()

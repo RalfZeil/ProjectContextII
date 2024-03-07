@@ -5,8 +5,10 @@ using System.Linq;
 
 public class TileGrid : MonoBehaviour
 {
-    [SerializeField] private GameObject tilePrefab, headquartersPrefab;
+    [SerializeField] private GameObject tilePrefab, factoryPrefab, housePrefab, grasslandPrefab;
+    [SerializeField] private List<GameObject> startBuildingPrefabs;
     [SerializeField] private int gridWidth, gridHeight, maxUpdateCycles;
+    [SerializeField] private float factoryAmount, houseClusterAmount, houseClusterSize, houseClusterRandomness, grassLandAmount;
 
     [HideInInspector] public Tile[,] tiles;
     [HideInInspector] public Tile targetedTile;
@@ -36,11 +38,23 @@ public class TileGrid : MonoBehaviour
                 tiles[i, j].y = j;
             }
         }
+        /*
+        foreach(GameObject prefab in instance.startBuildingPrefabs)
+        {
+            Tile randomTile = RandomTile();
+            int attempts = 0;
+            while (attempts < 1000 && randomTile.structure)
+            {
+                randomTile = RandomTile();
+                attempts++;
+            }
+            Build(prefab, GetCoveredTiles(randomTile, prefab.GetComponent<Structure>()));
+        }*/
+    }
 
-        Structure structure = Instantiate(headquartersPrefab).GetComponent<Structure>();
-        structure.transform.parent = instance.transform;
-        structure.transform.position = (new Vector3(0, .3f, 0)) + PositionOfTile(gridWidth / 2, gridHeight / 2);
-        tiles[gridWidth / 2, gridHeight / 2].structure = structure;
+    private static Tile RandomTile()
+    {
+        return instance.tiles[Random.Range(0, instance.tiles.GetLength(0)), Random.Range(0, instance.tiles.GetLength(1))];
     }
 
     private void Update()
@@ -104,6 +118,22 @@ public class TileGrid : MonoBehaviour
         return targetTiles;
     }
 
+    private static List<Tile> GetCoveredTiles(Tile originTile, Structure structure)
+    {
+        List<Tile> coveredTiles = new();
+        coveredTiles.Add(originTile);
+
+        foreach (Vector2Int coordinates in structure.coveredTiles)
+            {
+                Vector2Int rotatedCoordinates = RotateCoordinates(coordinates);
+                int i = originTile.x + rotatedCoordinates.x;
+                int j = originTile.y + rotatedCoordinates.y;
+                coveredTiles.Add(instance.GetTileAt(i, j));
+            }
+
+        return coveredTiles;
+    }
+
     private static Vector2Int RotateCoordinates(Vector2Int coordinates)
     {
         if (targetRotation == 0) return coordinates;
@@ -118,15 +148,15 @@ public class TileGrid : MonoBehaviour
         return null;
     }
 
-    public static void Build (GameObject structurePrefab)
+    public static void Build (GameObject structurePrefab, List<Tile> tiles)
     {
-        foreach (Tile tile in GetTargetedTiles()) tile.Replace();
+        foreach (Tile tile in tiles) tile.Replace();
 
         Structure structure = Instantiate(structurePrefab).GetComponent<Structure>();
         structure.transform.parent = instance.transform;
-        structure.transform.position = (new Vector3(0, .3f, 0)) + instance.targetedTile.transform.position;
+        structure.transform.position = (new Vector3(0, .3f, 0)) + tiles[0].transform.position;
         structure.transform.localRotation = Quaternion.Euler(0, targetRotation, 0);
-        foreach (Tile tile in GetTargetedTiles()) if (tile != null)
+        foreach (Tile tile in tiles) if (tile != null)
             {
                 tile.structure = structure;
                 structure.tiles.Add(tile);

@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FocusCard : Card
+public class FocusCardEffect : CardEffect
 {
     [SerializeField] private int boostAmount;
 
-    protected override bool CanPlay()
+    public override bool CanPlay()
     {
-        if (!base.CanPlay()) return false;
-
         foreach (Tile tile in TileGrid.GetTargetedTiles())
         {
             if (tile.structure && tile.structure.CanBeBoosted()) return true;
@@ -18,13 +16,11 @@ public class FocusCard : Card
         return false;
     }
 
-    protected override void Play()
+    public override void Play()
     {
         foreach (Tile tile in TileGrid.GetTargetedTiles())
         {
             if (tile.structure) tile.structure.TakeTurn(boostAmount);
         }
-
-        base.Play();
     }
 }

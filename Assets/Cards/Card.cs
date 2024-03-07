@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] protected MeshRenderer meshRenderer;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private bool isQuick, isForced;
+    [SerializeField] private CardEffect cardEffect;
+    [SerializeField] private List<Renderer> renderers;
+    [SerializeField] private CardSettings cardSettings;
+    [SerializeField] private TextMeshPro titleText, typeText, descriptionText;
+    [SerializeField] private MeshRenderer baseCard;
 
     protected bool isSelected = false;
     private Vector3 relativeMousePosition;
@@ -23,7 +26,7 @@ public class Card : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             isSelected = true;
-            relativeMousePosition = transform.position - MouseWorldPosition();
+            relativeMousePosition = transform.localPosition - MouseLocalPosition();
             heldCard = this;
 
             if (returnToHand != null) StopCoroutine(returnToHand);
@@ -36,6 +39,12 @@ public class Card : MonoBehaviour
         transform.parent = CameraControl.GetCardParent();
         transform.localRotation = Quaternion.identity;
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
+
+        descriptionText.text = cardEffect.cardDescription;
+        titleText.text = cardEffect.cardTitle;
+        typeText.text = cardEffect.cardType.ToString();
+        typeText.color = cardSettings.GetColor(cardEffect.cardColor);
+        baseCard.material = cardSettings.GetBase(cardEffect.cardColor);
     }
 
     private void Update()
@@ -44,45 +53,57 @@ public class Card : MonoBehaviour
 
         if (isSelected)
         {
-            transform.position = MouseWorldPosition() + relativeMousePosition;
+            transform.localPosition = MouseLocalPosition() + relativeMousePosition;
 
-            if (TileGrid.IsTileTargeted()) meshRenderer.enabled = false;
-            else meshRenderer.enabled = true;
+            SetVisibility(!TileGrid.IsTileTargeted());
         }
         else if (!isReturning) returnToHand = StartCoroutine(MoveToHandPosition());
     }
 
-    private static Vector3 MouseWorldPosition()
+    private void SetVisibility(bool visibility)
     {
-        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        foreach (Renderer renderer in renderers) renderer.enabled = visibility;
+    }
+
+    private Vector3 MouseLocalPosition()
+    {
+        return transform.parent.InverseTransformPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     private IEnumerator MoveToHandPosition()
     {
         isReturning = true;
 
-        Vector3 targetPosition = new Vector3(1.2f * transform.GetSiblingIndex(), 0, 0.001f * transform.GetSiblingIndex());
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, GetLocalZ());
+
+        Vector3 targetPosition = new Vector3(cardSettings.handSpacing * transform.GetSiblingIndex(), 0, GetLocalZ());
         while (transform.localPosition != targetPosition)
         {
-            targetPosition = new Vector3(1.2f * transform.GetSiblingIndex(), 0, 0.001f * transform.GetSiblingIndex());
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
+            targetPosition = new Vector3(cardSettings.handSpacing * transform.GetSiblingIndex(), 0, GetLocalZ());
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, cardSettings.moveSpeed * Time.deltaTime);
             yield return null;
         }
 
         isReturning = false;
     }
+
+    private float GetLocalZ()
+    {
+        return cardSettings.baseCameraDistance - cardSettings.zSpacing * transform.GetSiblingIndex();
+    }
+
     private void TryPlay()
     {
         if (CanPlay()) Play();
 
         heldCard = null;
         isSelected = false;
-        meshRenderer.enabled = true;
+        SetVisibility(true);
     }
 
     public static bool ForcedCardExists()
     {
-        foreach (Card card in GetAllCards()) if (card.isForced) return true;
+        foreach (Card card in GetAllCards()) if (card.cardEffect.isForced) return true;
         return false;
     }
 
@@ -91,19 +112,22 @@ public class Card : MonoBehaviour
         return CameraControl.GetCardParent().GetComponentsInChildren<Card>().ToList<Card>();
     }
 
-    public virtual List<Vector2Int> TargetedTiles()
+    public List<Vector2Int> TargetedTiles()
     {
-        return new List<Vector2Int>();
+        return cardEffect.TargetedTiles();
     }
 
-    protected virtual bool CanPlay()
+    private bool CanPlay()
     {
-        return isForced || (!ForcedCardExists());
+        return (cardEffect.isForced || (!ForcedCardExists())) && cardEffect.CanPlay();
     }
-    protected virtual void Play()
+    private void Play()
     {
+        cardEffect.Play();
+
         wasPlayed = true;
-        if (!isQuick) TimeManager.IncrementTurnCount();
+        MissionManager.CheckMissions();
+        if (!cardEffect.isQuick) TimeManager.IncrementTurnCount();
         MissionManager.CheckMissions();
         Destroy(gameObject);
     }

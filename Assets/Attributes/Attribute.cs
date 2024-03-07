@@ -55,7 +55,7 @@ public class Attribute : MonoBehaviour
 
     public void UpdateStatus()
     {
-        if (isSuppressed) Deactivate();
+        if (isSuppressed || tile == null) Deactivate();
         else if (isAlwaysActive) Activate();
         else if (type != AttributeType.Negative && structure.attributeBonus > activationThreshold) Activate();
         else if (type == AttributeType.Negative && structure.attributeBonus < activationThreshold) Activate();

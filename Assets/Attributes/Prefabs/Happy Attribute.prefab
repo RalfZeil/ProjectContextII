@@ -121,8 +121,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 6770494525319516948}
   activationThreshold: 0
+  isAlwaysActive: 1
   relativeCoordinates: {x: 0, y: 0}
   isActive: 0
   isSuppressed: 0
+  structure: {fileID: 0}
   tile: {fileID: 0}
   type: 1

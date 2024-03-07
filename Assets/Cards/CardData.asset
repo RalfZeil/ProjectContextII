@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ef0128823d39b4dbbc83d4bd8b20e3, type: 3}
+  m_Name: CardData
+  m_EditorClassIdentifier: 
+  handSpacing: 1.2
+  zSpacing: 3
+  baseCameraDistance: 70
+  moveSpeed: 20
+  cardColors:
+  - {r: 0.19215687, g: 0.24313726, b: 0.101960786, a: 1}
+  - {r: 0, g: 0.17254902, b: 0.24705882, a: 1}
+  - {r: 0.22352941, g: 0.05882353, b: 0.17254902, a: 1}
+  cardBases:
+  - {fileID: 2100000, guid: 552f3ecaf6c1e9b4ebb1cee9d6654341, type: 2}
+  - {fileID: 2100000, guid: 1590a8d4af1032847bb97c44adcbf27b, type: 2}
+  - {fileID: 2100000, guid: e8ac74f2bebf1f543bf5015d5e59efbf, type: 2}

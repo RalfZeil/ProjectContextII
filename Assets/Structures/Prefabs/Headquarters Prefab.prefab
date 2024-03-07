@@ -480,5 +480,5 @@ MonoBehaviour:
   functionTimer: 0
   attributeBonus: 0
   type: 0
-  createdCardPrefab: {fileID: 5425401955463860704, guid: fa15a4a3eba8a8040a88bb7dbdf89f8d,
+  createdCardPrefab: {fileID: 5488580198678690466, guid: a39ca6d46d8958c4e8f76af55236850d,
     type: 3}
