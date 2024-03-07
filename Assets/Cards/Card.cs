@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] protected List<Renderer> renderers;
-    [SerializeField] private float moveSpeed, handSpacing, zSpacing;
-    [SerializeField] private bool isQuick, isForced;
+    [SerializeField] private CardEffect cardEffect;
+    [SerializeField] private List<Renderer> renderers;
+    [SerializeField] private CardSettings cardSettings;
+    [SerializeField] private TextMeshPro titleText, typeText, descriptionText;
+    [SerializeField] private MeshRenderer baseCard;
 
     protected bool isSelected = false;
     private Vector3 relativeMousePosition;
@@ -36,6 +39,12 @@ public class Card : MonoBehaviour
         transform.parent = CameraControl.GetCardParent();
         transform.localRotation = Quaternion.identity;
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
+
+        descriptionText.text = cardEffect.cardDescription;
+        titleText.text = cardEffect.cardTitle;
+        typeText.text = cardEffect.cardType.ToString();
+        typeText.color = cardSettings.GetColor(cardEffect.cardColor);
+        baseCard.material = cardSettings.GetBase(cardEffect.cardColor);
     }
 
     private void Update()
@@ -65,18 +74,24 @@ public class Card : MonoBehaviour
     {
         isReturning = true;
 
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, zSpacing * transform.GetSiblingIndex());
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, GetLocalZ());
 
-        Vector3 targetPosition = new Vector3(handSpacing * transform.GetSiblingIndex(), 0, zSpacing * transform.GetSiblingIndex());
+        Vector3 targetPosition = new Vector3(cardSettings.handSpacing * transform.GetSiblingIndex(), 0, GetLocalZ());
         while (transform.localPosition != targetPosition)
         {
-            targetPosition = new Vector3(handSpacing * transform.GetSiblingIndex(), 0, zSpacing * transform.GetSiblingIndex());
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
+            targetPosition = new Vector3(cardSettings.handSpacing * transform.GetSiblingIndex(), 0, GetLocalZ());
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, cardSettings.moveSpeed * Time.deltaTime);
             yield return null;
         }
 
         isReturning = false;
     }
+
+    private float GetLocalZ()
+    {
+        return cardSettings.baseCameraDistance - cardSettings.zSpacing * transform.GetSiblingIndex();
+    }
+
     private void TryPlay()
     {
         if (CanPlay()) Play();
@@ -88,7 +103,7 @@ public class Card : MonoBehaviour
 
     public static bool ForcedCardExists()
     {
-        foreach (Card card in GetAllCards()) if (card.isForced) return true;
+        foreach (Card card in GetAllCards()) if (card.cardEffect.isForced) return true;
         return false;
     }
 
@@ -97,20 +112,22 @@ public class Card : MonoBehaviour
         return CameraControl.GetCardParent().GetComponentsInChildren<Card>().ToList<Card>();
     }
 
-    public virtual List<Vector2Int> TargetedTiles()
+    public List<Vector2Int> TargetedTiles()
     {
-        return new List<Vector2Int>();
+        return cardEffect.TargetedTiles();
     }
 
-    protected virtual bool CanPlay()
+    private bool CanPlay()
     {
-        return isForced || (!ForcedCardExists());
+        return (cardEffect.isForced || (!ForcedCardExists())) && cardEffect.CanPlay();
     }
-    protected virtual void Play()
+    private void Play()
     {
+        cardEffect.Play();
+
         wasPlayed = true;
         MissionManager.CheckMissions();
-        if (!isQuick) TimeManager.IncrementTurnCount();
+        if (!cardEffect.isQuick) TimeManager.IncrementTurnCount();
         MissionManager.CheckMissions();
         Destroy(gameObject);
     }

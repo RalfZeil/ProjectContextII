@@ -26,7 +26,6 @@ public class Structure : MonoBehaviour
             attributes.Add(attribute);
             attribute.structure = this;
         }
-        timerDisplay.enabled = hasFunction;
     }
 
     private void Start()
@@ -47,12 +46,19 @@ public class Structure : MonoBehaviour
 
     public void ReturnToHand()
     {
-        Transform card = Instantiate(associatedCardPrefab).transform;
-        card.position = transform.position;
+        CreateAssociatedCard();
 
         foreach (Attribute attribute in attributes) attribute.DeleteAttribute();
         foreach (Modification modification in modifications) modification.Delete();
         Destroy(gameObject);
+    }
+
+    private void CreateAssociatedCard()
+    {
+        if (!associatedCardPrefab) return;
+
+        Transform card = Instantiate(associatedCardPrefab).transform;
+        card.position = transform.position;
     }
 
     protected virtual bool CanActivate()
@@ -109,7 +115,8 @@ public class Structure : MonoBehaviour
         int[,] natureGrid = TileGrid.GetNatureGrid();
         bool[,] visitedGrid = new bool[natureGrid.GetLength(0), natureGrid.GetLength(1)];
 
-        return TileGrid.countArea(OriginTile().x, OriginTile().y, natureGrid, visitedGrid);
+        int areaCount = TileGrid.countArea(OriginTile().x, OriginTile().y, natureGrid, visitedGrid);
+        return (int) Mathf.Floor(Mathf.Sqrt(areaCount));
     }
 
     public Tile OriginTile()

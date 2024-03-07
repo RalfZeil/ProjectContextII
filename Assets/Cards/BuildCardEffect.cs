@@ -2,22 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildCard : Card
+public class BuildCard : CardEffect
 {
     [SerializeField] private GameObject structurePrefab;
 
-    protected override bool CanPlay()
+    public override bool CanPlay()
     {
-        if (!base.CanPlay()) return false;
-
         return TileGrid.IsTileTargeted() && TileGrid.IsValidPlacement();
     }
 
-    protected override void Play()
+    public override void Play()
     {
-        TileGrid.Build(structurePrefab);
-
-        base.Play();
+        TileGrid.Build(structurePrefab, TileGrid.GetTargetedTiles());
     }
 
     public override List<Vector2Int> TargetedTiles()

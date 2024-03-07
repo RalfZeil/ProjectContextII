@@ -121,10 +121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderers: []
   moveSpeed: 20
-  handSpacing: 1.2
-  zSpacing: 2
   isQuick: 0
   isForced: 0
+  cardSettings: {fileID: 11400000, guid: 1e82b4b157331db4c881d59258a0d3ee, type: 2}
   wasPlayed: 0
   structurePrefab: {fileID: 7125914351763239744, guid: f6a4565448d3f8243b33ce4b9aa3afcf,
     type: 3}
