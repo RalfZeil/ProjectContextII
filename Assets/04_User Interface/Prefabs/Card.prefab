@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -348,7 +348,10 @@ MonoBehaviour:
   title: {fileID: 4980991093071102272}
   description: {fileID: 5979555163829917398}
   cardButton: {fileID: 6016421092503447545}
+  lerpSpeed: 0.1
+  padding: 200
   representedCard: {fileID: 11400000, guid: e5d3a2b376b52924985c489c1cc045a2, type: 2}
+  targetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &8827869216625572503
 GameObject:
   m_ObjectHideFlags: 0

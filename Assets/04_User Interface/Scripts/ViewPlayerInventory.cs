@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ViewPlayerInventory : MonoBehaviour
@@ -42,12 +41,18 @@ public class ViewPlayerInventory : MonoBehaviour
 
     private void SelectCard(ViewCard newCard)
     {
-        Debug.Log("Selected " + newCard.representedCard.displayName);
+        DeslectCard();
         SelectedCard = newCard;
+        SelectedCard.targetScale = new Vector3(2, 2 ,2);
+        newCard.transform.SetAsLastSibling();
     }
 
     private void DeslectCard()
     {
-        SelectedCard = null;
+        if(SelectedCard != null)
+        {
+            SelectedCard.targetScale = Vector3.one;
+            SelectedCard = null;
+        }
     }
 }
