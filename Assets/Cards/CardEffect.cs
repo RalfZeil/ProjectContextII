@@ -28,4 +28,9 @@ public class CardEffect : MonoBehaviour
     {
         return new GameObject("Card Model");
     }
+
+    public virtual GameObject GetAttributes()
+    {
+        return new GameObject("Preview Attributes");
+    }
 }

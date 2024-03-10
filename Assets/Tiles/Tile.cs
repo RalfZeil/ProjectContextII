@@ -12,7 +12,7 @@ public class Tile : MonoBehaviour
 
      public Structure structure;
     [HideInInspector] public Modification modification;
-    [HideInInspector] public List<Attribute> attributes = new();
+     public List<Attribute> attributes = new();
 
     [HideInInspector] public int x, y;
 

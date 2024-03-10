@@ -13,13 +13,14 @@ public class Card : MonoBehaviour
     [SerializeField] private Transform graphicsObject, previewObject;
 
     private List<Renderer> renderers = new();
+    private List<Attribute> previewAttributes = new();
     protected bool isSelected = false;
     private Vector3 relativeMousePosition;
 
     private Coroutine returnToHand;
     private bool isReturning = false;
 
-    [HideInInspector] public bool wasPlayed = false;
+    [HideInInspector] public bool wasPlayed = false, isHovered = false;
     [HideInInspector] public static Card heldCard = null;
 
     private void OnMouseOver()
@@ -33,6 +34,13 @@ public class Card : MonoBehaviour
             if (returnToHand != null) StopCoroutine(returnToHand);
             isReturning = false;
         }
+
+        isHovered = true;
+    }
+
+    private void OnMouseExit()
+    {
+        isHovered = false;
     }
 
     private void Start()
@@ -49,6 +57,7 @@ public class Card : MonoBehaviour
 
         CreateModel();
         CreatePreviewModel();
+        CreatePreviewAttributes();
         SetRenderers();
     }
 
@@ -76,6 +85,20 @@ public class Card : MonoBehaviour
         model.transform.localScale = Vector3.one;
     }
 
+    private void CreatePreviewAttributes()
+    {
+        GameObject attributes = Instantiate(cardEffect.GetAttributes());
+        foreach (Attribute attribute in attributes.GetComponentsInChildren<Attribute>())
+        {
+            if (attribute.isAlwaysActive)
+            {
+                previewAttributes.Add(attribute);
+                attribute.SetHighlight(true);
+            }
+            else attribute.DeleteAttribute();
+        }
+    }
+
     private void SetRenderers()
     {
         foreach (Renderer renderer in graphicsObject.GetComponentsInChildren<Renderer>())
@@ -92,14 +115,16 @@ public class Card : MonoBehaviour
 
         if (isSelected)
         {
-            transform.localPosition = MouseLocalPosition() + relativeMousePosition;
+            Vector3 position = MouseLocalPosition() + relativeMousePosition;
+            position.z = cardSettings.selectedCameraDistance;
+            transform.localPosition = position;
 
-            SetRenderingMode(TileGrid.IsTileTargeted());
+            UpdateRendering(TileGrid.IsTileTargeted());
         }
         else if (!isReturning) returnToHand = StartCoroutine(MoveToHandPosition());
     }
 
-    private void SetRenderingMode(bool isInPreviewMode)
+    private void UpdateRendering(bool isInPreviewMode)
     {
         foreach (Renderer renderer in renderers) renderer.enabled = !isInPreviewMode;
         foreach (Renderer renderer in previewObject.GetComponentsInChildren<Renderer>())
@@ -112,6 +137,27 @@ public class Card : MonoBehaviour
                 previewObject.position = (new Vector3(0, .3f, 0)) + TileGrid.instance.targetedTile.transform.position;
                 previewObject.rotation = Quaternion.Euler(0, TileGrid.targetRotation, 0);
             }
+        }
+
+        foreach (Attribute attribute in previewAttributes)
+        {
+            if (isInPreviewMode) attribute.Activate();
+            else attribute.Deactivate();
+            if (attribute.tile)
+            {
+                attribute.tile.RemoveAttribute(attribute);
+                attribute.tile = null;
+            }
+        }
+
+        if (isInPreviewMode)
+        {
+            TileGrid.PlaceAttributes(previewAttributes, TileGrid.instance.targetedTile);
+            foreach (Attribute attribute in previewAttributes) if (attribute.tile)
+                {
+                    attribute.tile.SortAttributes();
+                    attribute.tile.PositionAttributes();
+                }
         }
     }
 
@@ -126,15 +172,20 @@ public class Card : MonoBehaviour
 
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, GetLocalZ());
 
-        Vector3 targetPosition = new Vector3(cardSettings.handSpacing * transform.GetSiblingIndex(), 0, GetLocalZ());
+        Vector3 targetPosition = new Vector3(cardSettings.handSpacing * transform.GetSiblingIndex(), HoverOffset(), GetLocalZ());
         while (transform.localPosition != targetPosition)
         {
-            targetPosition = new Vector3(cardSettings.handSpacing * transform.GetSiblingIndex(), 0, GetLocalZ());
+            targetPosition = new Vector3(cardSettings.handSpacing * transform.GetSiblingIndex(), HoverOffset(), GetLocalZ());
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, cardSettings.moveSpeed * Time.deltaTime);
             yield return null;
         }
 
         isReturning = false;
+    }
+
+    private float HoverOffset()
+    {
+        return (isHovered && !CameraControl.IsRotating()) ? cardSettings.hoverDistance : 0;
     }
 
     private float GetLocalZ()
@@ -148,7 +199,7 @@ public class Card : MonoBehaviour
 
         heldCard = null;
         isSelected = false;
-        SetRenderingMode(false);
+        UpdateRendering(false);
     }
 
     public static bool ForcedCardExists()
@@ -173,12 +224,14 @@ public class Card : MonoBehaviour
     }
     private void Play()
     {
-        cardEffect.Play();
-
         wasPlayed = true;
         MissionManager.CheckMissions();
         if (!cardEffect.isQuick) TimeManager.IncrementTurnCount();
         MissionManager.CheckMissions();
+
+        foreach (Attribute attribute in previewAttributes) attribute.DeleteAttribute();
         Destroy(gameObject);
+
+        cardEffect.Play();
     }
 }

@@ -210,7 +210,7 @@ public class TileGrid : MonoBehaviour
         UpdateAttributeEffects();
     }
 
-    private static void PlaceAttributes(List<Attribute> attributes, Tile originTile)
+    public static void PlaceAttributes(List<Attribute> attributes, Tile originTile)
     {
         foreach (Attribute attribute in attributes)
         {

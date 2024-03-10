@@ -22,4 +22,9 @@ public class ModificationCard : CardEffect
     {
         return modificationPrefab.GetComponent<Modification>().model;
     }
+
+    public override GameObject GetAttributes()
+    {
+        return modificationPrefab.GetComponent<Modification>().attributeObject;
+    }
 }

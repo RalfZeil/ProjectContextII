@@ -47,6 +47,11 @@ public class CameraControl : MonoBehaviour
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, targetRotation, 0), rotationSpeed * Time.deltaTime);
     }
 
+    public static bool IsRotating()
+    {
+        return instance.targetRotation != 0;
+    }
+
     public static Transform GetCardParent()
     {
         return instance.cardParent;

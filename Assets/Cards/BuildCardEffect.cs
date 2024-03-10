@@ -25,4 +25,9 @@ public class BuildCard : CardEffect
     {
         return structurePrefab.GetComponent<Structure>().model;
     }
+
+    public override GameObject GetAttributes()
+    {
+        return structurePrefab.GetComponent<Structure>().attributeObject;
+    }
 }

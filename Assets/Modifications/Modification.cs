@@ -6,7 +6,7 @@ using TMPro;
 public class Modification : MonoBehaviour
 {
     public bool isReplacing;
-    public GameObject model;
+    public GameObject model, attributeObject;
     [HideInInspector] public List<Attribute> attributes = new();
     [HideInInspector] public Tile tile;
     [HideInInspector] public Structure structure;

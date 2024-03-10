@@ -6,7 +6,8 @@ public class Attribute : MonoBehaviour
 {
     [SerializeField] private MeshRenderer meshRenderer, highlightRenderer;
     [SerializeField] private int activationThreshold;
-    [SerializeField] private bool isAlwaysActive, isHighlighted;
+    [SerializeField] private bool isHighlighted;
+    public bool isAlwaysActive;
     public Vector2Int relativeCoordinates;
 
     [HideInInspector] public bool isActive = false, isSuppressed = false;
@@ -53,7 +54,7 @@ public class Attribute : MonoBehaviour
 
     public bool IsVisible()
     {
-        return isActive && (isHighlighted || TileGrid.isShowingAttributes[(int)type]);
+        return tile && isActive && (isHighlighted || TileGrid.isShowingAttributes[(int)type]);
     }
 
     private void Start()

@@ -12,11 +12,11 @@ public class Structure : MonoBehaviour
     public List<Vector2Int> coveredTiles;
 
     [HideInInspector] public List<Attribute> attributes = new();
-    [HideInInspector] public List<Tile> tiles = new();
+     public List<Tile> tiles = new();
     [HideInInspector] public List<Modification> modifications = new();
-    [HideInInspector] public int functionTimer = 0, attributeBonus = 0;
+    public int functionTimer = 0, attributeBonus = 0;
 
-    public GameObject model;
+    public GameObject model, attributeObject;
     public enum StructureType {Civilisation, Nature, Industry};
     public StructureType type;
 
