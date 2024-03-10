@@ -17,4 +17,9 @@ public class ModificationCard : CardEffect
     {
         TileGrid.Modify(modificationPrefab);
     }
+
+    public override GameObject GetModel()
+    {
+        return modificationPrefab.GetComponent<Modification>().model;
+    }
 }

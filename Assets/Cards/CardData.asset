@@ -24,3 +24,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 552f3ecaf6c1e9b4ebb1cee9d6654341, type: 2}
   - {fileID: 2100000, guid: 1590a8d4af1032847bb97c44adcbf27b, type: 2}
   - {fileID: 2100000, guid: e8ac74f2bebf1f543bf5015d5e59efbf, type: 2}
+  modelPosition: {x: 0, y: 0.25, z: -0.5}
+  modelRotation: {x: -22.5, y: 45, z: -22.5}
+  modelSize: {x: 0.3, y: 0.3, z: 0.3}

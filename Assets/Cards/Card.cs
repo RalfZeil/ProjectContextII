@@ -7,11 +7,12 @@ using TMPro;
 public class Card : MonoBehaviour
 {
     [SerializeField] private CardEffect cardEffect;
-    [SerializeField] private List<Renderer> renderers;
     [SerializeField] private CardSettings cardSettings;
     [SerializeField] private TextMeshPro titleText, typeText, descriptionText;
     [SerializeField] private MeshRenderer baseCard;
+    [SerializeField] private Transform graphicsObject, previewObject;
 
+    private List<Renderer> renderers = new();
     protected bool isSelected = false;
     private Vector3 relativeMousePosition;
 
@@ -45,6 +46,44 @@ public class Card : MonoBehaviour
         typeText.text = cardEffect.cardType.ToString();
         typeText.color = cardSettings.GetColor(cardEffect.cardColor);
         baseCard.material = cardSettings.GetBase(cardEffect.cardColor);
+
+        CreateModel();
+        CreatePreviewModel();
+        SetRenderers();
+    }
+
+    private void CreateModel()
+    {
+        GameObject model = Instantiate(cardEffect.GetModel());
+        Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+        foreach (Renderer renderer in model.transform.GetComponentsInChildren<Renderer>()) bounds.Encapsulate(renderer.bounds);
+
+        model.transform.parent = graphicsObject;
+        model.transform.localPosition = cardSettings.modelPosition;
+        model.transform.localRotation = Quaternion.Euler(cardSettings.modelRotation);
+        float size = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z, 0.001f);
+        model.transform.localScale = cardSettings.modelSize / size;
+    }
+
+    private void CreatePreviewModel()
+    {
+        GameObject model = Instantiate(cardEffect.GetModel());
+        foreach (Renderer renderer in model.transform.GetComponentsInChildren<Renderer>()) renderer.enabled = false;
+
+        model.transform.parent = previewObject;
+        model.transform.localPosition = Vector3.zero;
+        model.transform.localRotation = Quaternion.identity;
+        model.transform.localScale = Vector3.one;
+    }
+
+    private void SetRenderers()
+    {
+        foreach (Renderer renderer in graphicsObject.GetComponentsInChildren<Renderer>())
+        {
+            renderers.Add(renderer);
+            renderer.gameObject.layer = LayerMask.NameToLayer("UI");
+            renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        }
     }
 
     private void Update()
@@ -55,14 +94,25 @@ public class Card : MonoBehaviour
         {
             transform.localPosition = MouseLocalPosition() + relativeMousePosition;
 
-            SetVisibility(!TileGrid.IsTileTargeted());
+            SetRenderingMode(TileGrid.IsTileTargeted());
         }
         else if (!isReturning) returnToHand = StartCoroutine(MoveToHandPosition());
     }
 
-    private void SetVisibility(bool visibility)
+    private void SetRenderingMode(bool isInPreviewMode)
     {
-        foreach (Renderer renderer in renderers) renderer.enabled = visibility;
+        foreach (Renderer renderer in renderers) renderer.enabled = !isInPreviewMode;
+        foreach (Renderer renderer in previewObject.GetComponentsInChildren<Renderer>())
+        {
+            renderer.enabled = isInPreviewMode;
+            if (isInPreviewMode)
+            {
+                renderer.material = CanPlay() ? cardSettings.structurePreviewMaterialValid : cardSettings.structurePreviewMaterialInvalid;
+
+                previewObject.position = (new Vector3(0, .3f, 0)) + TileGrid.instance.targetedTile.transform.position;
+                previewObject.rotation = Quaternion.Euler(0, TileGrid.targetRotation, 0);
+            }
+        }
     }
 
     private Vector3 MouseLocalPosition()
@@ -98,7 +148,7 @@ public class Card : MonoBehaviour
 
         heldCard = null;
         isSelected = false;
-        SetVisibility(true);
+        SetRenderingMode(false);
     }
 
     public static bool ForcedCardExists()

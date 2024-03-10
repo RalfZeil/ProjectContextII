@@ -23,4 +23,9 @@ public class CardEffect : MonoBehaviour
     {
         return new List<Vector2Int>();
     }
+
+    public virtual GameObject GetModel()
+    {
+        return new GameObject("Card Model");
+    }
 }

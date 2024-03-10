@@ -264,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6993393958803108960}
   m_Layer: 0
-  m_Name: Graphics
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,13 +339,13 @@ MonoBehaviour:
   timerDisplay: {fileID: 7290090098442096724}
   hasFunction: 1
   isPermanent: 1
-  coveredTiles:
-  - {x: 1, y: 0}
+  coveredTiles: []
   attributes: []
   tiles: []
   modifications: []
   functionTimer: 0
   attributeBonus: 0
+  model: {fileID: 4570470437731085060}
   type: 0
   createdMissionPrefabs:
   - {fileID: 2603551786522456167, guid: 9d695f7050cb53440a385d37784ac757, type: 3}

@@ -6,6 +6,7 @@ using TMPro;
 public class Modification : MonoBehaviour
 {
     public bool isReplacing;
+    public GameObject model;
     [HideInInspector] public List<Attribute> attributes = new();
     [HideInInspector] public Tile tile;
     [HideInInspector] public Structure structure;
@@ -43,5 +44,15 @@ public class Modification : MonoBehaviour
         tile.modification = null;
         structure.UpdateAttributeLayering();
         Destroy(gameObject);
+    }
+
+    public void Select()
+    {
+        foreach (Attribute attribute in attributes) attribute.SetHighlight(true);
+    }
+
+    public void Deselect()
+    {
+        foreach (Attribute attribute in attributes) attribute.SetHighlight(false);
     }
 }

@@ -20,4 +20,9 @@ public class BuildCard : CardEffect
     {
         return structurePrefab.GetComponent<Structure>().coveredTiles;
     }
+
+    public override GameObject GetModel()
+    {
+        return structurePrefab.GetComponent<Structure>().model;
+    }
 }

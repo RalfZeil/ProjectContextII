@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178895793027226833}
   m_Layer: 0
-  m_Name: House Block
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -927,6 +927,7 @@ MonoBehaviour:
   modifications: []
   functionTimer: 0
   attributeBonus: 0
+  model: {fileID: 2700039816684617974}
   type: 0
 --- !u!1 &7532480142669073614
 GameObject:

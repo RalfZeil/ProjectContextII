@@ -16,6 +16,7 @@ public class Structure : MonoBehaviour
     [HideInInspector] public List<Modification> modifications = new();
     [HideInInspector] public int functionTimer = 0, attributeBonus = 0;
 
+    public GameObject model;
     public enum StructureType {Civilisation, Nature, Industry};
     public StructureType type;
 
@@ -40,6 +41,7 @@ public class Structure : MonoBehaviour
 
     private void UpdateTimerDisplay()
     {
+        timerDisplay.enabled = TileGrid.isShowingTimers;
         timerDisplay.transform.rotation = Camera.main.transform.rotation;
         timerDisplay.text = (FunctionCooldown() - functionTimer).ToString();
     }
@@ -48,6 +50,7 @@ public class Structure : MonoBehaviour
     {
         CreateAssociatedCard();
 
+        foreach (Tile tile in tiles) tile.structure = null;
         foreach (Attribute attribute in attributes) attribute.DeleteAttribute();
         foreach (Modification modification in modifications) modification.Delete();
         Destroy(gameObject);
@@ -69,6 +72,16 @@ public class Structure : MonoBehaviour
     protected virtual void Activate()
     {
 
+    }
+
+    public void Select()
+    {
+        foreach (Attribute attribute in attributes) attribute.SetHighlight(true);
+    }
+
+    public void Deselect()
+    {
+        foreach (Attribute attribute in attributes) attribute.SetHighlight(false);
     }
 
     private int FunctionCooldown()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Tile : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private Transform attributeDisplay;
     [SerializeField] private float attributeDisplaySpread;
 
-    [HideInInspector] public Structure structure;
+     public Structure structure;
     [HideInInspector] public Modification modification;
     [HideInInspector] public List<Attribute> attributes = new();
 
@@ -17,20 +18,21 @@ public class Tile : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            meshRenderer.material = selectedMaterial;
-        }
+        
     }
 
     public void Select()
     {
         meshRenderer.material = selectedMaterial;
+        if (structure) structure.Select();
+        if (modification) modification.Select();
     }
 
     public void Deselect()
     {
         meshRenderer.material = baseMaterial;
+        if (structure) structure.Deselect();
+        if (modification) modification.Deselect();
     }
 
     public void AddAttribute (Attribute attribute)
@@ -42,25 +44,33 @@ public class Tile : MonoBehaviour
         attribute.transform.localPosition = Vector3.zero;
     }
 
+    public void SortAttributes()
+    {
+        attributes = attributes.OrderBy(x => x.GetSortPriority()).ToList();
+
+        foreach (Attribute attribute in attributes) attribute.transform.SetParent(null);
+        foreach (Attribute attribute in attributes) attribute.transform.SetParent(attributeDisplay);
+    }
+
     public void PositionAttributes()
     {
-        List<Attribute> activeAttributes = GetActiveAttributes();
+        List<Attribute> visibleAttributes = GetVisibleAttributes();
 
-        for (int i = 0; i < activeAttributes.Count; i++)
+        for (int i = 0; i < visibleAttributes.Count; i++)
         {
-            Attribute attribute = activeAttributes[i];
-            float attributePosition = (i - (activeAttributes.Count-1)/2f);
+            Attribute attribute = visibleAttributes[i];
+            float attributePosition = (i - (visibleAttributes.Count-1)/2f);
             attributePosition *= attributeDisplaySpread;
-            attributePosition /= activeAttributes.Count;
-            attribute.transform.localPosition = new Vector3(attributePosition, 0, 0);
+            attributePosition /= visibleAttributes.Count;
+            attribute.transform.localPosition = new Vector3(attributePosition, 0, -attributePosition);
         }
     }
 
-    private List<Attribute> GetActiveAttributes()
+    private List<Attribute> GetVisibleAttributes()
     {
-        List<Attribute> activeAttributes = new();
-        foreach (Attribute attribute in attributes) if (attribute.isActive) activeAttributes.Add(attribute);
-        return activeAttributes;
+        List<Attribute> visibleAttributes = new();
+        foreach (Attribute attribute in attributes) if (attribute.IsVisible()) visibleAttributes.Add(attribute);
+        return visibleAttributes;
     }
 
     public void RemoveAttribute(Attribute attribute)

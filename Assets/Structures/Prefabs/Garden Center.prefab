@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7877629644537329242}
   m_Layer: 0
-  m_Name: Graphics
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,6 +519,7 @@ MonoBehaviour:
   modifications: []
   functionTimer: 0
   attributeBonus: 0
+  model: {fileID: 3481998217606124655}
   type: 0
   createdCardPrefab: {fileID: 5488580198678690466, guid: 81c6bd9ae99e82b439893bc6e92e4d4e,
     type: 3}

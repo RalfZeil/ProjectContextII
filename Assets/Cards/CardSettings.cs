@@ -12,6 +12,10 @@ public class CardSettings : ScriptableObject
     public List<Color> cardColors;
     public List<Material> cardBases;
 
+    public Vector3 modelPosition, modelRotation, modelSize;
+
+    public Material structurePreviewMaterialValid, structurePreviewMaterialInvalid;
+
     public Color GetColor(CardColor color)
     {
         return cardColors[(int) color];

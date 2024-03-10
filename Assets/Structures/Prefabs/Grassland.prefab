@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178895793027226833}
   m_Layer: 0
-  m_Name: Graphics
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,6 +89,7 @@ MonoBehaviour:
   modifications: []
   functionTimer: 0
   attributeBonus: 0
+  model: {fileID: 2700039816684617974}
   type: 1
 --- !u!1 &7651666307865456856
 GameObject:

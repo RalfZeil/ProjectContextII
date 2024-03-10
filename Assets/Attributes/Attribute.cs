@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Attribute : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private MeshRenderer meshRenderer, highlightRenderer;
     [SerializeField] private int activationThreshold;
-    [SerializeField] private bool isAlwaysActive;
+    [SerializeField] private bool isAlwaysActive, isHighlighted;
     public Vector2Int relativeCoordinates;
 
     [HideInInspector] public bool isActive = false, isSuppressed = false;
@@ -38,9 +38,22 @@ public class Attribute : MonoBehaviour
         UpdateDisplay();
     }
 
+    public void SetHighlight(bool highlight)
+    {
+        isHighlighted = highlight;
+        UpdateDisplay();
+        if (tile) tile.PositionAttributes();
+    }
+
     public void UpdateDisplay()
     {
-        meshRenderer.enabled = isActive && TileGrid.isShowingAttributes;
+        meshRenderer.enabled = IsVisible();
+        highlightRenderer.enabled = isHighlighted && IsVisible();
+    }
+
+    public bool IsVisible()
+    {
+        return isActive && (isHighlighted || TileGrid.isShowingAttributes[(int)type]);
     }
 
     private void Start()
@@ -60,5 +73,12 @@ public class Attribute : MonoBehaviour
         else if (type != AttributeType.Negative && structure.attributeBonus > activationThreshold) Activate();
         else if (type == AttributeType.Negative && structure.attributeBonus < activationThreshold) Activate();
         else Deactivate();
+    }
+
+    public int GetSortPriority()
+    {
+        if (type == AttributeType.Negative) return 1;
+        if (type == AttributeType.PositiveNature) return 2;
+        return 3;
     }
 }
