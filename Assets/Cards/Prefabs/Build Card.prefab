@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 7739330119380018}
   - component: {fileID: 6948291399031935033}
   m_Layer: 5
-  m_Name: V2 Test Card
+  m_Name: Build Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -569,6 +569,7 @@ MonoBehaviour:
   graphicsObject: {fileID: 7242185124829564453}
   previewObject: {fileID: 4172636491911429252}
   wasPlayed: 0
+  isHovered: 0
 --- !u!114 &6948291399031935033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,14 +582,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5425759415517a24695d579a217e2ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardTitle: University
-  cardDescription: A place for learning
+  cardTitle: Title
+  cardDescription: Description
   cardType: 0
-  cardColor: 1
+  cardColor: 0
   isQuick: 0
   isForced: 0
-  structurePrefab: {fileID: 7125914351763239744, guid: 48300676a47dc6f439b5339327dbf1d1,
-    type: 3}
+  structurePrefab: {fileID: 0}
 --- !u!1 &7847525626172564262
 GameObject:
   m_ObjectHideFlags: 0

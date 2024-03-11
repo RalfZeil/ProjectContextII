@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     [SerializeField] private float moveSpeed, rotationSpeed;
-    [SerializeField] private Transform focusPoint, cardParent;
+    [SerializeField] private Transform focusPoint, cardParent, tooltipParent;
 
     private float targetRotation = 0;
 
@@ -55,5 +55,10 @@ public class CameraControl : MonoBehaviour
     public static Transform GetCardParent()
     {
         return instance.cardParent;
+    }
+
+    public static Transform GetTooltipParent()
+    {
+        return instance.tooltipParent;
     }
 }

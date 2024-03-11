@@ -30,4 +30,13 @@ public class BuildCard : CardEffect
     {
         return structurePrefab.GetComponent<Structure>().attributeObject;
     }
+
+    public void Initialize(GameObject prefab)
+    {
+        structurePrefab = prefab;
+        Structure structure = structurePrefab.GetComponent<Structure>();
+        cardTitle = structure.title;
+        cardDescription = structure.description;
+        cardColor = structure.color;
+    }
 }

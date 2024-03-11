@@ -352,6 +352,7 @@ Transform:
   - {fileID: 6993393958803108960}
   - {fileID: 3942164365285786089}
   - {fileID: 4217008823980426043}
+  - {fileID: 923321012302801422}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3072427515094190114
@@ -366,12 +367,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0af1444dff45741a58cf3275b17f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  associatedCardPrefab: {fileID: 0}
   baseCooldown: 12
   timerDisplay: {fileID: 7290090098442096724}
+  tooltip: {fileID: 5737271777649327937}
   hasFunction: 1
   isPermanent: 1
+  isReplayable: 0
   coveredTiles: []
+  title: Muncipality
+  description: The city government
   attributes: []
   tiles: []
   modifications: []
@@ -379,7 +383,7 @@ MonoBehaviour:
   attributeBonus: 0
   model: {fileID: 4570470437731085060}
   attributeObject: {fileID: 316863817965988689}
-  type: 0
+  color: 1
   createdMissionPrefabs:
   - {fileID: 2603551786522456167, guid: 9d695f7050cb53440a385d37784ac757, type: 3}
 --- !u!1 &8503270531900224794
@@ -548,3 +552,89 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &9196922058514067871
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6691192565799497297}
+    m_Modifications:
+    - target: {fileID: 5488580198678690466, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_Name
+      value: Tooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2066a75323a07149a49a943e7f6acfe, type: 3}
+--- !u!4 &923321012302801422 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 9196922058514067871}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5737271777649327937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3475905531972292318, guid: f2066a75323a07149a49a943e7f6acfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 9196922058514067871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ee4ab5ed2c9d54a99070ea74a93e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

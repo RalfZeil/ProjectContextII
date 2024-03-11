@@ -524,6 +524,7 @@ Transform:
   - {fileID: 7877629644537329242}
   - {fileID: 1523877331409067589}
   - {fileID: 5440702261765041122}
+  - {fileID: 6652839269583769739}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1897344150813632281
@@ -538,14 +539,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 647a0d9ce0d32f84ba2e60ecff63ac02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  associatedCardPrefab: {fileID: 5488580198678690466, guid: 7757db39ecf8bb044bcaa8f7da4622a8,
-    type: 3}
   baseCooldown: 6
   timerDisplay: {fileID: 1579297492654728253}
+  tooltip: {fileID: 2241961143559013828}
   hasFunction: 1
   isPermanent: 0
+  isReplayable: 1
   coveredTiles:
   - {x: 1, y: 0}
+  title: Garden Center
+  description: Gives access to animal friendly gardens
   attributes: []
   tiles: []
   modifications: []
@@ -553,7 +556,7 @@ MonoBehaviour:
   attributeBonus: 0
   model: {fileID: 3481998217606124655}
   attributeObject: {fileID: 3713467308443193981}
-  type: 0
+  color: 1
   createdCardPrefab: {fileID: 5488580198678690466, guid: 81c6bd9ae99e82b439893bc6e92e4d4e,
     type: 3}
 --- !u!1001 &1898769593350488258
@@ -881,6 +884,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1334048584192846535, guid: b6063cf455b0d6a48a26956a2dafac34,
     type: 3}
   m_PrefabInstance: {fileID: 2695213312289641386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3396257700031908634
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6691192565799497297}
+    m_Modifications:
+    - target: {fileID: 5488580198678690466, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_Name
+      value: Tooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2066a75323a07149a49a943e7f6acfe, type: 3}
+--- !u!114 &2241961143559013828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3475905531972292318, guid: f2066a75323a07149a49a943e7f6acfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 3396257700031908634}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ee4ab5ed2c9d54a99070ea74a93e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &6652839269583769739 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8318795518836284305, guid: f2066a75323a07149a49a943e7f6acfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 3396257700031908634}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5787139303064631712
 PrefabInstance:

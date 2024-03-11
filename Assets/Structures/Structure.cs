@@ -5,20 +5,20 @@ using TMPro;
 
 public class Structure : MonoBehaviour
 {
-    [SerializeField] private GameObject associatedCardPrefab;
     [SerializeField] private int baseCooldown;
     [SerializeField] private TextMeshPro timerDisplay;
-    public bool hasFunction, isPermanent;
+    [SerializeField] private Tooltip tooltip;
+    public bool hasFunction, isPermanent, isReplayable;
     public List<Vector2Int> coveredTiles;
+    public string title, description;
 
     [HideInInspector] public List<Attribute> attributes = new();
-     public List<Tile> tiles = new();
+    [HideInInspector] public List<Tile> tiles = new();
     [HideInInspector] public List<Modification> modifications = new();
-    public int functionTimer = 0, attributeBonus = 0;
+    [HideInInspector] public int functionTimer = 0, attributeBonus = 0;
 
     public GameObject model, attributeObject;
-    public enum StructureType {Civilisation, Nature, Industry};
-    public StructureType type;
+    public CardSettings.CardColor color;
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class Structure : MonoBehaviour
 
     private void Start()
     {
-
+        tooltip.Initialize(title, description, CardSettings.CardType.Structure.ToString(), color, CardSettings.CardType.Structure);
     }
 
     private void Update()
@@ -48,19 +48,18 @@ public class Structure : MonoBehaviour
 
     public void ReturnToHand()
     {
-        CreateAssociatedCard();
+        if (isReplayable) CreateAssociatedCard();
 
         foreach (Tile tile in tiles) tile.structure = null;
         foreach (Attribute attribute in attributes) attribute.DeleteAttribute();
         foreach (Modification modification in modifications) modification.Delete();
+        Destroy(tooltip.gameObject);
         Destroy(gameObject);
     }
 
     private void CreateAssociatedCard()
     {
-        if (!associatedCardPrefab) return;
-
-        Transform card = Instantiate(associatedCardPrefab).transform;
+        Transform card = Card.CreateBuildCard(title).transform;
         card.position = transform.position;
     }
 
@@ -77,11 +76,13 @@ public class Structure : MonoBehaviour
     public void Select()
     {
         foreach (Attribute attribute in attributes) attribute.SetHighlight(true);
+        tooltip.UpdateRendering(true);
     }
 
     public void Deselect()
     {
         foreach (Attribute attribute in attributes) attribute.SetHighlight(false);
+        tooltip.UpdateRendering(false);
     }
 
     private int FunctionCooldown()
@@ -115,10 +116,10 @@ public class Structure : MonoBehaviour
         foreach (Tile tile in tiles) foreach (Attribute attribute in tile.attributes) if(attribute.isActive)
         {
             if (attribute.type == Attribute.AttributeType.Negative) attributeBonus--;
-            else if (type == StructureType.Civilisation && attribute.type == Attribute.AttributeType.PositiveCivilisation) attributeBonus++;
+            else if (color == CardSettings.CardColor.People && attribute.type == Attribute.AttributeType.PositiveCivilisation) attributeBonus++;
         }
 
-        if (type == StructureType.Nature) attributeBonus += NatureAttributeBonus();
+        if (color == CardSettings.CardColor.Nature) attributeBonus += NatureAttributeBonus();
 
         foreach (Attribute attribute in GetAllAttributes()) attribute.UpdateStatus();
     }

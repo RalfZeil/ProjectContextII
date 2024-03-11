@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handSpacing: 1.2
   zSpacing: 3
+  hoverDistance: 0.5
   baseCameraDistance: 70
+  selectedCameraDistance: 20
   moveSpeed: 20
   cardColors:
   - {r: 0.19215687, g: 0.24313726, b: 0.101960786, a: 1}
@@ -24,6 +26,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 552f3ecaf6c1e9b4ebb1cee9d6654341, type: 2}
   - {fileID: 2100000, guid: 1590a8d4af1032847bb97c44adcbf27b, type: 2}
   - {fileID: 2100000, guid: e8ac74f2bebf1f543bf5015d5e59efbf, type: 2}
+  tooltipBackgrounds:
+  - {fileID: 2100000, guid: 8b27d586b94bf494591770867305cfb8, type: 2}
+  - {fileID: 2100000, guid: 4f5a30f3a5303c041b09aff511637f76, type: 2}
+  - {fileID: 2100000, guid: 1cfdd66e427c1b24b92f14f301f47928, type: 2}
   modelPosition: {x: 0, y: 0.25, z: -0.5}
   modelRotation: {x: -22.5, y: 45, z: -22.5}
   modelSize: {x: 0.3, y: 0.3, z: 0.3}
+  structurePreviewMaterialValid: {fileID: 2100000, guid: 5e80ef35c3df027468682cee3279c347,
+    type: 2}
+  structurePreviewMaterialInvalid: {fileID: 2100000, guid: 70636ac29b8b52b4ebd3bc972d35316a,
+    type: 2}
+  buildCardPrefab: {fileID: 5488580198678690466, guid: 1aa68bac6b92b2b4e89aed11225fab15,
+    type: 3}
+  modifyCardPrefab: {fileID: 0}
+  tooltipPosition: {x: 2, y: 0, z: 0}

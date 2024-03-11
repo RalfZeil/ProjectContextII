@@ -21,7 +21,9 @@ public class Card : MonoBehaviour
     private bool isReturning = false;
 
     [HideInInspector] public bool wasPlayed = false, isHovered = false;
-    [HideInInspector] public static Card heldCard = null;
+
+    public static Card heldCard = null;
+    private static CardSettings settings;
 
     private void OnMouseOver()
     {
@@ -45,6 +47,8 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
+        if (!Card.settings) Card.settings = cardSettings;
+
         transform.parent = CameraControl.GetCardParent();
         transform.localRotation = Quaternion.identity;
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
@@ -233,5 +237,21 @@ public class Card : MonoBehaviour
         Destroy(gameObject);
 
         cardEffect.Play();
+    }
+
+    public static GameObject CreateBuildCard(string structureName)
+    {
+        GameObject card = Instantiate(settings.buildCardPrefab);
+        card.GetComponent<BuildCard>().Initialize((GameObject)Resources.Load("StructurePrefabs/" + structureName));
+
+        return card;
+    }
+
+    public static GameObject CreateModifyCard(string modificationName)
+    {
+        GameObject card = Instantiate(settings.modifyCardPrefab);
+        card.GetComponent<ModificationCard>().Initialize((GameObject)Resources.Load("ModificationPrefabs/" + modificationName));
+
+        return card;
     }
 }

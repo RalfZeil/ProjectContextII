@@ -590,6 +590,37 @@ Transform:
   - {fileID: 270564417}
   m_Father: {fileID: 1569465942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &693451198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 693451199}
+  m_Layer: 0
+  m_Name: Tooltips
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &693451199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693451198}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1569465942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &848248059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,6 +1562,7 @@ Transform:
   - {fileID: 451667666}
   - {fileID: 513396352}
   - {fileID: 980984682}
+  - {fileID: 693451199}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!114 &1569465943
@@ -1549,6 +1581,7 @@ MonoBehaviour:
   rotationSpeed: 180
   focusPoint: {fileID: 980984682}
   cardParent: {fileID: 513396352}
+  tooltipParent: {fileID: 693451199}
 --- !u!224 &1702063381 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3305304269281313495, guid: 9d695f7050cb53440a385d37784ac757,
