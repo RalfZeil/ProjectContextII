@@ -39,5 +39,7 @@ MonoBehaviour:
     type: 2}
   buildCardPrefab: {fileID: 5488580198678690466, guid: 1aa68bac6b92b2b4e89aed11225fab15,
     type: 3}
-  modifyCardPrefab: {fileID: 0}
-  tooltipPosition: {x: 2, y: 0, z: 0}
+  modifyCardPrefab: {fileID: 5488580198678690466, guid: d6d12a0c5e3653b499d6dc0e1bd406df,
+    type: 3}
+  tooltipPosition: {x: 0, y: 2, z: 0}
+  tooltipOffset: {x: 1.2, y: 0, z: 0}

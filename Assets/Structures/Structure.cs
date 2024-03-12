@@ -5,19 +5,19 @@ using TMPro;
 
 public class Structure : MonoBehaviour
 {
-    [SerializeField] private int baseCooldown;
-    [SerializeField] private TextMeshPro timerDisplay;
+    public GameObject model, attributeObject;
+    public TextMeshPro timerDisplay;
     [SerializeField] private Tooltip tooltip;
-    public bool hasFunction, isPermanent, isReplayable;
+    [SerializeField] private StructureFunction function;
+    public bool isPermanent, isReplayable;
     public List<Vector2Int> coveredTiles;
     public string title, description;
 
     [HideInInspector] public List<Attribute> attributes = new();
     [HideInInspector] public List<Tile> tiles = new();
     [HideInInspector] public List<Modification> modifications = new();
-    [HideInInspector] public int functionTimer = 0, attributeBonus = 0;
+    [HideInInspector] public int attributeBonus = 0;
 
-    public GameObject model, attributeObject;
     public CardSettings.CardColor color;
 
     private void Awake()
@@ -36,14 +36,7 @@ public class Structure : MonoBehaviour
 
     private void Update()
     {
-        if (hasFunction) UpdateTimerDisplay();
-    }
-
-    private void UpdateTimerDisplay()
-    {
-        timerDisplay.enabled = TileGrid.isShowingTimers;
-        timerDisplay.transform.rotation = Camera.main.transform.rotation;
-        timerDisplay.text = (FunctionCooldown() - functionTimer).ToString();
+        
     }
 
     public void ReturnToHand()
@@ -63,16 +56,6 @@ public class Structure : MonoBehaviour
         card.position = transform.position;
     }
 
-    protected virtual bool CanActivate()
-    {
-        return false;
-    }
-
-    protected virtual void Activate()
-    {
-
-    }
-
     public void Select()
     {
         foreach (Attribute attribute in attributes) attribute.SetHighlight(true);
@@ -83,30 +66,6 @@ public class Structure : MonoBehaviour
     {
         foreach (Attribute attribute in attributes) attribute.SetHighlight(false);
         tooltip.UpdateRendering(false);
-    }
-
-    private int FunctionCooldown()
-    {
-        return baseCooldown - attributeBonus;
-    }
-
-    public void TakeTurn(int amount = 1)
-    {
-        if (!hasFunction) return;
-
-        int functionCooldown = FunctionCooldown();
-        functionTimer += amount;
-        if (functionTimer > functionCooldown) functionTimer = functionCooldown;
-        if (functionTimer == functionCooldown && CanActivate())
-        {
-            Activate();
-            functionTimer = 0;
-        }
-    }
-
-    public bool CanBeBoosted()
-    {
-        return hasFunction && functionTimer < FunctionCooldown();
     }
 
     public void UpdateAttributeBonus()

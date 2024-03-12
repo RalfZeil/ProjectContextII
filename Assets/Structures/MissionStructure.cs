@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MissionStructure : Structure
+public class MissionStructure : StructureFunction
 {
     [SerializeField] private List<GameObject> createdMissionPrefabs;
     private Mission createdMission;

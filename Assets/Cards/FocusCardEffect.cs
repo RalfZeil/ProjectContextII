@@ -8,9 +8,10 @@ public class FocusCardEffect : CardEffect
 
     public override bool CanPlay()
     {
-        foreach (Tile tile in TileGrid.GetTargetedTiles())
-        {
-            if (tile.structure && tile.structure.CanBeBoosted()) return true;
+        foreach (Tile tile in TileGrid.GetTargetedTiles()) if (tile.structure)
+            {
+                StructureFunction function = tile.structure.GetComponent<StructureFunction>();
+                if (function && function.CanBeBoosted()) return true;
         }
 
         return false;
@@ -18,9 +19,10 @@ public class FocusCardEffect : CardEffect
 
     public override void Play()
     {
-        foreach (Tile tile in TileGrid.GetTargetedTiles())
+        foreach (Tile tile in TileGrid.GetTargetedTiles()) if (tile.structure)
         {
-            if (tile.structure) tile.structure.TakeTurn(boostAmount);
+            StructureFunction function = tile.structure.GetComponent<StructureFunction>();
+            if (function) function.TakeTurn(boostAmount);
         }
     }
 }

@@ -600,6 +600,7 @@ MonoBehaviour:
   graphicsObject: {fileID: 7242185124829564453}
   previewObject: {fileID: 4455884160941883645}
   wasPlayed: 0
+  isHovered: 0
 --- !u!114 &6948291399031935033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,7 +619,7 @@ MonoBehaviour:
   cardColor: 1
   isQuick: 0
   isForced: 0
-  structurePrefab: {fileID: 7125914351763239744, guid: 50d1b1127b458db4d8a73bbdda5516c6,
+  structurePrefab: {fileID: 7058137865096544879, guid: 067332d86a9ff6c409b1a1a4fc7c8f2e,
     type: 3}
 --- !u!1 &7714701049991140192
 GameObject:

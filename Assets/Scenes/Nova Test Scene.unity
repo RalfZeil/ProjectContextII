@@ -964,17 +964,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 7964945426028315310, guid: d3f601debcb41bc439185f16aa5f3825,
     type: 3}
-  factoryPrefab: {fileID: 7125914351763239744, guid: 01332c8b185ece544a891ff73285d512,
+  factoryPrefab: {fileID: 6476530157644892865, guid: 58bd7ee7744bd7c40bcd1e9c83b7ef38,
     type: 3}
-  housePrefab: {fileID: 7125914351763239744, guid: b6584455f0bc05c4bb6f624ac495bc96,
+  housePrefab: {fileID: 4356945854375343105, guid: da0db2155d625e74b934df442a7904b6,
     type: 3}
-  grasslandPrefab: {fileID: 7125914351763239744, guid: 48300676a47dc6f439b5339327dbf1d1,
+  grasslandPrefab: {fileID: 142256618506134245, guid: 5333de0ca6b2f554fa7a139fb4ce5c5b,
     type: 3}
   startBuildingPrefabs:
-  - {fileID: 7125914351763239744, guid: bad44f0079469ec4ba1913a7691bae93, type: 3}
-  - {fileID: 7125914351763239744, guid: 978c2095eded86044858112c5b2eb9d0, type: 3}
-  - {fileID: 7125914351763239744, guid: 55f96fd1c51a40645a613ebbd6a87a62, type: 3}
-  - {fileID: 7125914351763239744, guid: 4aa18b16187b667478ba16c017b2d94f, type: 3}
+  - {fileID: 1047079210350349696, guid: f8dca78cf5d94e047a223563bc26da1b, type: 3}
+  - {fileID: 962425860691996757, guid: 5ea84bda51da53c4994076482f5f535f, type: 3}
+  - {fileID: 8558805882640439534, guid: 828eba77a8a8de143b88b0cf582d20ce, type: 3}
+  - {fileID: 4267730586177075793, guid: 2444f95c1f2aa93479940b2ce1cc2216, type: 3}
   gridWidth: 5
   gridHeight: 5
   maxUpdateCycles: 100

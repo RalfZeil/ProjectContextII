@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CardStructure : Structure
+public class CardStructure : StructureFunction
 {
+    [SerializeField] private string cardName;
+    [SerializeField] private CardSettings.CardType createdCardType;
     [SerializeField] private GameObject createdCardPrefab;
     private Transform createdCard;
     protected override bool CanActivate()
@@ -14,7 +16,9 @@ public class CardStructure : Structure
 
     protected override void Activate()
     {
-        createdCard = Instantiate(createdCardPrefab).transform;
+        if (createdCardType == CardSettings.CardType.Structure) createdCard = Card.CreateBuildCard(cardName).transform;
+        else if (createdCardType == CardSettings.CardType.Modification) createdCard = Card.CreateModifyCard(cardName).transform;
+        else createdCard = Instantiate(createdCardPrefab).transform;
         createdCard.position = transform.position;
     }
 }

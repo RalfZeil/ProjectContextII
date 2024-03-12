@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c20369345fb164699c90f23d7fb24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardEffect: {fileID: 0}
+  cardEffect: {fileID: 8943513663991605765}
   cardSettings: {fileID: 11400000, guid: 1e82b4b157331db4c881d59258a0d3ee, type: 2}
   titleText: {fileID: 5750258180393669830}
   typeText: {fileID: 6543497408887710490}

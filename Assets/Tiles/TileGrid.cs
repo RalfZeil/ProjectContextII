@@ -294,6 +294,17 @@ public class TileGrid : MonoBehaviour
         return structures.ToList<Structure>();
     }
 
+    public static List<StructureFunction> GetStructureFunctions()
+    {
+        HashSet<StructureFunction> functions = new();
+        foreach (Tile tile in instance.tiles) if (tile.structure)
+            {
+                StructureFunction function = tile.structure.GetComponent<StructureFunction>();
+                if (function) functions.Add(function);
+            }
+        return functions.ToList<StructureFunction>();
+    }
+
     public static List<Attribute> GetAllAttributes()
     {
         List<Attribute> attributes = new();
