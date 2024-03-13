@@ -19,7 +19,7 @@ public class MissionManager : MonoBehaviour
     {
         foreach (Mission mission in GetMissions())
         {
-            mission.transform.localPosition = new Vector3(0, -instance.missionPositionSpacing * mission.transform.GetSiblingIndex(), 0);
+            mission.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -instance.missionPositionSpacing * mission.transform.GetSiblingIndex());
         }
     }
 
@@ -30,22 +30,18 @@ public class MissionManager : MonoBehaviour
         UpdateMissionPositions();
     }
 
-    public static void CheckMissions()
+    public static void CompleteMission(Mission mission)
     {
-        foreach (Mission mission in GetMissions())
-        {
-            if (mission.IsCompleted())
-            {
-                mission.GetReward();
-                mission.isJustCompleted = true;
-                RemoveMission(mission);
-            }
-        }
+        mission.GetReward();
+        mission.isJustCompleted = true;
+        RemoveMission(mission);
     }
 
     private static void RemoveMission(Mission mission)
     {
+        mission.transform.SetParent(null);
         Destroy(mission.gameObject);
+        UpdateMissionPositions();
     }
 
     public static Mission[] GetMissions()

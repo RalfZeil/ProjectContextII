@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CardData
   m_EditorClassIdentifier: 
   handSpacing: 1.2
-  zSpacing: 3
+  zSpacing: 5
   hoverDistance: 0.5
   baseCameraDistance: 70
   selectedCameraDistance: 20
@@ -30,6 +30,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8b27d586b94bf494591770867305cfb8, type: 2}
   - {fileID: 2100000, guid: 4f5a30f3a5303c041b09aff511637f76, type: 2}
   - {fileID: 2100000, guid: 1cfdd66e427c1b24b92f14f301f47928, type: 2}
+  missionBackgrounds:
+  - {fileID: 21300000, guid: 2a42d1d72c3c52b4bae0a10b4bd31d5c, type: 3}
+  - {fileID: 21300000, guid: 7f6f9019c870dc144a17b8ce105e2c9a, type: 3}
+  - {fileID: 21300000, guid: dc4105713b0b92a4687e8ec8bcfd1d68, type: 3}
   modelPosition: {x: 0, y: 0.25, z: -0.5}
   modelRotation: {x: -22.5, y: 45, z: -22.5}
   modelSize: {x: 0.3, y: 0.3, z: 0.3}
@@ -37,9 +41,9 @@ MonoBehaviour:
     type: 2}
   structurePreviewMaterialInvalid: {fileID: 2100000, guid: 70636ac29b8b52b4ebd3bc972d35316a,
     type: 2}
-  buildCardPrefab: {fileID: 5488580198678690466, guid: 1aa68bac6b92b2b4e89aed11225fab15,
+  buildCardPrefab: {fileID: 853491896695680575, guid: 3427ac788c5f2374cbe50d0e3411dd81,
     type: 3}
-  modifyCardPrefab: {fileID: 5488580198678690466, guid: d6d12a0c5e3653b499d6dc0e1bd406df,
+  modifyCardPrefab: {fileID: 8797166393175347617, guid: 307d5cd27952a51419295d0b5694b83d,
     type: 3}
   tooltipPosition: {x: 0, y: 2, z: 0}
   tooltipOffset: {x: 1.2, y: 0, z: 0}

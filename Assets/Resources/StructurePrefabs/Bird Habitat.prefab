@@ -690,6 +690,12 @@ PrefabInstance:
       propertyPath: baseCooldown
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 2783270567757370545, guid: 0daa613b6f01ba94583d843fb360c5ba,
+        type: 3}
+      propertyPath: createdMissionPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 3768443995986186404, guid: dd910816147974549988d4ae0ae46740,
+        type: 3}
     - target: {fileID: 3320344253094216906, guid: 0daa613b6f01ba94583d843fb360c5ba,
         type: 3}
       propertyPath: m_Name

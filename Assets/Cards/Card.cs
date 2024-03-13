@@ -21,6 +21,8 @@ public class Card : MonoBehaviour
     private bool isReturning = false;
 
     [HideInInspector] public bool wasPlayed = false, isHovered = false;
+    [HideInInspector] public delegate void CardPlayAction(CardEffect card);
+    public static event CardPlayAction OnCardPlay;
 
     public static Card heldCard = null;
     private static CardSettings settings;
@@ -229,14 +231,13 @@ public class Card : MonoBehaviour
     private void Play()
     {
         wasPlayed = true;
-        MissionManager.CheckMissions();
-        if (!cardEffect.isQuick) TimeManager.IncrementTurnCount();
-        MissionManager.CheckMissions();
 
         foreach (Attribute attribute in previewAttributes) attribute.DeleteAttribute();
         Destroy(gameObject);
 
         cardEffect.Play();
+
+        OnCardPlay(cardEffect);
     }
 
     public static GameObject CreateBuildCard(string structureName)

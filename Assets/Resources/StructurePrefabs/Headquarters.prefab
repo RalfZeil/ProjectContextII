@@ -260,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 183144859102382336, guid: 9e57784b6fa0db846a71403df290eb87,
         type: 3}
       propertyPath: color
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 183144859102382336, guid: 9e57784b6fa0db846a71403df290eb87,
         type: 3}
@@ -336,7 +336,7 @@ PrefabInstance:
         type: 3}
       propertyPath: createdCardPrefab
       value: 
-      objectReference: {fileID: 5488580198678690466, guid: a39ca6d46d8958c4e8f76af55236850d,
+      objectReference: {fileID: 5356910959140876429, guid: 9ebe2e5c3b7a4bc4f801a151ce12c46f,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:

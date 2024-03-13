@@ -27,6 +27,16 @@ public class TimeManager : MonoBehaviour
         December
     } ;
 
+    private void OnEnable()
+    {
+        Card.OnCardPlay += CheckCardPlayed;
+    }
+
+    private void OnDisable()
+    {
+        Card.OnCardPlay -= CheckCardPlayed;
+    }
+
     private void Start()
     {
         instance = this;
@@ -41,10 +51,15 @@ public class TimeManager : MonoBehaviour
         turnDisplay.text = currentYear + "\n" + currentMonth;
     }
 
-    public static void IncrementTurnCount()
+    private void CheckCardPlayed(CardEffect card)
+    {
+        if (!card.isQuick) IncrementTurnCount();
+    }
+
+    private void IncrementTurnCount()
     {
         turnCount++;
-        instance.UpdateTurnDisplay();
+        UpdateTurnDisplay();
 
         foreach (StructureFunction function in TileGrid.GetStructureFunctions()) function.TakeTurn();
     }

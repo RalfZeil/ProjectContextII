@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FocusCardEffect : CardEffect
 {
+    [SerializeField] private GameObject model;
     [SerializeField] private int boostAmount;
 
     public override bool CanPlay()
@@ -24,5 +25,10 @@ public class FocusCardEffect : CardEffect
             StructureFunction function = tile.structure.GetComponent<StructureFunction>();
             if (function) function.TakeTurn(boostAmount);
         }
+    }
+
+    public override GameObject GetModel()
+    {
+        return model;
     }
 }

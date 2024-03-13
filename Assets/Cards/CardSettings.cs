@@ -11,6 +11,7 @@ public class CardSettings : ScriptableObject
     public enum CardType {Structure, Modification, Action};
     public List<Color> cardColors;
     public List<Material> cardBases, tooltipBackgrounds;
+    public List<Sprite> missionBackgrounds;
 
     public Vector3 modelPosition, modelRotation, modelSize;
 
@@ -34,5 +35,10 @@ public class CardSettings : ScriptableObject
     public Material GetTooltipBackground(CardColor color)
     {
         return tooltipBackgrounds[(int)color];
+    }
+
+    public Sprite GetMissionBackground(CardColor color)
+    {
+        return missionBackgrounds[(int)color];
     }
 }

@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class TestMission : Mission
 {
-    public override bool IsCompleted()
-    {
-        return false;
-    }
+    
 }
