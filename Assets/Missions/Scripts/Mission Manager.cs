@@ -32,7 +32,7 @@ public class MissionManager : MonoBehaviour
 
     public static void CompleteMission(Mission mission)
     {
-        mission.GetReward();
+        mission.missionEffect.GetReward();
         mission.isJustCompleted = true;
         RemoveMission(mission);
     }

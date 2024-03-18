@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class StructureFunction : MonoBehaviour
 {
     [SerializeField] private int baseCooldown;
     [HideInInspector] public int functionTimer = 0;
+    private Structure structure;
+
+    private void Awake()
+    {
+        structure = GetComponent<Structure>();
+    }
 
     private void Update()
     {
@@ -15,10 +22,10 @@ public class StructureFunction : MonoBehaviour
 
     private void UpdateTimerDisplay()
     {
-        Structure structure = GetComponent<Structure>();
-        structure.timerDisplay.enabled = TileGrid.isShowingTimers;
-        structure.timerDisplay.transform.rotation = Camera.main.transform.rotation;
-        structure.timerDisplay.text = (FunctionCooldown() - functionTimer).ToString();
+        structure.timerDisplay.rotation = Camera.main.transform.rotation;
+        structure.timerDisplay.GetComponentInChildren<TextMeshPro>().text = (FunctionCooldown() - functionTimer).ToString();
+        foreach (Renderer renderer in structure.timerDisplay.GetComponentsInChildren<Renderer>()) renderer.enabled = TileGrid.isShowingTimers;
+        foreach (Image renderer in structure.timerDisplay.GetComponentsInChildren<Image>()) renderer.enabled = TileGrid.isShowingTimers;
     }
 
     protected virtual bool CanActivate()
@@ -33,7 +40,7 @@ public class StructureFunction : MonoBehaviour
 
     private int FunctionCooldown()
     {
-        return baseCooldown - GetComponent<Structure>().attributeBonus;
+        return baseCooldown - structure.attributeBonus;
     }
 
     public void TakeTurn(int amount = 1)
@@ -46,6 +53,10 @@ public class StructureFunction : MonoBehaviour
             Activate();
             functionTimer = 0;
         }
+
+        float progress = 0;
+        if (FunctionCooldown() > 0) progress = (FunctionCooldown() - functionTimer) / (float)FunctionCooldown();
+        structure.timerProgressBar.fillAmount = progress;
     }
 
     public bool CanBeBoosted()

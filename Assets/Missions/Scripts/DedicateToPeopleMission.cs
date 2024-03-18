@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DedicateToPeopleMission : Mission
+public class DedicateToPeopleMission : MissionEffect
 {
     private void OnEnable()
     {
@@ -20,8 +20,8 @@ public class DedicateToPeopleMission : Mission
         else count = 0;
         progress = (float)count / target;
 
-        UpdateDisplay();
-        if (count == target) Complete();
+        mission.UpdateDisplay();
+        if (count == target) mission.Complete();
     }
 
     public override void GetReward()

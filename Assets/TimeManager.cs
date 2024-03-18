@@ -48,7 +48,7 @@ public class TimeManager : MonoBehaviour
     {
         string currentYear = (startingYear + turnCount / 12).ToString();
         string currentMonth = ((months)(turnCount % 12)).ToString();
-        turnDisplay.text = currentYear + "\n" + currentMonth;
+        turnDisplay.text = currentYear + " - " + currentMonth;
     }
 
     private void CheckCardPlayed(CardEffect card)

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Structure : MonoBehaviour
 {
     public GameObject model, attributeObject;
-    public TextMeshPro timerDisplay;
+    public Transform timerDisplay;
+    public Image timerProgressBar;
     [SerializeField] private Tooltip tooltip;
     [SerializeField] private StructureFunction function;
     public bool isPermanent, isReplayable;

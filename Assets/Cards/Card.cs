@@ -70,14 +70,16 @@ public class Card : MonoBehaviour
     private void CreateModel()
     {
         GameObject model = Instantiate(cardEffect.GetModel());
+        model.transform.parent = graphicsObject;
+        model.transform.position = Vector3.zero;
+        model.transform.localRotation = Quaternion.Euler(cardSettings.modelRotation);
+
         Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
         foreach (Renderer renderer in model.transform.GetComponentsInChildren<Renderer>()) bounds.Encapsulate(renderer.bounds);
 
-        model.transform.parent = graphicsObject;
-        model.transform.localPosition = cardSettings.modelPosition;
-        model.transform.localRotation = Quaternion.Euler(cardSettings.modelRotation);
         float size = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z, 0.001f);
         model.transform.localScale = cardSettings.modelSize / size;
+        model.transform.localPosition = cardSettings.modelPosition - bounds.center * model.transform.localScale.x;
     }
 
     private void CreatePreviewModel()

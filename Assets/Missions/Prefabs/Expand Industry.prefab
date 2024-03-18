@@ -121,12 +121,12 @@ PrefabInstance:
     - target: {fileID: 6903224070470554141, guid: 9d695f7050cb53440a385d37784ac757,
         type: 3}
       propertyPath: m_text
-      value: Fill target tiles with Industry
+      value: Build Industry in target tiles
       objectReference: {fileID: 0}
     - target: {fileID: 6903224070470554141, guid: 9d695f7050cb53440a385d37784ac757,
         type: 3}
       propertyPath: m_fontSize
-      value: 9.25
+      value: 9.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -173,6 +173,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6088555298089448924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1467613367790578468, guid: 9d695f7050cb53440a385d37784ac757,
+    type: 3}
+  m_PrefabInstance: {fileID: 4620946508935864056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7206123152243764895 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2603551786522456167, guid: 9d695f7050cb53440a385d37784ac757,
@@ -196,8 +208,9 @@ MonoBehaviour:
   targetText: {fileID: 3005658000965863235}
   background: {fileID: 8063977748824889358}
   progressBar: {fileID: 1102688116464287750}
+  highlight: {fileID: 6088555298089448924}
   color: 2
-  target: 4
+  target: 1
   isJustCompleted: 0
 --- !u!114 &8063977748824889358 stripped
 MonoBehaviour:
