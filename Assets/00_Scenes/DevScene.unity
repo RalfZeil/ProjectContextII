@@ -24987,7 +24987,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325501976}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.027945042, y: 0.000000017199662, z: -4.808331e-10, w: 0.9996095}
+  m_LocalRotation: {x: 0.027945044, y: -0.00000001719966, z: 4.808331e-10, w: 0.9996095}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27081,7 +27081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429733404}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.02794504, y: 0.000000034449673, z: -9.630736e-10, w: 0.99960953}
+  m_LocalRotation: {x: 0.02794504, y: -0.000000034399324, z: 9.61666e-10, w: 0.99960953}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -39612,7 +39612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfde336f21604a4cba4f10f47389672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestSpawnedCard: {fileID: 11400000, guid: cdfcbcdcb6c38c04ca26ccc33f61a454, type: 2}
+  TestSpawnedCard: {fileID: 11400000, guid: cce915d57a49ccf4296435fb3ea82e1f, type: 2}
 --- !u!4 &2051990031
 Transform:
   m_ObjectHideFlags: 0
