@@ -17,6 +17,11 @@ public class TileGrid : MonoBehaviour
     public static TileGrid instance;
     public static int targetRotation = 0;
 
+    [HideInInspector] public delegate void BuildEvent(Structure structure);
+    public static event BuildEvent OnBuild;
+    [HideInInspector] public delegate void ModifyEvent(Modification modification);
+    public static event ModifyEvent OnModify;
+
     private void Start()
     {
         instance = this;
@@ -47,16 +52,32 @@ public class TileGrid : MonoBehaviour
 
         for (int i = 0; i < factoryCount; i++) BuildInRandomEmptySpot(factoryPrefab);
 
-        for (int i = 0; i < houseClusterCount; i++) BuildInRandomEmptySpot(housePrefab);
+        for (int i = 0; i < houseClusterCount; i++)
+        {
+            Tile origin = BuildInRandomEmptySpot(housePrefab);
+            List<Tile> candidateTiles = new();
+            foreach (Tile tile in SurroundingTiles(origin)) if (!tile.structure) candidateTiles.Add(tile);
+            int houseCount = houseClusterSize + Random.Range(0, houseClusterRandomness + 1);
+            for (int j = 0; j < houseCount; j++)
+            {
+                if (candidateTiles.Count == 0) break;
+                Tile newBuildTile = candidateTiles[Random.Range(0, candidateTiles.Count)];
+                candidateTiles.Remove(newBuildTile);
+                Build(housePrefab, new List<Tile> { newBuildTile });
+                foreach (Tile tile in SurroundingTiles(newBuildTile)) if (!tile.structure && !candidateTiles.Contains(tile)) candidateTiles.Add(tile);
+            }
+        }
 
         foreach (Tile tile in tiles) if (!tile.structure && Random.value < grassLandRatio) Build(grasslandPrefab, new List<Tile> { tile });
     }
 
-    private void BuildInRandomEmptySpot(GameObject prefab)
+    private Tile BuildInRandomEmptySpot(GameObject prefab)
     {
         RandomizeRotation();
         Structure structure = prefab.GetComponent<Structure>();
-        Build(prefab, GetCoveredTiles(RandomEmptyTile(structure.coveredTiles), structure.coveredTiles));
+        Tile randomTile = RandomEmptyTile(structure.coveredTiles);
+        Build(prefab, GetCoveredTiles(randomTile, structure.coveredTiles));
+        return randomTile;
     }
 
     private static Tile RandomTile()
@@ -79,6 +100,17 @@ public class TileGrid : MonoBehaviour
     private static void RandomizeRotation()
     {
         targetRotation = Random.Range(0, 4) * 90;
+    }
+
+    private static List<Tile> SurroundingTiles(Tile tile)
+    {
+        List<Tile> surroundingTiles = new();
+        if (tile.x > 0) surroundingTiles.Add(instance.GetTileAt(tile.x - 1, tile.y));
+        if (tile.x < instance.gridWidth - 1) surroundingTiles.Add(instance.GetTileAt(tile.x + 1, tile.y));
+        if (tile.y > 0) surroundingTiles.Add(instance.GetTileAt(tile.x, tile.y - 1));
+        if (tile.y > instance.gridHeight - 1) surroundingTiles.Add(instance.GetTileAt(tile.x, tile.y + 1));
+
+        return surroundingTiles;
     }
 
     private void Update()
@@ -208,6 +240,8 @@ public class TileGrid : MonoBehaviour
         PlaceAttributes(structure.attributes, tiles[0]);
 
         UpdateAttributeEffects();
+
+        OnBuild?.Invoke(structure);
     }
 
     public static void PlaceAttributes(List<Attribute> attributes, Tile originTile)
@@ -242,6 +276,8 @@ public class TileGrid : MonoBehaviour
         modification.structure.UpdateAttributeLayering();
 
         UpdateAttributeEffects();
+
+        OnModify?.Invoke(modification);
     }
 
     public static void UpdateAttributeEffects()
@@ -330,6 +366,24 @@ public class TileGrid : MonoBehaviour
         return natureGrid;
     }
 
+    public static bool[,] GetBoolNatureGrid()
+    {
+        bool[,] natureGrid = new bool[instance.gridWidth, instance.gridHeight];
+
+        for (int x = 0; x < instance.gridWidth; x++)
+        {
+            for (int y = 0; y < instance.gridHeight; y++)
+            {
+                foreach (Attribute attribute in instance.tiles[x, y].attributes)
+                {
+                    if (attribute.type == Attribute.AttributeType.PositiveNature) natureGrid[x, y] = true;
+                }
+            }
+        }
+
+        return natureGrid;
+    }
+
     public static int countArea(int x, int y, int[,] grid, bool[,] visited)
     {
         if (x < 0 || x >= grid.GetLength(0) || y < 0 || y >= grid.GetLength(1) || visited[x, y]) return 0;
@@ -343,5 +397,107 @@ public class TileGrid : MonoBehaviour
         area += countArea(x - 1, y, grid, visited);
         area += countArea(x, y - 1, grid, visited);
         return area;
+    }
+
+    public static List<Tile> GetTilesWithDistanceFromHabitat(int habitatX, int habitatY, int distance)
+    {
+        int[,] distanceGrid = GetDistanceGrid(habitatX, habitatY, GetBoolNatureGrid());
+        List<Tile> tiles = new();
+        for (int x = 0; x < distanceGrid.GetLength(0); x++)
+        {
+            for (int y = 0; y < distanceGrid.GetLength(1); y++)
+            {
+                if (distanceGrid[x, y] == distance) tiles.Add(instance.GetTileAt(x, y));
+            }
+        }
+        return tiles;
+    }
+
+    public static int[,] GetDistanceGrid(int originX, int originY, bool[,] baseGrid)
+    {
+        int[,] distanceGrid = new int[baseGrid.GetLength(0), baseGrid.GetLength(1)];
+        for (int x = 0; x < distanceGrid.GetLength(0); x++) for (int y = 0; y < distanceGrid.GetLength(1); y++) distanceGrid[x, y] = int.MaxValue;
+        distanceGrid[originX, originY] = 0;
+
+        int distance = 0;
+        bool isDone = false;
+        while(!isDone)
+        {
+            for (int x = 0; x < distanceGrid.GetLength(0); x++)
+            {
+                for (int y = 0; y < distanceGrid.GetLength(1); y++) if (distanceGrid[x, y] == distance)
+                    {
+                        DistanceGridStep(x, y, distanceGrid, baseGrid);
+                    }
+            }
+
+            distance++;
+            isDone = true;
+            foreach (int d in distanceGrid) if (d == int.MaxValue) isDone = false;
+        }
+
+        return distanceGrid;
+    }
+
+    private static void DistanceGridStep(int x, int y, int[,] distanceGrid, bool[,] baseGrid)
+    {
+        (int, int)[] nextSteps = { (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1) };
+        foreach ((int, int) step in nextSteps)
+        {
+            if (IsOnGrid(step.Item1, step.Item2, baseGrid) && distanceGrid[step.Item1, step.Item2] == int.MaxValue)
+            {
+                if (baseGrid[step.Item1, step.Item2])
+                {
+                    distanceGrid[step.Item1, step.Item2] = distanceGrid[x, y];
+                    DistanceGridStep(step.Item1, step.Item2, distanceGrid, baseGrid);
+                } else
+                {
+                    distanceGrid[step.Item1, step.Item2] = distanceGrid[x, y] + 1;
+                }
+            }
+        }
+    }
+
+    private static void RecursiveDistanceGrid(int x, int y, int[,] distanceGrid, bool[,] baseGrid, int currentDistance)
+    {
+        distanceGrid[x, y] = currentDistance;
+
+        (int, int)[] nextSteps = { (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1) };
+        foreach ((int, int) step in nextSteps) if (IsOnGrid(step.Item1, step.Item2, baseGrid))
+            {
+                int stepDistance = currentDistance + (baseGrid[step.Item1, step.Item2] ? 0 : 1);
+                if (stepDistance < distanceGrid[step.Item1, step.Item2]) RecursiveDistanceGrid(step.Item1, step.Item2, distanceGrid, baseGrid, stepDistance);
+            }
+    }
+
+    private static bool IsOnGrid(int x, int y, bool[,] baseGrid)
+    {
+        return (x >= 0 && y >= 0 && x < baseGrid.GetLength(0) && y < baseGrid.GetLength(1));
+    }
+
+    private static bool[,] ExpandedGridByOne(bool [,] grid)
+    {
+        bool[,] newGrid = grid.Clone() as bool[,];
+
+        for (int x = 0; x < newGrid.GetLength(0); x++)
+        {
+            for (int y = 0; y < newGrid.GetLength(1); y++) if (newGrid[x, y])
+            {
+                if (x > 0)                          newGrid[x - 1, y] = true;
+                if (x < newGrid.GetLength(0) - 1)   newGrid[x + 1, y] = true;
+                if (y > 0)                          newGrid[x, y - 1] = true;
+                if (y < newGrid.GetLength(1) - 1)   newGrid[x, y + 1] = true;
+            }
+        }
+
+        return newGrid;
+    }
+
+    public static List<Structure> GetHabitats() //PLACEHOLDER IMPLEMENTATION
+    {
+        List<Structure> habitats = new();
+        foreach (Structure structure in GetStructures())
+            if (structure.color == CardSettings.CardColor.Nature && structure.GetComponent<MissionStructure>()) habitats.Add(structure);
+        return habitats;
     }
 }

@@ -1468,14 +1468,14 @@ MonoBehaviour:
   - {fileID: 962425860691996757, guid: 5ea84bda51da53c4994076482f5f535f, type: 3}
   - {fileID: 8558805882640439534, guid: 828eba77a8a8de143b88b0cf582d20ce, type: 3}
   - {fileID: 4267730586177075793, guid: 2444f95c1f2aa93479940b2ce1cc2216, type: 3}
-  gridWidth: 5
-  gridHeight: 5
+  gridWidth: 8
+  gridHeight: 8
   maxUpdateCycles: 100
-  factoryCount: 1
-  houseClusterCount: 2
-  houseClusterSize: 5
-  houseClusterRandomness: 0
-  grassLandRatio: 0.5
+  factoryCount: 3
+  houseClusterCount: 3
+  houseClusterSize: 6
+  houseClusterRandomness: 4
+  grassLandRatio: 0.1
   targetedTile: {fileID: 0}
 --- !u!4 &1273809162 stripped
 Transform:

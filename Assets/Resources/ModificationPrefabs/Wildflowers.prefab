@@ -146,11 +146,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3287729750830840098, guid: b6063cf455b0d6a48a26956a2dafac34,
-        type: 3}
-      propertyPath: type
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -223,11 +218,6 @@ PrefabInstance:
     - target: {fileID: 5999806926009039366, guid: 08d20fdebd79c3d4cbe51d9004b2eebc,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7809446576280988131, guid: 08d20fdebd79c3d4cbe51d9004b2eebc,
-        type: 3}
-      propertyPath: type
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7809446576280988131, guid: 08d20fdebd79c3d4cbe51d9004b2eebc,
@@ -311,11 +301,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809446576280988131, guid: 08d20fdebd79c3d4cbe51d9004b2eebc,
         type: 3}
-      propertyPath: type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7809446576280988131, guid: 08d20fdebd79c3d4cbe51d9004b2eebc,
-        type: 3}
       propertyPath: relativeCoordinates.x
       value: 1
       objectReference: {fileID: 0}
@@ -347,6 +332,11 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Spread joy :)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5349578962542345208, guid: 49f7160a98eb04d4ca6e6165b89e5194,
+        type: 3}
+      propertyPath: isReplacing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6691192565799497297, guid: 49f7160a98eb04d4ca6e6165b89e5194,
         type: 3}

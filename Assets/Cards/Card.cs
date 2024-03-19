@@ -239,7 +239,7 @@ public class Card : MonoBehaviour
 
         cardEffect.Play();
 
-        OnCardPlay(cardEffect);
+        OnCardPlay?.Invoke(cardEffect);
     }
 
     public static GameObject CreateBuildCard(string structureName)

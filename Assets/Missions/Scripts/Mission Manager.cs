@@ -40,6 +40,7 @@ public class MissionManager : MonoBehaviour
     private static void RemoveMission(Mission mission)
     {
         mission.transform.SetParent(null);
+        mission.missionEffect.DestroyVisuals();
         Destroy(mission.gameObject);
         UpdateMissionPositions();
     }

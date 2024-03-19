@@ -8,12 +8,13 @@ using TMPro;
 public class Mission : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private CardSettings cardSettings;
+    public GameObject indicatorPrefab;
     [SerializeField] private TextMeshProUGUI countText, targetText;
-    [SerializeField] private Image background, progressBar, highlight;
+    [SerializeField] private Image background, progressBar, highlight, completedIcon;
 
     private bool isPermaSelected = false;
     [HideInInspector] public MissionEffect missionEffect;
-    [HideInInspector] public bool isJustCompleted = false;
+    [HideInInspector] public bool isJustCompleted = false, isCompleted = false;
 
     private void Awake()
     {
@@ -37,7 +38,8 @@ public class Mission : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void Complete()
     {
-        MissionManager.CompleteMission(this);
+        isCompleted = true;
+        completedIcon.enabled = true;
     }
 
     public void OnPointerEnter(PointerEventData data)
@@ -52,7 +54,8 @@ public class Mission : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerClick(PointerEventData data)
     {
-        isPermaSelected = !isPermaSelected;
+        if(isCompleted) MissionManager.CompleteMission(this);
+        else isPermaSelected = !isPermaSelected;
     }
 
     private void UpdateSelection(bool isSelected)
