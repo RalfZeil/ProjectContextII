@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CardData", menuName = "ScriptableObjects/CardSettings", order = 1)]
 public class CardSettings : ScriptableObject
 {
-    public float handSpacing, zSpacing, hoverDistance, baseCameraDistance, selectedCameraDistance, moveSpeed;
+    public float handSpacing, zSpacing, hoverDistance, baseCameraDistance, selectedCameraDistance, moveSpeed, cardPickSpacing;
 
     public enum CardColor {Nature, People, Industry};
     public enum CardType {Structure, Modification, Action};
@@ -18,7 +18,6 @@ public class CardSettings : ScriptableObject
     public Material structurePreviewMaterialValid, structurePreviewMaterialInvalid;
 
     public GameObject buildCardPrefab, modifyCardPrefab;
-
 
     public Vector3 tooltipPosition, tooltipOffset;
 

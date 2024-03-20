@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     [SerializeField] private float moveSpeed, rotationSpeed;
-    [SerializeField] private Transform focusPoint, cardParent, tooltipParent;
+    [SerializeField] private Transform focusPoint, tooltipParent;
+    public Transform cardParent, cardPickParent;
 
     private float targetRotation = 0;
 

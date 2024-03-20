@@ -25,11 +25,14 @@ public class Card : MonoBehaviour
     public static event CardPlayAction OnCardPlay;
 
     public static Card heldCard = null;
-    private static CardSettings settings;
+    public static CardSettings settings;
 
     private void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (!enabled) return;
+        isHovered = true;
+
+        if (Input.GetMouseButtonDown(0))
         {
             isSelected = true;
             relativeMousePosition = transform.localPosition - MouseLocalPosition();
@@ -38,8 +41,6 @@ public class Card : MonoBehaviour
             if (returnToHand != null) StopCoroutine(returnToHand);
             isReturning = false;
         }
-
-        isHovered = true;
     }
 
     private void OnMouseExit()
@@ -234,7 +235,6 @@ public class Card : MonoBehaviour
     {
         wasPlayed = true;
 
-        foreach (Attribute attribute in previewAttributes) attribute.DeleteAttribute();
         Destroy(gameObject);
 
         cardEffect.Play();
@@ -242,19 +242,28 @@ public class Card : MonoBehaviour
         OnCardPlay?.Invoke(cardEffect);
     }
 
-    public static GameObject CreateBuildCard(string structureName)
+    public static GameObject CreateBuildCard(string structureName, bool isPick = false)
     {
         GameObject card = Instantiate(settings.buildCardPrefab);
         card.GetComponent<BuildCard>().Initialize((GameObject)Resources.Load("StructurePrefabs/" + structureName));
 
+        if (isPick)card.AddComponent<PickableCard>();
+
         return card;
     }
 
-    public static GameObject CreateModifyCard(string modificationName)
+    public static GameObject CreateModifyCard(string modificationName, bool isPick = false)
     {
         GameObject card = Instantiate(settings.modifyCardPrefab);
         card.GetComponent<ModificationCard>().Initialize((GameObject)Resources.Load("ModificationPrefabs/" + modificationName));
 
+        if (isPick) card.AddComponent<PickableCard>();
+
         return card;
+    }
+
+    private void OnDestroy()
+    {
+        foreach (Attribute attribute in previewAttributes) attribute.DeleteAttribute();
     }
 }

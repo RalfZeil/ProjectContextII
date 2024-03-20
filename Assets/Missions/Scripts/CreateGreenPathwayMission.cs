@@ -46,6 +46,6 @@ public class CreateGreenPathwayMission : MissionEffect
 
     public override void GetReward()
     {
-
+        for(int i = 0; i < 3; i++) Card.CreateBuildCard("Flowerbed", true);
     }
 }

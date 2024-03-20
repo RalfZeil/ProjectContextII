@@ -433,6 +433,37 @@ RectTransform:
   m_AnchoredPosition: {x: 1866, y: -54}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &436619100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 436619101}
+  m_Layer: 0
+  m_Name: Card Picks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &436619101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436619100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1569465942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &451667665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +2000,7 @@ Transform:
   - {fileID: 513396352}
   - {fileID: 980984682}
   - {fileID: 693451199}
+  - {fileID: 436619101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!114 &1569465943
@@ -1988,6 +2020,7 @@ MonoBehaviour:
   focusPoint: {fileID: 980984682}
   cardParent: {fileID: 513396352}
   tooltipParent: {fileID: 693451199}
+  cardPickParent: {fileID: 436619101}
 --- !u!1 &1588926080
 GameObject:
   m_ObjectHideFlags: 0
