@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 59a598ff2fc5e8e4d8741f28f05e8cfa
+  - enabled: 1
     path: Assets/Scenes/Nova Test Scene.unity
     guid: b468279388a59da47b18e9d944badd7e
+  - enabled: 1
+    path: Assets/Scenes/End Menu.unity
+    guid: 1f7289a66a681c6478c78c1573dce91c
   m_configObjects: {}
