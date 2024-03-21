@@ -12,6 +12,9 @@ public class CameraControl : MonoBehaviour
 
     public static CameraControl instance;
 
+    [HideInInspector] public delegate void MoveCameraEvent();
+    public static event MoveCameraEvent OnCameraMove;
+
     private void Awake()
     {
         instance = this;
@@ -30,6 +33,8 @@ public class CameraControl : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) movement += new Vector3(-1, 0, 0);
         if (Input.GetKey(KeyCode.S)) movement += new Vector3(0, 0, -1);
         if (Input.GetKey(KeyCode.D)) movement += new Vector3(1, 0, 0);
+
+        if (movement != Vector3.zero) OnCameraMove?.Invoke();
 
         movement = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0) * movement;
 

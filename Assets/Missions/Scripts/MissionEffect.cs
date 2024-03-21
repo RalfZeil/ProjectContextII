@@ -44,6 +44,6 @@ public class MissionEffect : MonoBehaviour
 
     public virtual void GetReward()
     {
-
+        Card.settings.SpawnCardReward(color, Card.settings.cardRewardOptions);
     }
 }

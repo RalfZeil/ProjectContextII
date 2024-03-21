@@ -18,7 +18,7 @@ public class ExpandIndustryMission : MissionEffect
     public override void Setup()
     {
         List<Tile> candidateTiles = new();
-        foreach (Tile tile in TileGrid.instance.tiles) if (!IsIndustrial(tile)) candidateTiles.Add(tile);
+        foreach (Tile tile in TileGrid.instance.tiles) if (!IsIndustrial(tile) && (!tile.structure || !tile.structure.isPermanent)) candidateTiles.Add(tile);
 
         target = Mathf.Min(target, candidateTiles.Count);
         List<Tile> selectedTiles = candidateTiles.OrderBy(x => Random.value).Take(target).ToList();
@@ -35,13 +35,9 @@ public class ExpandIndustryMission : MissionEffect
     {
         count = 0;
         foreach (Tile tile in relatedTiles) if (IsIndustrial(tile)) count++;
+        progress = (float)count / target;
 
         mission.UpdateDisplay();
         if (count >= target) mission.Complete();
-    }
-
-    public override void GetReward()
-    {
-
     }
 }

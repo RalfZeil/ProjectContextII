@@ -10,9 +10,9 @@ public class FocusCardEffect : CardEffect
     public override bool CanPlay()
     {
         foreach (Tile tile in TileGrid.GetTargetedTiles()) if (tile.structure)
-            {
-                StructureFunction function = tile.structure.GetComponent<StructureFunction>();
-                if (function && function.CanBeBoosted()) return true;
+        {
+            StructureFunction function = tile.structure.GetComponent<StructureFunction>();
+            if (function && function.CanBeBoosted()) return true;
         }
 
         return false;

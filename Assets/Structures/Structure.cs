@@ -54,7 +54,7 @@ public class Structure : MonoBehaviour
 
     private void CreateAssociatedCard()
     {
-        Transform card = Card.CreateBuildCard(title).transform;
+        Transform card = Card.CreateCard(title).transform;
         card.position = transform.position;
     }
 

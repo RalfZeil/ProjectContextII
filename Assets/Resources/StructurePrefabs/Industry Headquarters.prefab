@@ -339,9 +339,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783270567757370545, guid: 0daa613b6f01ba94583d843fb360c5ba,
         type: 3}
+      propertyPath: createdMissionPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783270567757370545, guid: 0daa613b6f01ba94583d843fb360c5ba,
+        type: 3}
       propertyPath: createdMissionPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 7206123152243764895, guid: a474bd09392316649b218b703d6d5b08,
+        type: 3}
+    - target: {fileID: 2783270567757370545, guid: 0daa613b6f01ba94583d843fb360c5ba,
+        type: 3}
+      propertyPath: createdMissionPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3030250775656750583, guid: cabdb1d5eef74bb4b962d78663c175dc,
+        type: 3}
+    - target: {fileID: 2783270567757370545, guid: 0daa613b6f01ba94583d843fb360c5ba,
+        type: 3}
+      propertyPath: createdMissionPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7206123152243764895, guid: 095d64c744f543d41b55708c495a58d3,
+        type: 3}
+    - target: {fileID: 2783270567757370545, guid: 0daa613b6f01ba94583d843fb360c5ba,
+        type: 3}
+      propertyPath: createdMissionPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3030250775656750583, guid: 525d815deb73563468fbc481263641e3,
         type: 3}
     - target: {fileID: 3320344253094216906, guid: 0daa613b6f01ba94583d843fb360c5ba,
         type: 3}

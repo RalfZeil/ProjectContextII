@@ -33,7 +33,7 @@ public class PickableCard : MonoBehaviour
     private void Pick()
     {
         foreach (Transform card in transform.parent) if(card != transform) Destroy(card.gameObject);
-        transform.SetParent(CameraControl.instance.cardParent);
+        GetComponent<Card>().AddToHand();
         Destroy(this);
     }
 }

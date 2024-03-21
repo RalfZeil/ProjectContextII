@@ -5,6 +5,7 @@ using System.Linq;
 
 public class TileGrid : MonoBehaviour
 {
+    [SerializeField] private CardSettings cardSettings;
     [SerializeField] private GameObject tilePrefab, factoryPrefab, housePrefab, grasslandPrefab;
     [SerializeField] private List<GameObject> startBuildingPrefabs;
     [SerializeField] private int gridWidth, gridHeight, maxUpdateCycles, factoryCount, houseClusterCount, houseClusterSize, houseClusterRandomness;
@@ -21,6 +22,13 @@ public class TileGrid : MonoBehaviour
     public static event BuildEvent OnBuild;
     [HideInInspector] public delegate void ModifyEvent(Modification modification);
     public static event ModifyEvent OnModify;
+    [HideInInspector] public delegate void AttributeToggleEvent();
+    public static event AttributeToggleEvent OnAttributeToggle;
+
+    private void Awake()
+    {
+        Card.settings = cardSettings;
+    }
 
     private void Start()
     {
@@ -134,17 +142,23 @@ public class TileGrid : MonoBehaviour
 
         foreach (Attribute attribute in GetAllAttributes()) attribute.UpdateDisplay();
         foreach (Tile tile in instance.tiles) tile.PositionAttributes();
+
+        OnAttributeToggle?.Invoke();
     }
     public static void ToggleAttributeDisplay(Attribute.AttributeType type)
     {
         isShowingAttributes[(int) type] = !isShowingAttributes[(int) type];
         foreach (Attribute attribute in GetAllAttributes()) attribute.UpdateDisplay();
         foreach (Tile tile in instance.tiles) tile.PositionAttributes();
+
+        OnAttributeToggle?.Invoke();
     }
 
     public static void ToggleTimerDisplay()
     {
         isShowingTimers = !isShowingTimers;
+
+        OnAttributeToggle?.Invoke();
     }
 
     private void UpdateTarget()
