@@ -9,6 +9,7 @@ public class TileGrid : MonoBehaviour
     [SerializeField] private List<GameObject> startBuildingPrefabs;
     [SerializeField] private int gridWidth, gridHeight, maxUpdateCycles, factoryCount, houseClusterCount, houseClusterSize, houseClusterRandomness;
     [SerializeField] private float grassLandRatio;
+    [SerializeField] private bool allowInput = true;
 
     [HideInInspector] public Tile[,] tiles;
     [HideInInspector] public Tile targetedTile;
@@ -163,9 +164,13 @@ public class TileGrid : MonoBehaviour
 
     private Tile HoveredTile()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Tiles"))) return hit.transform.GetComponentInParent<Tile>();
+        if (allowInput)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Tiles"))) return hit.transform.GetComponentInParent<Tile>();
+        }
+
         return null;
     }
 
