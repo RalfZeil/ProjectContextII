@@ -5,20 +5,24 @@ public class StatsManager : MonoBehaviour
 {
     private List<Structure> allStructures = new();
 
+    private float scorePercentage;
+
     private void Update()
     {
         allStructures = TileGrid.GetStructures();
 
         if (allStructures == null) { return; }
 
-        Debug.Log(CalculateNatureCityBalance(allStructures));
+        scorePercentage = CalculateNatureCityBalance(allStructures);
     }
 
     private float CalculateNatureCityBalance(List<Structure> structures)
     {
-        int negativeBuilding = 0;
-        int natureBuilding = 0;
-        int cityBuilding = 0;
+        float negativeBuilding = 0;
+        float natureBuilding = 0;
+        float cityBuilding = 0;
+
+        Debug.Log("Given Structures: " + structures.Count);
 
         foreach (Structure structure in structures)
         {
@@ -32,6 +36,8 @@ public class StatsManager : MonoBehaviour
                 else if (attribute.type == Attribute.AttributeType.PositiveCivilisation) { cityBuilding++; }
             }
         }
+
+        Debug.Log("Values: " + negativeBuilding + " " + natureBuilding + " " + cityBuilding);
 
         float finalPercentage = ((natureBuilding + cityBuilding) / negativeBuilding) * 100;
 
