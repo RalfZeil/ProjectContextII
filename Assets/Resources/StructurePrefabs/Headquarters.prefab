@@ -272,6 +272,16 @@ PrefabInstance:
       propertyPath: description
       value: Your base of operations
       objectReference: {fileID: 0}
+    - target: {fileID: 183144859102382336, guid: 9e57784b6fa0db846a71403df290eb87,
+        type: 3}
+      propertyPath: isPermanent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 183144859102382336, guid: 9e57784b6fa0db846a71403df290eb87,
+        type: 3}
+      propertyPath: isReplayable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1540111642074502282, guid: 9e57784b6fa0db846a71403df290eb87,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -326,6 +336,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Headquarters
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318520591571675253, guid: 9e57784b6fa0db846a71403df290eb87,
+        type: 3}
+      propertyPath: cardName
+      value: Focus
       objectReference: {fileID: 0}
     - target: {fileID: 4318520591571675253, guid: 9e57784b6fa0db846a71403df290eb87,
         type: 3}

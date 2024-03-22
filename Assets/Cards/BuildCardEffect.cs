@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildCard : CardEffect
 {
-    [SerializeField] private GameObject structurePrefab;
+    public GameObject structurePrefab;
 
     public override bool CanPlay()
     {

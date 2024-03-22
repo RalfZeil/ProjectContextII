@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MissionManager : MonoBehaviour
 {
+    [SerializeField] private GameObject firstTutorialMission;
     [SerializeField] private float missionPositionSpacing;
     [SerializeField] private int maxMissionCount;
 
@@ -13,6 +14,11 @@ public class MissionManager : MonoBehaviour
     {
         instance = this;
         UpdateMissionPositions();
+    }
+
+    private void Start()
+    {
+        Add(Instantiate(firstTutorialMission).GetComponent<Mission>());
     }
 
     private static void UpdateMissionPositions()

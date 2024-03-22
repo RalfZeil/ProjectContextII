@@ -10,7 +10,7 @@ public class Card : MonoBehaviour
     [SerializeField] private CardSettings cardSettings;
     [SerializeField] private TextMeshPro titleText, typeText, descriptionText;
     [SerializeField] private MeshRenderer baseCard;
-    [SerializeField] private Transform graphicsObject, previewObject;
+    [SerializeField] private Transform graphicsObject, previewObject, attributePreviewObject;
 
     private List<Renderer> renderers = new();
     private List<Attribute> previewAttributes = new();
@@ -23,6 +23,8 @@ public class Card : MonoBehaviour
     [HideInInspector] public bool wasPlayed = false, isHovered = false;
     [HideInInspector] public delegate void CardPlayAction(CardEffect card);
     public static event CardPlayAction OnCardPlay;
+    [HideInInspector] public delegate void CardCreated(CardEffect card);
+    public static event CardCreated OnCardCreation;
 
     public static Card heldCard = null;
     public static CardSettings settings;
@@ -50,9 +52,8 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
-        if (!Card.settings) Card.settings = cardSettings;
+        AddToHand();
 
-        transform.parent = CameraControl.GetCardParent();
         transform.localRotation = Quaternion.identity;
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
 
@@ -66,6 +67,12 @@ public class Card : MonoBehaviour
         CreatePreviewModel();
         CreatePreviewAttributes();
         SetRenderers();
+    }
+
+    public void AddToHand()
+    {
+        transform.parent = CameraControl.GetCardParent();
+        if (!GetComponent<PickableCard>()) OnCardCreation?.Invoke(cardEffect);
     }
 
     private void CreateModel()
@@ -85,6 +92,7 @@ public class Card : MonoBehaviour
 
     private void CreatePreviewModel()
     {
+        if (!cardEffect.GetModel()) return;
         GameObject model = Instantiate(cardEffect.GetModel());
         foreach (Renderer renderer in model.transform.GetComponentsInChildren<Renderer>()) renderer.enabled = false;
 
@@ -96,8 +104,9 @@ public class Card : MonoBehaviour
 
     private void CreatePreviewAttributes()
     {
-        GameObject attributes = Instantiate(cardEffect.GetAttributes());
-        foreach (Attribute attribute in attributes.GetComponentsInChildren<Attribute>())
+        if (!cardEffect.GetAttributes()) return;
+        attributePreviewObject = Instantiate(cardEffect.GetAttributes()).transform;
+        foreach (Attribute attribute in attributePreviewObject.GetComponentsInChildren<Attribute>())
         {
             if (attribute.isAlwaysActive)
             {
@@ -177,19 +186,25 @@ public class Card : MonoBehaviour
 
     private IEnumerator MoveToHandPosition()
     {
-        isReturning = true;
-
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, GetLocalZ());
-
-        Vector3 targetPosition = new Vector3(cardSettings.handSpacing * transform.GetSiblingIndex(), HoverOffset(), GetLocalZ());
-        while (transform.localPosition != targetPosition)
+        if (transform.parent)
         {
-            targetPosition = new Vector3(cardSettings.handSpacing * transform.GetSiblingIndex(), HoverOffset(), GetLocalZ());
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, cardSettings.moveSpeed * Time.deltaTime);
-            yield return null;
-        }
+            isReturning = true;
 
-        isReturning = false;
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, GetLocalZ());
+            float handX = cardSettings.maxHandWidth * transform.GetSiblingIndex() / transform.parent.childCount;
+            handX = Mathf.Min(cardSettings.maxHandSpacing * transform.GetSiblingIndex(), handX);
+            Vector3 targetPosition = new Vector3(handX, HoverOffset(), GetLocalZ());
+            while (transform.localPosition != targetPosition)
+            {
+                handX = cardSettings.maxHandWidth * transform.GetSiblingIndex() / transform.parent.childCount;
+                handX = Mathf.Min(cardSettings.maxHandSpacing * transform.GetSiblingIndex(), handX);
+                targetPosition = new Vector3(handX, HoverOffset(), GetLocalZ());
+                transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, cardSettings.moveSpeed * Time.deltaTime);
+                yield return null;
+            }
+
+            isReturning = false;
+        }
     }
 
     private float HoverOffset()
@@ -235,6 +250,7 @@ public class Card : MonoBehaviour
     {
         wasPlayed = true;
 
+        transform.parent = null;
         Destroy(gameObject);
 
         cardEffect.Play();
@@ -242,20 +258,21 @@ public class Card : MonoBehaviour
         OnCardPlay?.Invoke(cardEffect);
     }
 
-    public static GameObject CreateBuildCard(string structureName, bool isPick = false)
+    public static GameObject CreateCard(string cardName, bool isPick = false)
     {
-        GameObject card = Instantiate(settings.buildCardPrefab);
-        card.GetComponent<BuildCard>().Initialize((GameObject)Resources.Load("StructurePrefabs/" + structureName));
-
-        if (isPick)card.AddComponent<PickableCard>();
-
-        return card;
-    }
-
-    public static GameObject CreateModifyCard(string modificationName, bool isPick = false)
-    {
-        GameObject card = Instantiate(settings.modifyCardPrefab);
-        card.GetComponent<ModificationCard>().Initialize((GameObject)Resources.Load("ModificationPrefabs/" + modificationName));
+        GameObject card;
+        if (Resources.Load("StructurePrefabs/" + cardName))
+        {
+            card = Instantiate(settings.buildCardPrefab);
+            card.GetComponent<BuildCard>().Initialize((GameObject)Resources.Load("StructurePrefabs/" + cardName));
+        } else if (Resources.Load("ModificationPrefabs/" + cardName))
+        {
+            card = Instantiate(settings.modifyCardPrefab);
+            card.GetComponent<ModificationCard>().Initialize((GameObject)Resources.Load("ModificationPrefabs/" + cardName));
+        } else
+        {
+            card = Instantiate((GameObject)Resources.Load("ActionPrefabs/" + cardName));
+        }
 
         if (isPick) card.AddComponent<PickableCard>();
 
@@ -265,5 +282,6 @@ public class Card : MonoBehaviour
     private void OnDestroy()
     {
         foreach (Attribute attribute in previewAttributes) attribute.DeleteAttribute();
+        if(attributePreviewObject) Destroy(attributePreviewObject.gameObject);
     }
 }

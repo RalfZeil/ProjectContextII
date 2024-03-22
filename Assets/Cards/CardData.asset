@@ -12,13 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ef0128823d39b4dbbc83d4bd8b20e3, type: 3}
   m_Name: CardData
   m_EditorClassIdentifier: 
-  handSpacing: 1.2
+  maxHandSpacing: 2.2
+  maxHandWidth: 11.5
   zSpacing: 5
   hoverDistance: 0.5
   baseCameraDistance: 70
   selectedCameraDistance: 20
   moveSpeed: 20
   cardPickSpacing: 10
+  cardRewardOptions: 3
+  cardRewardsNature:
+  - Flowerbed
+  - Wild Nature
+  - Nature Reserve
+  cardRewardsPeople:
+  - Garden Center
+  - Park Commission
+  - School
+  cardRewardsIndustry:
+  - Solar Panel Factory
+  - Luxury Factory
   cardColors:
   - {r: 0.19215687, g: 0.24313726, b: 0.101960786, a: 1}
   - {r: 0, g: 0.17254902, b: 0.24705882, a: 1}

@@ -39,13 +39,9 @@ public class CreateGreenPathwayMission : MissionEffect
         if (mission.isCompleted) return;
 
         count = target - TileGrid.GetDistanceGrid(habitatOrigin.x, habitatOrigin.y, TileGrid.GetBoolNatureGrid())[targetTile.x, targetTile.y];
+        progress = (float)count / target;
 
         mission.UpdateDisplay();
         if (count >= target) mission.Complete();
-    }
-
-    public override void GetReward()
-    {
-        for(int i = 0; i < 3; i++) Card.CreateBuildCard("Flowerbed", true);
     }
 }

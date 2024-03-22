@@ -23,9 +23,4 @@ public class DedicateToPeopleMission : MissionEffect
         mission.UpdateDisplay();
         if (count == target) mission.Complete();
     }
-
-    public override void GetReward()
-    {
-        
-    }
 }
