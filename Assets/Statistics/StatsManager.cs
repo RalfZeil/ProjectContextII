@@ -7,12 +7,21 @@ public class StatsManager : MonoBehaviour
 
     private float scorePercentage;
 
-    private void Update()
+
+    private void Start()
+    {
+        TileGrid.OnBuild += UpdateScore;
+    }
+
+    private void OnDestroy()
+    {
+        TileGrid.OnBuild -= UpdateScore;
+    }
+
+    private void UpdateScore(Structure structure)
     {
         allStructures = TileGrid.GetStructures();
-
         if (allStructures == null) { return; }
-
         scorePercentage = CalculateNatureCityBalance(allStructures);
     }
 
@@ -40,6 +49,8 @@ public class StatsManager : MonoBehaviour
         Debug.Log("Values: " + negativeBuilding + " " + natureBuilding + " " + cityBuilding);
 
         float finalPercentage = ((natureBuilding + cityBuilding) / negativeBuilding) * 100;
+
+        PlayerPrefs.SetFloat("PC3Score", finalPercentage);
 
         return finalPercentage;
     }
