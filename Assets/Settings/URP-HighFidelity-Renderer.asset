@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7315759101411326115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e7136ccf173734c8ad4051eb0f2677, type: 3}
+  m_Name: TiltShift
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    intensity: 1
+    angle: 0
+    aperture: 0.5
+    offset: -0.41
+    blurCurve: 3
+    blur: 0.44
+    distortion: 5
+    distortionScale: 1.46
+    debugView: 0
+    focusedBrightness: 0
+    focusedContrast: 1
+    focusedGamma: 1
+    focusedHue: 0
+    focusedSaturation: 1
+    unfocusedBrightness: 0
+    unfocusedContrast: 1
+    unfocusedGamma: 1
+    unfocusedHue: 0
+    unfocusedSaturation: 1
+    brightness: 0
+    contrast: 1
+    gamma: 1
+    hue: 0
+    saturation: 1
+    affectSceneView: 0
+    filterMode: 1
+    whenToInsert: 240
+    ignoreDeltaTimeScale: 0
+    enableProfiling: 0
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +97,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
   - {fileID: 3123256106689765820}
-  m_RendererFeatureMap: adc0de57c6d2eee5bc21d09de108582b
+  - {fileID: -7315759101411326115}
+  m_RendererFeatureMap: adc0de57c6d2eee5bc21d09de108582b5d070c9adb33799a
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
