@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  target: 5
+  target: 4
   mission: {fileID: 0}
   count: 0
   progress: 0

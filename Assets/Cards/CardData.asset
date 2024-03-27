@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHandSpacing: 2.2
   maxHandWidth: 11.5
   zSpacing: 5
-  hoverDistance: 0.5
+  hoverDistance: 1
   baseCameraDistance: 70
   selectedCameraDistance: 20
   moveSpeed: 20
