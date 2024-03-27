@@ -5,7 +5,7 @@ using System.Linq;
 
 public class TileGrid : MonoBehaviour
 {
-    [SerializeField] private GameObject tilePrefab, factoryPrefab, housePrefab, grasslandPrefab;
+    [SerializeField] private GameObject tilePrefab, factoryPrefab, housePrefab, apartmentprefab, grasslandPrefab;
     [SerializeField] private List<GameObject> startBuildingPrefabs;
     [SerializeField] private int gridWidth, gridHeight, maxUpdateCycles, factoryCount, houseClusterCount, houseClusterSize, houseClusterRandomness;
     [SerializeField] private float grassLandRatio;
@@ -13,7 +13,7 @@ public class TileGrid : MonoBehaviour
     [HideInInspector] public Tile[,] tiles;
     [HideInInspector] public Tile targetedTile;
     public static bool attributeHasChangedSinceUpdate = false, isShowingTimers = false;
-    public static List<bool> isShowingAttributes = new(){false, false, false};
+    public static List<bool> isShowingAttributes = new() { false, false, false };
     public static TileGrid instance;
     public static int targetRotation = 0;
 
@@ -49,6 +49,8 @@ public class TileGrid : MonoBehaviour
 
         for (int i = 0; i < houseClusterCount; i++) BuildInRandomEmptySpot(housePrefab);
 
+        for (int i = 0; i < houseClusterCount; i++) BuildInRandomEmptySpot(apartmentprefab);
+
         foreach (Tile tile in tiles) if (!tile.structure && Random.value < grassLandRatio) Build(grasslandPrefab, new List<Tile> { tile });
     }
 
@@ -68,7 +70,7 @@ public class TileGrid : MonoBehaviour
     {
         List<Tile> candidateTiles = new();
 
-        foreach(Tile tile in instance.tiles)
+        foreach (Tile tile in instance.tiles)
         {
             if (IsEmptySpace(GetCoveredTiles(tile, coveredCoordinates))) candidateTiles.Add(tile);
         }
@@ -105,7 +107,7 @@ public class TileGrid : MonoBehaviour
     }
     public static void ToggleAttributeDisplay(Attribute.AttributeType type)
     {
-        isShowingAttributes[(int) type] = !isShowingAttributes[(int) type];
+        isShowingAttributes[(int)type] = !isShowingAttributes[(int)type];
         foreach (Attribute attribute in GetAllAttributes()) attribute.UpdateDisplay();
         foreach (Tile tile in instance.tiles) tile.PositionAttributes();
     }
@@ -124,7 +126,7 @@ public class TileGrid : MonoBehaviour
         targetedTile = newTarget;
         if (targetedTile)
         {
-            if (!Card.heldCard) foreach(Tile tile in GetTargetedTiles()) if (tile) tile.Select(); 
+            if (!Card.heldCard) foreach (Tile tile in GetTargetedTiles()) if (tile) tile.Select();
         }
 
     }
@@ -150,13 +152,13 @@ public class TileGrid : MonoBehaviour
         Tile originTile = instance.targetedTile;
         targetTiles.Add(originTile);
 
-        if(Card.heldCard) foreach(Vector2Int coordinates in Card.heldCard.TargetedTiles())
-        {
-            Vector2Int rotatedCoordinates = RotateCoordinates(coordinates);
-            int i = originTile.x + rotatedCoordinates.x;
-            int j = originTile.y + rotatedCoordinates.y;
-            targetTiles.Add(instance.GetTileAt(i, j));
-        }
+        if (Card.heldCard) foreach (Vector2Int coordinates in Card.heldCard.TargetedTiles())
+            {
+                Vector2Int rotatedCoordinates = RotateCoordinates(coordinates);
+                int i = originTile.x + rotatedCoordinates.x;
+                int j = originTile.y + rotatedCoordinates.y;
+                targetTiles.Add(instance.GetTileAt(i, j));
+            }
 
         return targetTiles;
     }
@@ -167,12 +169,12 @@ public class TileGrid : MonoBehaviour
         coveredTiles.Add(originTile);
 
         foreach (Vector2Int coordinates in coveredCoordinates)
-            {
-                Vector2Int rotatedCoordinates = RotateCoordinates(coordinates);
-                int i = originTile.x + rotatedCoordinates.x;
-                int j = originTile.y + rotatedCoordinates.y;
-                coveredTiles.Add(instance.GetTileAt(i, j));
-            }
+        {
+            Vector2Int rotatedCoordinates = RotateCoordinates(coordinates);
+            int i = originTile.x + rotatedCoordinates.x;
+            int j = originTile.y + rotatedCoordinates.y;
+            coveredTiles.Add(instance.GetTileAt(i, j));
+        }
 
         return coveredTiles;
     }
@@ -191,7 +193,7 @@ public class TileGrid : MonoBehaviour
         return null;
     }
 
-    public static void Build (GameObject structurePrefab, List<Tile> tiles)
+    public static void Build(GameObject structurePrefab, List<Tile> tiles)
     {
         foreach (Tile tile in tiles) tile.Replace();
 
@@ -272,7 +274,7 @@ public class TileGrid : MonoBehaviour
 
     public static bool IsValidPlacement()
     {
-        foreach(Tile tile in GetTargetedTiles())
+        foreach (Tile tile in GetTargetedTiles())
         {
             if (tile == null) return false;
             if (tile.structure && tile.structure.isPermanent) return false;
@@ -290,7 +292,7 @@ public class TileGrid : MonoBehaviour
     public static List<Structure> GetStructures()
     {
         HashSet<Structure> structures = new();
-        foreach (Tile tile in instance.tiles) if(tile.structure) structures.Add(tile.structure);
+        foreach (Tile tile in instance.tiles) if (tile.structure) structures.Add(tile.structure);
         return structures.ToList<Structure>();
     }
 
@@ -316,7 +318,7 @@ public class TileGrid : MonoBehaviour
     {
         int[,] natureGrid = new int[instance.gridWidth, instance.gridHeight];
 
-        for(int x = 0; x < instance.gridWidth; x++)
+        for (int x = 0; x < instance.gridWidth; x++)
         {
             for (int y = 0; y < instance.gridHeight; y++)
             {
