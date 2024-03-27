@@ -93,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5680f49aa05ac074a8f8d74c8b1f8ccc, type: 2}
+  - {fileID: 2100000, guid: ecff71caea649ba4f8b6e78993fa5916, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -182,12 +182,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93a6758e9583414f87d9a29aef0f090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMaterial: {fileID: 2100000, guid: 5680f49aa05ac074a8f8d74c8b1f8ccc, type: 2}
+  baseMaterial: {fileID: 2100000, guid: ecff71caea649ba4f8b6e78993fa5916, type: 2}
   selectedMaterial: {fileID: 2100000, guid: 1002693773f738d468bc69429a0e9916, type: 2}
   nopeMaterial: {fileID: 2100000, guid: a4a8b171662a7044b9a1f89a6d1e2d9d, type: 2}
   meshRenderer: {fileID: 9132760474083632715}
   attributeDisplay: {fileID: 7871696588448489434}
   attributeDisplaySpread: 0.8
   structure: {fileID: 0}
+  modification: {fileID: 0}
+  attributes: []
   x: 0
   y: 0

@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7315759101411326115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e7136ccf173734c8ad4051eb0f2677, type: 3}
+  m_Name: TiltShift
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    intensity: 1
+    angle: 0
+    aperture: 0.5
+    offset: -0.41
+    blurCurve: 3
+    blur: 0.44
+    distortion: 5
+    distortionScale: 1.46
+    debugView: 0
+    focusedBrightness: 0
+    focusedContrast: 1
+    focusedGamma: 1
+    focusedHue: 0
+    focusedSaturation: 1
+    unfocusedBrightness: 0
+    unfocusedContrast: 1
+    unfocusedGamma: 1
+    unfocusedHue: 0
+    unfocusedSaturation: 1
+    brightness: 0
+    contrast: 1
+    gamma: 1
+    hue: 0
+    saturation: 1
+    affectSceneView: 0
+    filterMode: 1
+    whenToInsert: 240
+    ignoreDeltaTimeScale: 0
+    enableProfiling: 0
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,14 +55,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62c9c65cf3354c93be831c8bc075510, type: 3}
   m_Name: SSAO
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   m_Settings:
     AOMethod: 1
     Downsample: 0
     AfterOpaque: 0
     Source: 1
     NormalSamples: 1
-    Intensity: 0.5
+    Intensity: 66.26
     DirectLightingStrength: 0.25
     Radius: 0.25
     Samples: 0
@@ -53,7 +96,9 @@ MonoBehaviour:
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
-  m_RendererFeatureMap: adc0de57c6d2eee5
+  - {fileID: 3123256106689765820}
+  - {fileID: -7315759101411326115}
+  m_RendererFeatureMap: adc0de57c6d2eee5bc21d09de108582b5d070c9adb33799a
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -96,3 +141,30 @@ MonoBehaviour:
   m_CopyDepthMode: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
+--- !u!114 &3123256106689765820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef6d2d7bf3633e4baf72310f121f717, type: 3}
+  m_Name: PixelisationFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  UseDepthTestingForIDOutlines: 1
+  DepthTestThreshold: 0.001
+  UseNormalsForEdgeDetection: 0
+  NormalEdgeDetectionSensitivity: 1
+  GenerateWarnings: 1
+  PixelizationShaders:
+    PixelizationMap: {fileID: 4800000, guid: 8dd346b62451e76418dabc2355815f15, type: 3}
+    CopyDepth: {fileID: 4800000, guid: 5854eec6cff8aa8449c5f14562cf9c11, type: 3}
+    CopyMainTexAndDepth: {fileID: 4800000, guid: 4fdd965c0d64e16468688f87fbca597d,
+      type: 3}
+    ApplyPixelizationMap: {fileID: 4800000, guid: f47f4f650fb29834684600d9a95f41c7,
+      type: 3}
+  OutlineShaders:
+    OutlineDetection: {fileID: 4800000, guid: c59878161c7e0ad40b0661b47620d0e5, type: 3}

@@ -229,6 +229,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 6770494525319516948}
   highlightRenderer: {fileID: 4316292991261333393}
   activationThreshold: 0
+  isHighlighted: 0
   isAlwaysActive: 1
   relativeCoordinates: {x: 0, y: 0}
   isActive: 0
