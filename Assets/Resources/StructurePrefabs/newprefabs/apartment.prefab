@@ -713,13 +713,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6691192565799497297, guid: 6de4e6c4bc7e9044f8d6b8d7ac1c4483,
         type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.78839236
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691192565799497297, guid: 6de4e6c4bc7e9044f8d6b8d7ac1c4483,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0027006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691192565799497297, guid: 6de4e6c4bc7e9044f8d6b8d7ac1c4483,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6691192565799497297, guid: 6de4e6c4bc7e9044f8d6b8d7ac1c4483,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6691192565799497297, guid: 6de4e6c4bc7e9044f8d6b8d7ac1c4483,
         type: 3}
@@ -764,7 +774,7 @@ PrefabInstance:
     - target: {fileID: 7125914351763239744, guid: 6de4e6c4bc7e9044f8d6b8d7ac1c4483,
         type: 3}
       propertyPath: m_Name
-      value: House 1
+      value: apartment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
