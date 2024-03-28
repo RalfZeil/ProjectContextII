@@ -6,11 +6,11 @@ using System.Linq;
 public class TileGrid : MonoBehaviour
 {
     [SerializeField] private CardSettings cardSettings;
-    [SerializeField] private GameObject tilePrefab, factoryPrefab, housePrefab, grasslandPrefab;
+    [SerializeField] private GameObject tilePrefab, factoryPrefab, housePrefab, grasslandPrefab, riverPrefab, fishPrefab;
     [SerializeField] private List<GameObject> startBuildingPrefabs;
     [SerializeField] private int gridWidth, gridHeight, maxUpdateCycles, factoryCount, houseClusterCount, houseClusterSize, houseClusterRandomness;
-    [SerializeField] private float grassLandRatio;
-    [SerializeField] private bool allowInput = true;
+    [SerializeField] private float grassLandRatio, riverBendRatio;
+    [SerializeField] private bool allowInput = true, spawnRiver = true;
 
     [HideInInspector] public Tile[,] tiles;
     [HideInInspector] public Tile targetedTile;
@@ -57,6 +57,27 @@ public class TileGrid : MonoBehaviour
     }
     private void GenerateStartCity()
     {
+        int y = Random.Range(0, gridHeight);
+        if (spawnRiver) for(int x = 0; x < gridWidth; x++)
+        {
+
+            if(x == gridWidth/2) Build(fishPrefab, new List<Tile> { GetTileAt(x, y), GetTileAt(x-1, y), GetTileAt(x+1, y) });
+             else if(!GetTileAt(x, y).structure) Build(riverPrefab, new List<Tile> { GetTileAt(x, y)});
+
+            if (Random.value < riverBendRatio)
+            {
+                if (Random.value < 0.5f && y > 0)
+                {
+                    y--;
+                    if (!GetTileAt(x, y).structure) Build(riverPrefab, new List<Tile> { GetTileAt(x, y) });
+                } else if(y < gridHeight - 1)
+                {
+                    y++;
+                    if (!GetTileAt(x, y).structure) Build(riverPrefab, new List<Tile> { GetTileAt(x, y) });
+                }
+            }
+        }
+
         foreach (GameObject prefab in instance.startBuildingPrefabs) BuildInRandomEmptySpot(prefab);
 
         for (int i = 0; i < factoryCount; i++) BuildInRandomEmptySpot(factoryPrefab);

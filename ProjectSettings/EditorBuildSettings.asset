@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 59a598ff2fc5e8e4d8741f28f05e8cfa
   - enabled: 1
-    path: Assets/Scenes/Nova Test Scene.unity
+    path: Assets/Scenes/Smol Scene.unity
+    guid: 5f2d2bd32220c4241adc95e225ea323f
+  - enabled: 1
+    path: Assets/Scenes/Big Scene.unity
     guid: b468279388a59da47b18e9d944badd7e
   - enabled: 1
     path: Assets/Scenes/End Menu.unity

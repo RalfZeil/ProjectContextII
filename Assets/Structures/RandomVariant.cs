@@ -8,6 +8,6 @@ public class RandomVariant : MonoBehaviour
 
     void Start()
     {
-        models[Random.Range(0, models.Length)].SetActive(true);
+        models[Random.Range(0, models.Length)].SetActive(false);
     }
 }

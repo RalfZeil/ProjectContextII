@@ -48,9 +48,9 @@ public class StatTracker : MonoBehaviour
         peopleDisplay.text = peopleScore.ToString();
 
         if (habitatPositive + habitatNegative == 0) natureBar.fillAmount = 0.5f;
-        else natureBar.fillAmount = habitatPositive / (habitatPositive + habitatNegative);
+        else natureBar.fillAmount = habitatPositive / (float) (habitatPositive + habitatNegative);
 
         if (peoplePositive + peopleNegative == 0) peopleBar.fillAmount = 0.5f;
-        else peopleBar.fillAmount = peoplePositive / (peoplePositive + peopleNegative);
+        else peopleBar.fillAmount = peoplePositive / (float) (peoplePositive + peopleNegative);
     }
 }

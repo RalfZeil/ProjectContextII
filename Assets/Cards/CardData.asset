@@ -23,15 +23,15 @@ MonoBehaviour:
   cardRewardOptions: 3
   cardRewardsNature:
   - Flowerbed
-  - Wild Nature
-  - Nature Reserve
+  - Pond
+  - Park Commission
   cardRewardsPeople:
   - Garden Center
-  - Park Commission
+  - Animal Hospital
   - School
   cardRewardsIndustry:
   - Solar Panel Factory
-  - Luxury Factory
+  - Windmill
   cardColors:
   - {r: 0.19215687, g: 0.24313726, b: 0.101960786, a: 1}
   - {r: 0, g: 0.17254902, b: 0.24705882, a: 1}

@@ -10,6 +10,7 @@ public class Structure : MonoBehaviour
     public Transform timerDisplay;
     public Image timerProgressBar;
     [SerializeField] private Tooltip tooltip;
+    [SerializeField] private AnimalTooltip animalTooltip;
     [SerializeField] private StructureFunction function;
     public bool isPermanent, isReplayable, isUnaffectedByAttributes, isHabitat;
     public List<Vector2Int> coveredTiles;
@@ -18,7 +19,7 @@ public class Structure : MonoBehaviour
     [HideInInspector] public List<Attribute> attributes = new();
     [HideInInspector] public List<Tile> tiles = new();
     [HideInInspector] public List<Modification> modifications = new();
-    [HideInInspector] public int attributeBonus = 0;
+    public int attributeBonus = 0;
 
     public CardSettings.CardColor color;
 
@@ -34,6 +35,8 @@ public class Structure : MonoBehaviour
     private void Start()
     {
         tooltip.Initialize(title, description, CardSettings.CardType.Structure.ToString(), color, CardSettings.CardType.Structure);
+
+        if (animalTooltip) animalTooltip.transform.SetParent(tooltip.transform);
     }
 
     private void Update()
@@ -62,12 +65,14 @@ public class Structure : MonoBehaviour
     {
         foreach (Attribute attribute in attributes) attribute.SetHighlight(true);
         tooltip.UpdateRendering(true);
+        if (animalTooltip) animalTooltip.UpdateRendering(true, attributeBonus);
     }
 
     public void Deselect()
     {
         foreach (Attribute attribute in attributes) attribute.SetHighlight(false);
         tooltip.UpdateRendering(false);
+        if(animalTooltip) animalTooltip.UpdateRendering(false, attributeBonus);
     }
 
     public void UpdateAttributeBonus()
@@ -122,13 +127,10 @@ public class Structure : MonoBehaviour
         {
             for (int y = 0; y < visitedGrid.GetLength(1); y++)
             {
-                if (visitedGrid[x, y]) foreach (Attribute attribute in TileGrid.instance.GetTileAt(x, y).attributes)
-                    {
-                        if (attribute.isActive && attribute.type == Attribute.AttributeType.PositiveNature) natureCount++;
-                    }
+                if (visitedGrid[x, y]) natureCount += natureGrid[x, y];
             }
         }
-
+        Debug.Log("nature: " + natureCount);
         return natureCount;
     }
 
@@ -145,9 +147,9 @@ public class Structure : MonoBehaviour
         {
             for (int y = 0; y < visitedGrid.GetLength(1); y++)
             {
-                if(visitedGrid[x, y]) foreach(Attribute attribute in TileGrid.instance.GetTileAt(x, y).attributes)
+                if(visitedGrid[x, y] && natureGrid[x, y] > 0) foreach(Attribute attribute in TileGrid.instance.GetTileAt(x, y).attributes)
                     {
-                        if (attribute.isActive && attribute.type == Attribute.AttributeType.Negative) negativeCount++;
+                        if (attribute.isActive && attribute.type == Attribute.AttributeType.Negative && !attributes.Contains(attribute)) negativeCount++;
                     }
             }
         }
