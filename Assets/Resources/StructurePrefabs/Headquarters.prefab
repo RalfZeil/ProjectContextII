@@ -174,8 +174,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 183144859102382336, guid: 9e57784b6fa0db846a71403df290eb87,
         type: 3}
+      propertyPath: isPermanent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 183144859102382336, guid: 9e57784b6fa0db846a71403df290eb87,
+        type: 3}
+      propertyPath: isReplayable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183144859102382336, guid: 9e57784b6fa0db846a71403df290eb87,
+        type: 3}
       propertyPath: coveredTiles.Array.size
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 183144859102382336, guid: 9e57784b6fa0db846a71403df290eb87,
+        type: 3}
+      propertyPath: isUnaffectedByAttributes
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 183144859102382336, guid: 9e57784b6fa0db846a71403df290eb87,
         type: 3}

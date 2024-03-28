@@ -276,6 +276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 576092213310981201, guid: 0daa613b6f01ba94583d843fb360c5ba,
         type: 3}
+      propertyPath: isHabitat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 576092213310981201, guid: 0daa613b6f01ba94583d843fb360c5ba,
+        type: 3}
       propertyPath: description
       value: Chirp chirp
       objectReference: {fileID: 0}
@@ -292,6 +297,11 @@ PrefabInstance:
     - target: {fileID: 576092213310981201, guid: 0daa613b6f01ba94583d843fb360c5ba,
         type: 3}
       propertyPath: coveredTiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 576092213310981201, guid: 0daa613b6f01ba94583d843fb360c5ba,
+        type: 3}
+      propertyPath: isUnaffectedByAttributes
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 576092213310981201, guid: 0daa613b6f01ba94583d843fb360c5ba,

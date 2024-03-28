@@ -11,7 +11,7 @@ public class Structure : MonoBehaviour
     public Image timerProgressBar;
     [SerializeField] private Tooltip tooltip;
     [SerializeField] private StructureFunction function;
-    public bool isPermanent, isReplayable;
+    public bool isPermanent, isReplayable, isUnaffectedByAttributes, isHabitat;
     public List<Vector2Int> coveredTiles;
     public string title, description;
 
@@ -74,24 +74,85 @@ public class Structure : MonoBehaviour
     {
         attributeBonus = 0;
 
-        foreach (Tile tile in tiles) foreach (Attribute attribute in tile.attributes) if(attribute.isActive)
-        {
-            if (attribute.type == Attribute.AttributeType.Negative) attributeBonus--;
-            else if (color == CardSettings.CardColor.People && attribute.type == Attribute.AttributeType.PositiveCivilisation) attributeBonus++;
-        }
-
-        if (color == CardSettings.CardColor.Nature) attributeBonus += NatureAttributeBonus();
+        if (color == CardSettings.CardColor.People) attributeBonus = CountPositive() - CountNegative();
+        if (color == CardSettings.CardColor.Nature) attributeBonus = NatureAttributeBonus();
 
         foreach (Attribute attribute in GetAllAttributes()) attribute.UpdateStatus();
     }
 
     private int NatureAttributeBonus()
     {
+        return ConnectedNature() - ConnectedNegative();
+    }
+
+    public int CountPositive()
+    {
+        int count = 0;
+
+        foreach (Tile tile in tiles) foreach (Attribute attribute in tile.attributes)
+            {
+                if (attribute.isActive && attribute.type == Attribute.AttributeType.PositiveCivilisation) count++;
+            }
+
+        return count;
+    }
+
+    public int CountNegative()
+    {
+        int count = 0;
+
+        foreach (Tile tile in tiles) foreach (Attribute attribute in tile.attributes)
+            {
+                if (attribute.isActive && attribute.type == Attribute.AttributeType.Negative) count++;
+            }
+
+        return count;
+    }
+
+    public int ConnectedNature()
+    {
         int[,] natureGrid = TileGrid.GetNatureGrid();
         bool[,] visitedGrid = new bool[natureGrid.GetLength(0), natureGrid.GetLength(1)];
 
-        int areaCount = TileGrid.countArea(OriginTile().x, OriginTile().y, natureGrid, visitedGrid);
-        return (int) Mathf.Floor(Mathf.Sqrt(areaCount));
+        TileGrid.countArea(OriginTile().x, OriginTile().y, natureGrid, visitedGrid);
+
+        int natureCount = 0;
+
+        for (int x = 0; x < visitedGrid.GetLength(0); x++)
+        {
+            for (int y = 0; y < visitedGrid.GetLength(1); y++)
+            {
+                if (visitedGrid[x, y]) foreach (Attribute attribute in TileGrid.instance.GetTileAt(x, y).attributes)
+                    {
+                        if (attribute.isActive && attribute.type == Attribute.AttributeType.PositiveNature) natureCount++;
+                    }
+            }
+        }
+
+        return natureCount;
+    }
+
+    public int ConnectedNegative()
+    {
+        int[,] natureGrid = TileGrid.GetNatureGrid();
+        bool[,] visitedGrid = new bool[natureGrid.GetLength(0), natureGrid.GetLength(1)];
+
+        TileGrid.countArea(OriginTile().x, OriginTile().y, natureGrid, visitedGrid);
+
+        int negativeCount = 0;
+
+        for(int x = 0; x < visitedGrid.GetLength(0); x++)
+        {
+            for (int y = 0; y < visitedGrid.GetLength(1); y++)
+            {
+                if(visitedGrid[x, y]) foreach(Attribute attribute in TileGrid.instance.GetTileAt(x, y).attributes)
+                    {
+                        if (attribute.isActive && attribute.type == Attribute.AttributeType.Negative) negativeCount++;
+                    }
+            }
+        }
+
+        return negativeCount;
     }
 
     public Tile OriginTile()

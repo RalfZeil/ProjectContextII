@@ -40,6 +40,7 @@ public class StructureFunction : MonoBehaviour
 
     private int FunctionCooldown()
     {
+        if (structure.isUnaffectedByAttributes) return baseCooldown;
         return baseCooldown - structure.attributeBonus;
     }
 

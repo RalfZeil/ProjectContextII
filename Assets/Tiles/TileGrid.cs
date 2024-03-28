@@ -236,7 +236,7 @@ public class TileGrid : MonoBehaviour
         return new Vector2Int(-1 * coordinates.y, coordinates.x);
     }
 
-    private Tile GetTileAt(int x, int y)
+    public Tile GetTileAt(int x, int y)
     {
         if (x >= 0 && x < instance.gridWidth && y >= 0 && y < instance.gridHeight) return instance.tiles[x, y];
         return null;

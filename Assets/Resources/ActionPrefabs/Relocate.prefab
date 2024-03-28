@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 5488580198678690466, guid: 2589b2a1cc529ff49bcbf6435908d7cd,
         type: 3}
       propertyPath: m_Name
-      value: Relocate Card
+      value: Relocate
       objectReference: {fileID: 0}
     - target: {fileID: 8318795518836284305, guid: 2589b2a1cc529ff49bcbf6435908d7cd,
         type: 3}
@@ -100,4 +100,4 @@ MonoBehaviour:
   cardColor: 1
   isQuick: 0
   isForced: 0
-  model: {fileID: 7169897429149832479, guid: 6eaf850ccf287d64a91cd34ab37bee98, type: 3}
+  model: {fileID: 7169897429149832479, guid: 0514ff2028117004f871e33e32248600, type: 3}
